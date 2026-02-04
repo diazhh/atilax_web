@@ -4,7 +4,6 @@ import {
   Zap,
   Droplets,
   Radio,
-  AlertTriangle,
   Thermometer,
   Gauge,
   Activity,
@@ -14,7 +13,28 @@ import {
   Building2,
   Cable,
   Waves,
-  Antenna
+  Antenna,
+  Home,
+  ShoppingBag,
+  Car,
+  Users,
+  Lock,
+  Camera,
+  Bell,
+  Cpu,
+  Smartphone,
+  Shield,
+  MapPin,
+  Timer,
+  BadgeCheck,
+  Fingerprint,
+  ScanLine,
+  CircleParking,
+  Warehouse,
+  Lightbulb,
+  Wind,
+  Fuel,
+  LayoutDashboard
 } from "lucide-react";
 import { PageHeader } from "@/components/shared/page-header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -22,16 +42,16 @@ import { Button } from "@/components/ui/button";
 import { ImagePlaceholder } from "@/components/shared/image-placeholder";
 
 export const metadata: Metadata = {
-  title: "Infraestructura Critica | ATILAX",
+  title: "Infraestructura y Edificaciones | ATILAX",
   description:
-    "Monitoreo IoT para infraestructura critica: subestaciones electricas, sistemas de bombeo de agua, plantas de tratamiento y torres de telecomunicaciones.",
+    "Monitoreo IoT para infraestructura critica, conjuntos residenciales y centros comerciales: subestaciones electricas, sistemas de agua, control de acceso, seguridad perimetral y automatizacion.",
 };
 
 const stats = [
-  { value: "+400", label: "Subestaciones en Venezuela" },
-  { value: "600 MW", label: "Consumo de bombeo de agua" },
   { value: "24/7", label: "Monitoreo continuo" },
   { value: "99%", label: "Disponibilidad del sistema" },
+  { value: "<3s", label: "Tiempo de alerta" },
+  { value: "70-90%", label: "Reduccion de incidentes" },
 ];
 
 const sectors = [
@@ -41,34 +61,34 @@ const sectors = [
     subtitle: "Subestaciones y Redes de Distribucion",
     icon: Zap,
     color: "yellow",
-    description: "Venezuela cuenta con mas de 400 subestaciones y 24,000 km de lineas de alta tension que requieren monitoreo constante para prevenir fallas y apagones.",
-    problems: [
-      "Solo 12-14 GW disponibles de 34 GW instalados",
-      "Explosiones frecuentes de transformadores",
-      "Falta de mantenimiento predictivo",
-      "513 protestas ciudadanas por fallas en 2024"
-    ],
+    description: "Garantice la continuidad del servicio electrico con monitoreo inteligente de subestaciones, transformadores y redes de distribucion. Detecte anomalias antes de que se conviertan en fallas criticas.",
     solutions: [
       {
         title: "Monitoreo de Transformadores",
-        description: "Temperatura del aceite, nivel, gases disueltos (DGA), vibraciones y corriente.",
+        description: "Temperatura del aceite, nivel, gases disueltos (DGA), vibraciones y corriente de carga.",
         icon: Thermometer
       },
       {
         title: "Deteccion de Sobrecargas",
         description: "Alertas tempranas de sobrecarga, desbalance de fases y factor de potencia bajo.",
-        icon: AlertTriangle
+        icon: Activity
       },
       {
         title: "Seguridad Perimetral",
-        description: "Camaras con IA para deteccion de intrusos en subestaciones criticas.",
+        description: "Camaras con IA para deteccion de intrusos en subestaciones criticas 24/7.",
         icon: ShieldAlert
       },
       {
         title: "Control de Acceso",
-        description: "Registro de entrada/salida de personal autorizado con alertas en tiempo real.",
-        icon: Building2
+        description: "Registro biometrico de entrada/salida de personal autorizado con alertas en tiempo real.",
+        icon: Fingerprint
       }
+    ],
+    benefits: [
+      "Prevencion de fallas en transformadores",
+      "Reduccion de tiempos de respuesta",
+      "Proteccion contra vandalismo y robos",
+      "Cumplimiento de normativas de seguridad"
     ],
     image: "infraestructura-subestacion-electrica.jpg"
   },
@@ -78,27 +98,21 @@ const sectors = [
     subtitle: "Bombeo, Tratamiento y Distribucion",
     icon: Droplets,
     color: "blue",
-    description: "Las 14 estaciones de bombeo principales de Venezuela consumen 600 MW de potencia. Hidroven y sus filiales enfrentan retos criticos de mantenimiento.",
-    problems: [
-      "Tuy I y II al 50% de capacidad",
-      "Deterioro de motores y turbinas",
-      "30% de poblacion con racionamiento",
-      "Falta de monitoreo en tiempo real"
-    ],
+    description: "Optimice la operacion de estaciones de bombeo, plantas de tratamiento y redes de distribucion. Maximice la eficiencia y garantice el suministro continuo de agua.",
     solutions: [
       {
         title: "Monitoreo de Bombas",
-        description: "Vibracion, temperatura de rodamientos, corriente del motor y caudal.",
+        description: "Vibracion, temperatura de rodamientos, corriente del motor, presion y caudal en tiempo real.",
         icon: Activity
       },
       {
-        title: "Control de Nivel",
-        description: "Nivel de tanques, reservorios y estaciones de bombeo con alertas automaticas.",
+        title: "Control de Nivel de Tanques",
+        description: "Nivel de tanques, reservorios y cisternas con alertas de nivel bajo y rebose.",
         icon: Gauge
       },
       {
         title: "Deteccion de Fugas",
-        description: "Analisis de cambios de presion para identificar fugas en tuberias principales.",
+        description: "Analisis de variaciones de presion para identificar fugas en tuberias principales.",
         icon: Waves
       },
       {
@@ -106,6 +120,12 @@ const sectors = [
         description: "Optimizacion de horarios de bombeo segun demanda y tarifas electricas.",
         icon: Zap
       }
+    ],
+    benefits: [
+      "Reduccion de consumo energetico 10-20%",
+      "Deteccion temprana de fallas en bombas",
+      "Mejor gestion del inventario de agua",
+      "Menor tiempo de respuesta ante emergencias"
     ],
     image: "infraestructura-estacion-bombeo-agua.jpg"
   },
@@ -115,55 +135,189 @@ const sectors = [
     subtitle: "Torres, Antenas y Nodos de Red",
     icon: Radio,
     color: "purple",
-    description: "Venezuela tiene mas de 6,300 antenas de telecomunicaciones que sufren robos, vandalismo y fallas por problemas electricos.",
-    problems: [
-      "Robos y vandalismo a torres",
-      "Fallas por inestabilidad electrica",
-      "Dificultad de acceso a zonas remotas",
-      "CANTV activo linea 0800-ANTENAS para denuncias"
-    ],
+    description: "Proteja y monitoree torres de telecomunicaciones, cuartos de equipos y nodos de red. Garantice la disponibilidad del servicio y la seguridad de los activos.",
     solutions: [
       {
         title: "Deteccion de Intrusos",
-        description: "Sensores de apertura de puertas, vibracion en cercas y camaras con IA.",
+        description: "Sensores de apertura de puertas, vibracion en cercas y camaras con IA para alertas inmediatas.",
         icon: ShieldAlert
       },
       {
         title: "Monitoreo de Energia",
-        description: "Estado de baterias, generadores de respaldo y UPS en tiempo real.",
+        description: "Estado de baterias, generadores de respaldo, UPS y consumo electrico en tiempo real.",
         icon: Zap
       },
       {
         title: "Control de Temperatura",
-        description: "Monitoreo de aire acondicionado y temperatura de equipos criticos.",
+        description: "Monitoreo de aire acondicionado, humedad y temperatura de equipos criticos.",
         icon: Thermometer
       },
       {
         title: "Alertas de Conectividad",
-        description: "Deteccion de perdida de enlace y cortes de fibra optica.",
+        description: "Deteccion de perdida de enlace, latencia y cortes de fibra optica.",
         icon: Cable
       }
     ],
+    benefits: [
+      "Proteccion contra robos de equipos",
+      "Mayor tiempo de actividad del servicio",
+      "Respuesta rapida ante fallas",
+      "Optimizacion del mantenimiento preventivo"
+    ],
     image: "infraestructura-torre-telecomunicaciones.jpg"
   },
+  {
+    id: "residencial",
+    title: "Conjuntos Residenciales",
+    subtitle: "Urbanizaciones, Condominios y Torres",
+    icon: Home,
+    color: "green",
+    description: "Brinde seguridad y tranquilidad a los residentes con sistemas inteligentes de control de acceso, vigilancia perimetral y monitoreo de servicios comunes.",
+    solutions: [
+      {
+        title: "Control de Acceso Vehicular",
+        description: "Lectura automatica de placas (LPR), tags RFID, control de visitantes y registro fotografico.",
+        icon: Car
+      },
+      {
+        title: "Acceso Peatonal Inteligente",
+        description: "Torniquetes con tarjetas, biometria facial o huella, y registro de entradas/salidas.",
+        icon: Users
+      },
+      {
+        title: "Vigilancia Perimetral con IA",
+        description: "Camaras con deteccion de personas, vehiculos sospechosos y comportamientos anomalos.",
+        icon: Camera
+      },
+      {
+        title: "Monitoreo de Tanques de Agua",
+        description: "Nivel de cisternas y tanques elevados con alertas de nivel critico y rebose.",
+        icon: Droplets
+      },
+      {
+        title: "Control de Bombas",
+        description: "Estado de bombas de agua, presion del sistema y deteccion de fallas electricas.",
+        icon: Activity
+      },
+      {
+        title: "Alertas a Residentes",
+        description: "Notificaciones push, WhatsApp y email sobre visitantes, entregas y emergencias.",
+        icon: Smartphone
+      }
+    ],
+    benefits: [
+      "Mayor seguridad para residentes",
+      "Control total de accesos 24/7",
+      "Gestion eficiente de visitantes",
+      "Reduccion de robos y hurtos 70-90%",
+      "Tranquilidad y confianza"
+    ],
+    image: "infraestructura-conjunto-residencial.jpg"
+  },
+  {
+    id: "comercial",
+    title: "Centros Comerciales",
+    subtitle: "Malls, Plazas y Locales Comerciales",
+    icon: ShoppingBag,
+    color: "orange",
+    description: "Proteja sus espacios comerciales con sistemas avanzados de seguridad, control de estacionamientos y monitoreo de infraestructura critica para garantizar la mejor experiencia a clientes y comerciantes.",
+    solutions: [
+      {
+        title: "Gestion de Estacionamientos",
+        description: "Conteo de espacios disponibles, lectura de placas, tarifas automaticas y senalizacion LED.",
+        icon: CircleParking
+      },
+      {
+        title: "Seguridad Perimetral",
+        description: "Camaras con IA en entradas, pasillos y areas comunes. Deteccion de comportamientos sospechosos.",
+        icon: Shield
+      },
+      {
+        title: "Control de Acceso de Personal",
+        description: "Acceso biometrico a areas restringidas, bodegas, oficinas y cuartos tecnicos.",
+        icon: Lock
+      },
+      {
+        title: "Monitoreo de Sistemas HVAC",
+        description: "Temperatura, humedad y consumo de aire acondicionado en locales y areas comunes.",
+        icon: Wind
+      },
+      {
+        title: "Control de Energia",
+        description: "Medidores inteligentes por local, alertas de consumo excesivo y gestion de horarios.",
+        icon: Lightbulb
+      },
+      {
+        title: "Sistemas de Bombeo",
+        description: "Monitoreo de bombas de agua potable, contraincendios y sistemas de riego.",
+        icon: Gauge
+      }
+    ],
+    benefits: [
+      "Experiencia mejorada para clientes",
+      "Gestion eficiente de estacionamientos",
+      "Reduccion de perdidas por robos",
+      "Optimizacion del consumo energetico",
+      "Cumplimiento de normativas de seguridad"
+    ],
+    image: "infraestructura-centro-comercial.jpg"
+  }
 ];
 
-const clients = [
-  { name: "CORPOELEC", type: "Electricidad" },
-  { name: "HIDROVEN", type: "Agua" },
-  { name: "HIDROCAPITAL", type: "Agua" },
-  { name: "HIDROCENTRO", type: "Agua" },
-  { name: "CANTV", type: "Telecom" },
-  { name: "Gobernaciones", type: "Gobierno" },
+const additionalSolutions = [
+  {
+    title: "Zonas Perimetrales",
+    description: "Proteccion integral del perimetro con camaras termicas, sensores de movimiento, cercas electricas monitoreadas y deteccion de intrusion por IA.",
+    icon: Shield,
+    features: ["Camaras termicas nocturnas", "Sensores de vibracion en cercas", "Deteccion de corte de cercas", "Mapeo de zonas de intrusion"]
+  },
+  {
+    title: "Tanques y Cisternas",
+    description: "Monitoreo continuo de nivel, temperatura y calidad del agua en tanques elevados, cisternas subterraneas y reservorios.",
+    icon: Droplets,
+    features: ["Sensores de nivel ultrasonicos", "Alertas de nivel critico", "Deteccion de fugas", "Historial de consumo"]
+  },
+  {
+    title: "Sistemas de Bombeo",
+    description: "Control y monitoreo de bombas centrifugas, sumergibles y de presion constante con analisis de vibracion y corriente.",
+    icon: Activity,
+    features: ["Vibracion y temperatura", "Corriente y voltaje", "Presion de descarga", "Horas de operacion"]
+  },
+  {
+    title: "Control de Acceso Peatonal",
+    description: "Torniquetes, puertas automaticas y barreras con multiples tecnologias de identificacion para maximo control.",
+    icon: Users,
+    features: ["Tarjetas RFID/NFC", "Biometria facial", "Huella dactilar", "QR temporales para visitantes"]
+  },
+  {
+    title: "Control de Acceso Vehicular",
+    description: "Barreras automaticas, lectores de placas y tags para control total de entrada y salida de vehiculos.",
+    icon: Car,
+    features: ["Lectura de placas (LPR)", "Tags RFID vehiculares", "Control de visitantes", "Registro fotografico"]
+  },
+  {
+    title: "Centro de Monitoreo",
+    description: "Dashboard centralizado para visualizar todos los sistemas, gestionar alarmas y generar reportes automaticos.",
+    icon: LayoutDashboard,
+    features: ["Vista unificada de sistemas", "Gestion de alarmas", "Reportes automaticos", "Acceso movil 24/7"]
+  }
+];
+
+const targetClients = [
+  { name: "Conjuntos Residenciales", icon: Home, examples: "Urbanizaciones, condominios, torres" },
+  { name: "Centros Comerciales", icon: ShoppingBag, examples: "Malls, plazas, galerias" },
+  { name: "Empresas de Servicios", icon: Building2, examples: "Electricidad, agua, telecomunicaciones" },
+  { name: "Edificios Corporativos", icon: Warehouse, examples: "Oficinas, torres empresariales" },
+  { name: "Instituciones Publicas", icon: BadgeCheck, examples: "Gobernaciones, alcaldias, ministerios" },
 ];
 
 export default function InfraestructuraPage() {
   return (
     <>
       <PageHeader
-        title="Infraestructura Critica"
-        description="Monitoreo inteligente de subestaciones electricas, sistemas de bombeo de agua y torres de telecomunicaciones. Proteja los servicios esenciales de Venezuela."
-        badge="Servicios Publicos"
+        title="Infraestructura y Edificaciones"
+        description="Monitoreo inteligente para servicios criticos, conjuntos residenciales y centros comerciales. Seguridad, control de acceso y automatizacion en una sola plataforma."
+        badge="Soluciones Integrales"
       />
 
       {/* Stats Bar */}
@@ -188,35 +342,42 @@ export default function InfraestructuraPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold mb-4">
-                Proteja los servicios esenciales
+                Proteccion y control inteligente
               </h2>
               <p className="text-muted-foreground text-lg mb-6">
-                La infraestructura critica de Venezuela enfrenta desafios unicos: falta de mantenimiento,
-                obsolescencia tecnologica y amenazas de seguridad. ATILAX ofrece monitoreo 24/7
-                para anticipar fallas y optimizar operaciones.
+                ATILAX ofrece soluciones integrales de monitoreo IoT para infraestructura critica,
+                conjuntos residenciales y centros comerciales. Desde el control de acceso hasta
+                el monitoreo de sistemas vitales, todo en una sola plataforma.
               </p>
               <ul className="space-y-3 mb-8">
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5 shrink-0" />
-                  <span>Deteccion temprana de fallas antes de que causen apagones</span>
+                  <span>Control de acceso vehicular y peatonal con multiples tecnologias</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5 shrink-0" />
-                  <span>Reduccion de visitas de campo innecesarias</span>
+                  <span>Vigilancia perimetral con inteligencia artificial</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5 shrink-0" />
-                  <span>Seguridad perimetral contra robos y vandalismo</span>
+                  <span>Monitoreo de tanques de agua, bombas y sistemas criticos</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="h-5 w-5 text-green-500 mt-0.5 shrink-0" />
-                  <span>Optimizacion del consumo energetico</span>
+                  <span>Alertas instantaneas por WhatsApp, email y app movil</span>
                 </li>
               </ul>
             </div>
             <div className="relative">
+              {/*
+                IMAGEN: infraestructura-hero-edificaciones.jpg
+                Descripcion: Vista panoramica que muestre la diversidad de aplicaciones:
+                conjunto residencial moderno, edificio corporativo y/o centro comercial.
+                Estilo: Fotografia profesional, luz natural, ambiente urbano venezolano.
+                Resolucion: 1920x1440px (4:3)
+              */}
               <ImagePlaceholder
-                label="infraestructura-hero-servicios-publicos.jpg"
+                label="infraestructura-hero-edificaciones.jpg"
                 className="aspect-[4/3] rounded-2xl"
                 iconSize="lg"
               />
@@ -236,11 +397,15 @@ export default function InfraestructuraPage() {
             <div className="flex items-center gap-4 mb-8">
               <div className={`w-14 h-14 rounded-xl flex items-center justify-center ${
                 sector.color === "yellow" ? "bg-yellow-500/10" :
-                sector.color === "blue" ? "bg-blue-500/10" : "bg-purple-500/10"
+                sector.color === "blue" ? "bg-blue-500/10" :
+                sector.color === "purple" ? "bg-purple-500/10" :
+                sector.color === "green" ? "bg-green-500/10" : "bg-orange-500/10"
               }`}>
                 <sector.icon className={`h-7 w-7 ${
                   sector.color === "yellow" ? "text-yellow-600" :
-                  sector.color === "blue" ? "text-blue-600" : "text-purple-600"
+                  sector.color === "blue" ? "text-blue-600" :
+                  sector.color === "purple" ? "text-purple-600" :
+                  sector.color === "green" ? "text-green-600" : "text-orange-600"
                 }`} />
               </div>
               <div>
@@ -250,23 +415,27 @@ export default function InfraestructuraPage() {
             </div>
 
             <div className="grid lg:grid-cols-2 gap-12 mb-12">
-              {/* Image and Problems */}
+              {/* Image and Benefits */}
               <div>
+                {/*
+                  IMAGEN: {sector.image}
+                  Ver documentacion de imagenes al final del archivo
+                */}
                 <ImagePlaceholder
                   label={sector.image}
                   className="aspect-[4/3] rounded-2xl mb-6"
                   iconSize="lg"
                 />
-                <div className="bg-red-50 border border-red-100 rounded-xl p-6">
-                  <h4 className="font-semibold text-red-800 mb-3 flex items-center gap-2">
-                    <AlertTriangle className="h-5 w-5" />
-                    Problematica Actual
+                <div className="bg-green-50 border border-green-100 rounded-xl p-6">
+                  <h4 className="font-semibold text-green-800 mb-3 flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5" />
+                    Beneficios Clave
                   </h4>
                   <ul className="space-y-2">
-                    {sector.problems.map((problem) => (
-                      <li key={problem} className="flex items-start gap-2 text-sm text-red-700">
-                        <div className="w-1.5 h-1.5 rounded-full bg-red-500 mt-1.5 shrink-0" />
-                        {problem}
+                    {sector.benefits.map((benefit) => (
+                      <li key={benefit} className="flex items-start gap-2 text-sm text-green-700">
+                        <div className="w-1.5 h-1.5 rounded-full bg-green-500 mt-1.5 shrink-0" />
+                        {benefit}
                       </li>
                     ))}
                   </ul>
@@ -304,26 +473,61 @@ export default function InfraestructuraPage() {
         </section>
       ))}
 
-      {/* Target Clients */}
-      <section className="py-16 bg-primary/5">
+      {/* Additional Solutions Grid */}
+      <section className="py-20 bg-primary/5">
         <div className="container-lg">
           <div className="text-center mb-12">
-            <h2 className="text-2xl font-bold mb-2">Clientes Objetivo</h2>
-            <p className="text-muted-foreground">
-              Organizaciones que protegen la infraestructura critica de Venezuela
+            <h2 className="text-3xl font-bold mb-4">Soluciones Especializadas</h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Componentes modulares que se adaptan a las necesidades especificas de cada instalacion
             </p>
           </div>
-          <div className="flex flex-wrap justify-center gap-4">
-            {clients.map((client) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {additionalSolutions.map((solution) => (
+              <Card key={solution.title} className="hover:shadow-lg transition-shadow">
+                <CardContent className="p-6">
+                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
+                    <solution.icon className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">{solution.title}</h3>
+                  <p className="text-muted-foreground text-sm mb-4">
+                    {solution.description}
+                  </p>
+                  <ul className="space-y-2">
+                    {solution.features.map((feature) => (
+                      <li key={feature} className="flex items-center gap-2 text-sm">
+                        <CheckCircle2 className="h-4 w-4 text-green-500 shrink-0" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Target Clients */}
+      <section className="py-16">
+        <div className="container-lg">
+          <div className="text-center mb-12">
+            <h2 className="text-2xl font-bold mb-2">Para quien es ATILAX</h2>
+            <p className="text-muted-foreground">
+              Soluciones adaptadas a cada tipo de instalacion
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-4">
+            {targetClients.map((client) => (
               <div
                 key={client.name}
-                className="px-6 py-3 bg-white rounded-xl shadow-sm border flex items-center gap-3"
+                className="p-6 bg-white rounded-xl shadow-sm border text-center hover:shadow-md transition-shadow"
               >
-                <Building2 className="h-5 w-5 text-primary" />
-                <div>
-                  <div className="font-semibold">{client.name}</div>
-                  <div className="text-xs text-muted-foreground">{client.type}</div>
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                  <client.icon className="h-6 w-6 text-primary" />
                 </div>
+                <div className="font-semibold mb-1">{client.name}</div>
+                <div className="text-xs text-muted-foreground">{client.examples}</div>
               </div>
             ))}
           </div>
@@ -331,12 +535,22 @@ export default function InfraestructuraPage() {
       </section>
 
       {/* Dashboard Preview */}
-      <section className="py-20">
+      <section className="py-20 bg-muted/30">
         <div className="container-lg">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1">
+              {/*
+                IMAGEN: infraestructura-dashboard-unificado.jpg
+                Descripcion: Captura de pantalla del dashboard mostrando:
+                - Mapa con ubicaciones de instalaciones
+                - Graficos de estado de sistemas
+                - Panel de alarmas activas
+                - Indicadores de acceso vehicular/peatonal
+                Estilo: Interfaz moderna, colores corporativos ATILAX
+                Resolucion: 1920x1440px (4:3)
+              */}
               <ImagePlaceholder
-                label="infraestructura-dashboard-scada.jpg"
+                label="infraestructura-dashboard-unificado.jpg"
                 className="aspect-[4/3] rounded-2xl shadow-2xl"
                 iconSize="lg"
               />
@@ -346,34 +560,44 @@ export default function InfraestructuraPage() {
                 Centro de Control Unificado
               </h2>
               <p className="text-muted-foreground text-lg mb-6">
-                Visualice todas sus instalaciones criticas en un solo dashboard.
-                Reciba alertas instantaneas y tome decisiones basadas en datos en tiempo real.
+                Visualice todos sus sistemas en un solo dashboard. Control de acceso,
+                seguridad perimetral, tanques de agua y bombas: todo integrado y accesible
+                desde cualquier dispositivo.
               </p>
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start gap-3">
-                  <Antenna className="h-5 w-5 text-primary mt-0.5" />
+                  <MapPin className="h-5 w-5 text-primary mt-0.5" />
                   <div>
                     <span className="font-medium">Vista geografica</span>
                     <p className="text-sm text-muted-foreground">
-                      Mapa con ubicacion y estado de todas las instalaciones
+                      Mapa interactivo con ubicacion y estado de todas las instalaciones
                     </p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <AlertTriangle className="h-5 w-5 text-primary mt-0.5" />
+                  <Bell className="h-5 w-5 text-primary mt-0.5" />
                   <div>
                     <span className="font-medium">Gestion de alarmas</span>
                     <p className="text-sm text-muted-foreground">
-                      Prioridades, escalamiento y registro de acciones
+                      Prioridades, escalamiento automatico y registro de acciones
                     </p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <Activity className="h-5 w-5 text-primary mt-0.5" />
+                  <Timer className="h-5 w-5 text-primary mt-0.5" />
                   <div>
-                    <span className="font-medium">Reportes automaticos</span>
+                    <span className="font-medium">Historial completo</span>
                     <p className="text-sm text-muted-foreground">
-                      Disponibilidad, fallas y mantenimiento preventivo
+                      Registro de accesos, eventos y tendencias historicas
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Smartphone className="h-5 w-5 text-primary mt-0.5" />
+                  <div>
+                    <span className="font-medium">Acceso movil 24/7</span>
+                    <p className="text-sm text-muted-foreground">
+                      Monitoree y reciba alertas desde su smartphone en cualquier momento
                     </p>
                   </div>
                 </li>
@@ -393,20 +617,105 @@ export default function InfraestructuraPage() {
       <section className="py-20 bg-primary">
         <div className="container-lg text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Proteja la infraestructura de Venezuela
+            Proteja su infraestructura con tecnologia inteligente
           </h2>
           <p className="text-lg text-white/70 mb-8 max-w-2xl mx-auto">
-            Contactenos para una evaluacion de sus instalaciones criticas y descubra
-            como ATILAX puede mejorar la disponibilidad y seguridad de sus servicios.
+            Contactenos para una evaluacion de sus instalaciones y descubra
+            como ATILAX puede mejorar la seguridad, eficiencia y control de sus operaciones.
           </p>
-          <Link href="/contacto">
-            <Button size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90">
-              Contactar a un especialista
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/contacto">
+              <Button size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90">
+                Contactar a un especialista
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+            <a href="https://panel.atilax.io" target="_blank" rel="noopener noreferrer">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                Ver demo en vivo
+              </Button>
+            </a>
+          </div>
         </div>
       </section>
     </>
   );
 }
+
+/*
+================================================================================
+DOCUMENTACION DE IMAGENES REQUERIDAS - SECCION INFRAESTRUCTURA
+================================================================================
+
+1. infraestructura-hero-edificaciones.jpg
+   - Descripcion: Vista panoramica mostrando diversidad de aplicaciones
+   - Elementos: Conjunto residencial moderno, edificio corporativo y/o centro comercial
+   - Estilo: Fotografia profesional, luz natural, ambiente urbano
+   - Contexto: Venezuela, arquitectura moderna
+   - Resolucion: 1920x1440px (4:3)
+   - Uso: Seccion introductoria principal
+
+2. infraestructura-subestacion-electrica.jpg
+   - Descripcion: Subestacion electrica moderna con transformadores
+   - Elementos: Transformadores, lineas de alta tension, cercas de seguridad
+   - Estilo: Fotografia industrial, cielo despejado
+   - Contexto: Infraestructura electrica venezolana
+   - Resolucion: 1920x1440px (4:3)
+   - Uso: Seccion Sector Electrico
+
+3. infraestructura-estacion-bombeo-agua.jpg
+   - Descripcion: Estacion de bombeo de agua potable
+   - Elementos: Bombas industriales, tuberias, panel de control, tanques
+   - Estilo: Fotografia industrial limpia
+   - Contexto: Instalacion de servicios de agua
+   - Resolucion: 1920x1440px (4:3)
+   - Uso: Seccion Sistemas de Agua
+
+4. infraestructura-torre-telecomunicaciones.jpg
+   - Descripcion: Torre de telecomunicaciones con antenas
+   - Elementos: Torre metalica, antenas de diferentes tipos, caseta de equipos
+   - Estilo: Fotografia tecnica, angulo que muestre altura
+   - Contexto: Telecomunicaciones en Venezuela
+   - Resolucion: 1920x1440px (4:3)
+   - Uso: Seccion Telecomunicaciones
+
+5. infraestructura-conjunto-residencial.jpg
+   - Descripcion: Entrada principal de conjunto residencial moderno
+   - Elementos: Caseta de vigilancia, barrera vehicular, torniquete peatonal,
+     camaras de seguridad, area verde
+   - Estilo: Fotografia arquitectonica, luz diurna
+   - Contexto: Urbanizacion o condominio en Venezuela
+   - Resolucion: 1920x1440px (4:3)
+   - Uso: Seccion Conjuntos Residenciales
+
+6. infraestructura-centro-comercial.jpg
+   - Descripcion: Entrada o area comun de centro comercial
+   - Elementos: Fachada moderna, estacionamiento, camaras de seguridad visibles,
+     senalizacion de estacionamiento
+   - Estilo: Fotografia comercial, bien iluminada
+   - Contexto: Centro comercial venezolano
+   - Resolucion: 1920x1440px (4:3)
+   - Uso: Seccion Centros Comerciales
+
+7. infraestructura-dashboard-unificado.jpg
+   - Descripcion: Captura de pantalla del dashboard ATILAX
+   - Elementos:
+     * Mapa con ubicaciones de instalaciones
+     * Graficos de estado de sistemas (tanques, bombas)
+     * Panel de alarmas activas
+     * Indicadores de control de acceso
+     * Estadisticas en tiempo real
+   - Estilo: Interfaz moderna, colores corporativos ATILAX (azul #1E3A5F, naranja #F59E0B)
+   - Formato: Screenshot o mockup profesional
+   - Resolucion: 1920x1440px (4:3)
+   - Uso: Seccion Centro de Control Unificado
+
+NOTAS ADICIONALES:
+- Todas las imagenes deben ser de alta calidad y profesionales
+- Preferir contexto venezolano cuando sea posible
+- Evitar marcas visibles de terceros
+- Formato JPG para fotografias, PNG para graficos con transparencia
+- Optimizar para web (compresion sin perdida visible de calidad)
+
+================================================================================
+*/

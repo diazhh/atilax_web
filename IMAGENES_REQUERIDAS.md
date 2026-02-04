@@ -238,35 +238,39 @@ Photorealistic UI design, modern aesthetic.
 
 ---
 
-## INFRAESTRUCTURA CRITICA (/soluciones/infraestructura)
+## INFRAESTRUCTURA Y EDIFICACIONES (/soluciones/infraestructura)
 
-### infraestructura-hero-servicios-publicos.jpg
+Esta seccion ahora incluye: servicios publicos (electricidad, agua, telecomunicaciones), conjuntos residenciales y centros comerciales.
+
+### infraestructura-hero-edificaciones.jpg
 **Ubicacion**: `/public/images/infraestructura/`
-**Descripcion**: Composicion mostrando infraestructura critica.
+**Descripcion**: Vista panoramica mostrando diversidad de aplicaciones de ATILAX en edificaciones.
 **Prompt sugerido**:
 ```
-Triptych composition showing Venezuelan critical infrastructure:
-LEFT: High voltage electrical substation with power transformers at sunset
-CENTER: Water pumping station with large pipes and motors
-RIGHT: Telecommunications tower with multiple antennas against blue sky
-All three sections connected by subtle glowing network lines.
-Unified color grading with blue and amber tones.
-Professional photography style, cohesive composition.
-Wide format banner image.
+Panoramic view of modern urban development in Venezuela showing diversity of applications:
+- Modern residential condominium with access control gate visible
+- Corporate building or shopping mall in background
+- Security cameras and controlled access points visible
+- Green areas and organized parking
+- Tropical setting with palm trees
+Golden hour lighting, professional architectural photography.
+Clean, modern, and secure urban environment.
+Wide format composition showing integrated solutions.
 ```
-**Tamano**: 1920x800px (wide banner)
+**Tamano**: 1920x1440px (4:3)
 
 ### infraestructura-subestacion-electrica.jpg
 **Ubicacion**: `/public/images/infraestructura/`
-**Descripcion**: Subestacion electrica con transformadores.
+**Descripcion**: Subestacion electrica con transformadores y sistemas de monitoreo.
 **Prompt sugerido**:
 ```
-High voltage electrical substation (CORPOELEC style, Venezuelan utility).
+High voltage electrical substation with modern monitoring systems.
 Components visible:
 - Large power transformers with cooling fins
 - High voltage bushings and insulators
 - Circuit breakers and disconnect switches
-- Bus bars and overhead lines
+- IoT sensors attached to transformers (temperature, vibration)
+- Security cameras on perimeter
 - Control building in background
 - Perimeter fence with warning signs
 Golden hour lighting creating dramatic shadows.
@@ -276,58 +280,103 @@ Professional utility infrastructure photography.
 
 ### infraestructura-estacion-bombeo-agua.jpg
 **Ubicacion**: `/public/images/infraestructura/`
-**Descripcion**: Estacion de bombeo de agua.
+**Descripcion**: Estacion de bombeo de agua con sensores IoT.
 **Prompt sugerido**:
 ```
-Interior of large water pumping station (Hidrocapital/Hidroven style).
+Interior of large water pumping station with IoT monitoring.
 Features:
 - Multiple large centrifugal pumps (blue painted)
 - Powerful electric motors
 - Large diameter piping (green or blue)
-- Vibration and temperature sensors on pumps
-- Control panel with gauges
-- Overhead crane for maintenance
+- Vibration and temperature sensors visibly attached to pumps
+- Modern digital control panel with touchscreen
+- Current sensors on motor cables
 Industrial indoor lighting.
 Professional water utility photography.
-Clean, well-maintained facility appearance.
+Clean, well-maintained facility with modern technology integration.
 ```
 **Tamano**: 1920x1440px (4:3)
 
 ### infraestructura-torre-telecomunicaciones.jpg
 **Ubicacion**: `/public/images/infraestructura/`
-**Descripcion**: Torre de telecomunicaciones.
+**Descripcion**: Torre de telecomunicaciones con seguridad perimetral.
 **Prompt sugerido**:
 ```
-Telecommunications tower (CANTV/Movistar style) in Venezuelan setting.
+Telecommunications tower with security and monitoring systems.
 Tower features:
 - Lattice steel structure (60-80 meters suggested height)
 - Multiple antenna panels (4G/LTE)
 - Microwave dishes
-- Equipment shelter at base
+- Equipment shelter at base with climate control
 - Perimeter fence with security camera visible
 - Solar panel for backup power
+- Intrusion detection sensors
 Tropical landscape background with hills.
 Blue sky with white clouds.
 Professional telecommunications infrastructure photography.
 ```
 **Tamano**: 1920x1440px (4:3)
 
-### infraestructura-dashboard-scada.jpg
+### infraestructura-conjunto-residencial.jpg
 **Ubicacion**: `/public/images/infraestructura/`
-**Descripcion**: Centro de control tipo SCADA.
+**Descripcion**: Entrada principal de conjunto residencial con sistemas de control de acceso.
 **Prompt sugerido**:
 ```
-SCADA-style control room for critical infrastructure monitoring.
-Multiple large screens showing:
-- Electrical grid single-line diagram with breaker status
-- Water system hydraulic schematic with pressures and flows
-- Network connectivity map with tower status
-- Alarm management panel
-- Trend graphs
-Control desk with operator workstations.
-Dark room with screens as main light source.
-Professional control center photography, high-tech atmosphere.
-Blue and yellow interface colors.
+Main entrance of modern residential condominium/urbanization in Venezuela.
+Features:
+- Security guard booth with tinted windows
+- Vehicle barrier gate (arm barrier)
+- License plate recognition camera on gantry
+- Pedestrian turnstile with card reader
+- Visitor intercom system
+- Security cameras (PTZ type) on poles
+- Well-maintained landscaping with tropical plants
+- Residential buildings visible in background
+Daytime photography with good natural lighting.
+Professional architectural/security photography.
+Shows integration of modern access control technology.
+```
+**Tamano**: 1920x1440px (4:3)
+
+### infraestructura-centro-comercial.jpg
+**Ubicacion**: `/public/images/infraestructura/`
+**Descripcion**: Entrada o area de estacionamiento de centro comercial con seguridad y monitoreo.
+**Prompt sugerido**:
+```
+Modern shopping mall entrance and parking area in Venezuela.
+Features:
+- Attractive modern facade with large glass windows
+- Parking entrance with ticket dispenser and barrier
+- LED signage showing available parking spaces
+- Security cameras at entrance points
+- License plate recognition system
+- Well-lit parking structure visible
+- Shoppers entering/exiting
+- Clean organized environment
+Daytime photography, commercial aesthetic.
+Professional retail/commercial real estate photography.
+Shows security and convenience technology integration.
+```
+**Tamano**: 1920x1440px (4:3)
+
+### infraestructura-dashboard-unificado.jpg
+**Ubicacion**: `/public/images/infraestructura/`
+**Descripcion**: Dashboard unificado de control para edificaciones.
+**Prompt sugerido**:
+```
+Unified building management dashboard on large screen display.
+Dashboard elements:
+- Map showing building locations with status indicators
+- Water tank level gauges (cistern, elevated tank)
+- Pump status cards with current, pressure values
+- Access control activity log (vehicle/pedestrian entries)
+- Security camera thumbnails in grid
+- Active alarms panel
+- Energy consumption graph
+- Visitor management queue
+Dark theme with blue (#1E3A5F) and amber (#F59E0B) accents.
+Modern UI design, professional control room setting.
+Shows integrated building management system.
 ```
 **Tamano**: 1920x1440px (4:3)
 
@@ -1011,14 +1060,14 @@ Professional industrial photography showing technology.
 |---------|----------|
 | Pagina Principal | 2 |
 | Industria Petrolera | 9 |
-| Infraestructura Critica | 5 |
+| Infraestructura y Edificaciones | 7 |
 | Mineria | 7 |
 | Agroindustria | 8 |
 | Puertos y Logistica | 7 |
 | Zonas Industriales | 7 |
 | Soluciones Transversales | 2 |
 | Thumbnails Soluciones | 6 |
-| **TOTAL** | **53 imagenes** |
+| **TOTAL** | **55 imagenes** |
 
 ---
 
@@ -1041,11 +1090,13 @@ Professional industrial photography showing technology.
   │   ├── petrolera-variadores-vfd.jpg
   │   └── petrolera-dashboard-preview.jpg
   ├── infraestructura/
-  │   ├── infraestructura-hero-servicios-publicos.jpg
+  │   ├── infraestructura-hero-edificaciones.jpg
   │   ├── infraestructura-subestacion-electrica.jpg
   │   ├── infraestructura-estacion-bombeo-agua.jpg
   │   ├── infraestructura-torre-telecomunicaciones.jpg
-  │   └── infraestructura-dashboard-scada.jpg
+  │   ├── infraestructura-conjunto-residencial.jpg
+  │   ├── infraestructura-centro-comercial.jpg
+  │   └── infraestructura-dashboard-unificado.jpg
   ├── mineria/
   │   ├── mineria-maquinaria-pesada.jpg
   │   ├── mineria-planta-procesamiento.jpg

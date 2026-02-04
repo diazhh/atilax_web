@@ -22,9 +22,9 @@ const navigation = [
         description: "Pozos, estaciones y tanques"
       },
       {
-        name: "Infraestructura Critica",
+        name: "Infraestructura y Edificaciones",
         href: "/soluciones/infraestructura",
-        description: "Electricidad, agua y telecom"
+        description: "Residenciales, comerciales y servicios"
       },
       {
         name: "Mineria",

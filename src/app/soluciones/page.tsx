@@ -40,14 +40,14 @@ const industries = [
   },
   {
     icon: Zap,
-    title: "Infraestructura Critica",
-    description: "Proteccion de subestaciones electricas, sistemas de bombeo de agua y torres de telecomunicaciones. Monitoreo 24/7 para prevenir fallas y apagones.",
+    title: "Infraestructura y Edificaciones",
+    description: "Soluciones integrales para conjuntos residenciales, centros comerciales, subestaciones electricas y sistemas de agua. Control de acceso, seguridad perimetral y monitoreo de servicios.",
     href: "/soluciones/infraestructura",
     features: [
-      "Monitoreo de transformadores",
-      "Control de estaciones de bombeo",
-      "Seguridad de torres telecom",
-      "Deteccion de sobrecargas"
+      "Control de acceso vehicular y peatonal",
+      "Vigilancia perimetral con IA",
+      "Monitoreo de tanques y bombas",
+      "Gestion de estacionamientos"
     ],
     image: "soluciones-infraestructura.jpg",
     color: "yellow"
