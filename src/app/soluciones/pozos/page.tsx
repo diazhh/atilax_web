@@ -237,36 +237,137 @@ const hierarchyLevels = [
   },
 ];
 
+const wellDetailTabs = [
+  {
+    liftType: "ESP",
+    color: "bg-blue-500",
+    colorLight: "bg-blue-50",
+    colorText: "text-blue-700",
+    kpis: [
+      { label: "Produccion", unit: "BPD", icon: "water_drop" },
+      { label: "Frecuencia", unit: "Hz", icon: "speed" },
+      { label: "Corriente", unit: "A", icon: "bolt" },
+      { label: "Temperatura", unit: "F", icon: "thermostat" },
+      { label: "Vibracion", unit: "IPS", icon: "vibration" },
+      { label: "P. Intake", unit: "PSI", icon: "compress" },
+    ],
+    tabs: [
+      { name: "Produccion", color: "bg-green-500", description: "Caudal vs frecuencia del VSD, con punto de operacion relativo al BEP. Grafico de tendencia mostrando produccion, frecuencia y presion de intake superpuestas." },
+      { name: "Electrico", color: "bg-orange-500", description: "Corriente del motor, voltaje, potencia consumida y resistencia de aislamiento. Deteccion de fluctuaciones electricas y tendencias de degradacion." },
+      { name: "Hidraulico", color: "bg-red-500", description: "Presion de intake, presion de descarga, presion de cabezal (THP) y presion de revestidor (CHP). Diferencial de presion de la bomba." },
+      { name: "Bomba", color: "bg-orange-500", description: "Temperatura del motor, vibracion en ejes X/Y, eficiencia de la bomba vs BEP, y analisis de cabeza generada vs requerida." },
+    ],
+    mosaicKpi: "EFICIENCIA",
+    mosaicDescription: "Cada tarjeta muestra la eficiencia de la bomba relativa al punto optimo de operacion (BEP), permitiendo identificar rapidamente pozos operando fuera de rango.",
+  },
+  {
+    liftType: "SRP",
+    color: "bg-amber-500",
+    colorLight: "bg-amber-50",
+    colorText: "text-amber-700",
+    kpis: [
+      { label: "Produccion", unit: "BPD", icon: "water_drop" },
+      { label: "SPM", unit: "cpm", icon: "speed" },
+      { label: "Carga Max", unit: "lb", icon: "fitness_center" },
+      { label: "Fillage", unit: "%", icon: "water" },
+      { label: "Corriente", unit: "A", icon: "bolt" },
+      { label: "P. Cabezal", unit: "PSI", icon: "compress" },
+    ],
+    tabs: [
+      { name: "Produccion", color: "bg-green-500", description: "Caudal de produccion, SPM (carreras por minuto), nivel de fluido en el anular y fillage de la bomba. Historico de tendencias y comparacion SPM actual vs recomendado." },
+      { name: "Electrico", color: "bg-orange-500", description: "Corriente del motor del balancin, potencia consumida y factor de carga. Deteccion de sobrecargas y desbalance del contrabalance." },
+      { name: "Hidraulico", color: "bg-red-500", description: "Presion de cabezal, presion de revestidor, nivel de fluido en el anular. Deteccion de cambios en el indice de productividad." },
+      { name: "Dinamometrica", color: "bg-purple-500", description: "Carta de superficie en tiempo real con clasificacion automatica: normal, golpe de fluido, interferencia de gas, fuga de viajera, fuga de fija, plunger desgastado. Confianza de la clasificacion por IA." },
+    ],
+    mosaicKpi: "FILLAGE",
+    mosaicDescription: "El fillage (porcentaje de llenado de la bomba) es el indicador principal: >90% operacion normal, 60-90% requiere ajuste de SPM, <60% indica problema de suministro o fuga.",
+  },
+  {
+    liftType: "PCP",
+    color: "bg-green-500",
+    colorLight: "bg-green-50",
+    colorText: "text-green-700",
+    kpis: [
+      { label: "Produccion", unit: "BPD", icon: "water_drop" },
+      { label: "Corriente", unit: "A", icon: "bolt" },
+      { label: "RPM", unit: "RPM", icon: "speed" },
+      { label: "Torque", unit: "ft-lb", icon: "settings" },
+      { label: "P. Intake", unit: "PSI", icon: "compress" },
+      { label: "P. Tubing", unit: "PSI", icon: "compress" },
+    ],
+    tabs: [
+      { name: "Produccion", color: "bg-green-500", description: "Caudal de produccion, RPM del variador, torque y corriente superpuestos en grafico de tendencia. Promedio y ultimo valor de cada variable." },
+      { name: "Electrico", color: "bg-orange-500", description: "Corriente del motor con historico diario. Deteccion de picos de corriente que indican aumento de torque por desgaste del estator o produccion de arena." },
+      { name: "Hidraulico", color: "bg-red-500", description: "Presion de intake y presion de tubing con tendencias. Calculo automatico del diferencial de presion para estimar la carga sobre la bomba." },
+      { name: "Cavidad", color: "bg-orange-500", description: "RPM, torque y produccion superpuestos para analizar la relacion torque/RPM. Indicador de desgaste del elastomero basado en la perdida progresiva de eficiencia volumetrica." },
+    ],
+    mosaicKpi: "TORQUE",
+    mosaicDescription: "El torque del variador es el indicador clave: permite detectar desgaste progresivo del elastomero, produccion de arena y problemas de succion en tiempo real.",
+  },
+  {
+    liftType: "Gas Lift",
+    color: "bg-purple-500",
+    colorLight: "bg-purple-50",
+    colorText: "text-purple-700",
+    kpis: [
+      { label: "Produccion", unit: "BPD", icon: "water_drop" },
+      { label: "Inyeccion", unit: "MSCFD", icon: "air" },
+      { label: "P. Inyeccion", unit: "PSI", icon: "compress" },
+      { label: "Choke", unit: '1/64"', icon: "tune" },
+      { label: "THP", unit: "PSI", icon: "compress" },
+      { label: "CHP", unit: "PSI", icon: "compress" },
+    ],
+    tabs: [
+      { name: "Produccion", color: "bg-green-500", description: "Caudal de produccion vs tasa de inyeccion de gas. Grafico de tendencia con produccion, inyeccion, THP y CHP para analizar la respuesta del pozo." },
+      { name: "Inyeccion", color: "bg-blue-500", description: "Tasa de inyeccion actual vs optima (calculada por la curva GLPC), presion de inyeccion, tamano del orificio (choke). Eficiencia de uso de gas." },
+      { name: "Hidraulico", color: "bg-red-500", description: "Presiones de cabezal y revestidor con deteccion automatica de casing heading (oscilaciones ciclicas de presion que indican inestabilidad de flujo)." },
+      { name: "Valvulas", color: "bg-orange-500", description: "Estado de las valvulas de gas lift en profundidad, presion en cada punto de inyeccion, deteccion de valvulas taponadas o con fuga." },
+    ],
+    mosaicKpi: "INYECCION",
+    mosaicDescription: "La tasa de inyeccion de gas (MSCFD) se compara contra el punto optimo de la curva GLPC. Desviaciones indican necesidad de ajustar choke o reasignar gas entre pozos.",
+  },
+];
+
 const dashboardFeatures = [
+  {
+    title: "Mosaico de Pozos en Tiempo Real",
+    icon: Eye,
+    description: "Vista de tarjetas con los 63 pozos activos mostrando tipo de levantamiento, KPI principal, produccion en BPD y estado operacional. Filtros por campo, macolla y tipo de bomba.",
+  },
   {
     title: "Mapa de Campo Interactivo",
     icon: MapPin,
-    description: "Geolocalizacion de todos los pozos con indicadores de estado por color. Click para navegar al detalle de cada pozo.",
+    description: "Geolocalizacion de todos los pozos con indicadores de estado por color. Navegador de campos (Boscan, Cerro Negro, Anaco) con zoom automatico a cada ubicacion.",
   },
   {
-    title: "Monitoreo por Tipo de Levantamiento",
+    title: "Filtro por Tipo de Levantamiento",
     icon: Layers,
-    description: "Vistas especializadas por ESP, SRP, PCP y Gas Lift con metricas especificas de cada tecnologia.",
+    description: "Un click para ver solo pozos ESP (18), SRP (20), PCP (16) o Gas Lift (9). Cada filtro muestra el KPI mas relevante del tipo: Eficiencia, Fillage, Torque o Inyeccion.",
   },
   {
-    title: "Graficos en Tiempo Real",
+    title: "Filtro por Estado Operacional",
+    icon: Activity,
+    description: "Filtros Optimo, Sub-optimo y Critico para priorizar atencion. Identificacion rapida de pozos que requieren intervencion inmediata con codigo de color.",
+  },
+  {
+    title: "Detalle por Pozo con Tabs Especializados",
     icon: LineChart,
-    description: "Series de tiempo con historico de presion, temperatura, corriente, produccion y todas las variables de cada pozo.",
+    description: "Click en cualquier pozo para ver su detalle completo: KPIs principales, grafico de tendencia y tabs por categoria (Produccion, Electrico, Hidraulico, Bomba/Cavidad).",
   },
   {
-    title: "Sistema de Alarmas",
+    title: "Sistema de Alarmas en Tiempo Real",
     icon: Bell,
-    description: "Alarmas configurables por severidad (critica, mayor, advertencia) con notificaciones instantaneas y escalamiento automatico.",
+    description: "Alarmas configurables por severidad (critica, mayor, advertencia) con evaluacion cada 5 minutos, notificaciones instantaneas y escalamiento automatico.",
   },
   {
     title: "Carta Dinamometrica (SRP)",
     icon: Activity,
-    description: "Visualizacion y clasificacion automatica de la carta de superficie para diagnostico del estado de la bomba.",
+    description: "Visualizacion y clasificacion automatica de la carta de superficie con IA para diagnostico del estado de la bomba: normal, golpe de fluido, gas lock, fuga.",
   },
   {
-    title: "Gauges de Temperatura y Vibracion",
-    icon: Thermometer,
-    description: "Indicadores visuales tipo gauge para monitorear temperatura del motor, vibracion y torque con zonas de alerta.",
+    title: "KPIs de Campo Consolidados",
+    icon: BarChart3,
+    description: "Produccion total actual, potencial optimizado, oportunidad de mejora en BPD, pozos activos, y distribucion de produccion por tipo de levantamiento con grafico de dona.",
   },
 ];
 
@@ -467,18 +568,94 @@ export default function PozosPage() {
         </div>
       </section>
 
-      {/* Dashboard Features */}
+      {/* Interface per Well Type */}
       <section className="py-16 md:py-20">
+        <div className="container-lg">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Interfaz de Monitoreo por Tipo de Pozo
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Cada tipo de levantamiento tiene su propia interfaz de detalle con KPIs especificos,
+              graficos de tendencia y tabs de categoria. Al hacer click en cualquier pozo del mosaico,
+              se despliega su vista completa.
+            </p>
+          </div>
+
+          <div className="space-y-16">
+            {wellDetailTabs.map((detail) => (
+              <div key={detail.liftType} className="bg-white rounded-2xl border overflow-hidden shadow-sm">
+                {/* Header */}
+                <div className={`${detail.color} text-white px-6 py-4 flex items-center justify-between`}>
+                  <div>
+                    <h3 className="text-xl font-bold">Detalle de Pozo {detail.liftType}</h3>
+                    <p className="text-white/80 text-sm">Vista individual con monitoreo en tiempo real</p>
+                  </div>
+                  <Badge className="bg-white/20 text-white border-white/30 text-sm">
+                    {detail.liftType}
+                  </Badge>
+                </div>
+
+                <div className="p-6">
+                  {/* KPI Cards */}
+                  <div className="mb-6">
+                    <h4 className="text-sm font-semibold text-muted-foreground mb-3">KPIs en Tiempo Real</h4>
+                    <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
+                      {detail.kpis.map((kpi) => (
+                        <div key={kpi.label} className={`p-3 rounded-lg ${detail.colorLight} text-center`}>
+                          <div className="text-xs text-muted-foreground mb-1">{kpi.label}</div>
+                          <div className={`text-sm font-bold ${detail.colorText}`}>{kpi.unit}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Tabs Description */}
+                  <div>
+                    <h4 className="text-sm font-semibold text-muted-foreground mb-3">Categorias de Monitoreo (Tabs)</h4>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      {detail.tabs.map((tab) => (
+                        <div key={tab.name} className="flex gap-3 p-4 rounded-lg bg-muted/30">
+                          <div className={`w-1 rounded-full ${tab.color} shrink-0`} />
+                          <div>
+                            <div className="font-semibold text-sm mb-1">{tab.name}</div>
+                            <p className="text-xs text-muted-foreground leading-relaxed">{tab.description}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Mosaic KPI */}
+                  <div className={`mt-6 p-4 rounded-lg ${detail.colorLight} flex items-start gap-3`}>
+                    <Eye className={`h-5 w-5 ${detail.colorText} shrink-0 mt-0.5`} />
+                    <div>
+                      <div className="text-sm font-semibold mb-1">
+                        KPI en Mosaico: <span className={detail.colorText}>{detail.mosaicKpi}</span>
+                      </div>
+                      <p className="text-xs text-muted-foreground">{detail.mosaicDescription}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Dashboard Features */}
+      <section className="py-16 md:py-20 bg-muted/30">
         <div className="container-lg">
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Dashboards de Monitoreo
+                Centro de Monitoreo de Pozos
               </h2>
               <p className="text-muted-foreground text-lg mb-6">
-                Interfaces especializadas que se adaptan al tipo de levantamiento de cada pozo.
-                Desde la vision de campo hasta el detalle de cada variable, con navegacion
-                drill-down intuitiva.
+                El dashboard principal muestra los 63 pozos en formato mosaico con KPIs de produccion
+                total (99,497 BPD), potencial optimizado, oportunidad de mejora y distribucion
+                por tipo de levantamiento. Filtros instantaneos por campo, macolla, tipo de bomba
+                y estado operacional.
               </p>
               <div className="flex gap-4">
                 <Link href="/plataforma">
@@ -493,15 +670,38 @@ export default function PozosPage() {
               </div>
             </div>
             <div>
-              <ImagePlaceholder
-                label="pozos-dashboard-campo.jpg"
-                className="aspect-[4/3] rounded-2xl shadow-2xl"
-                iconSize="lg"
-              />
+              <div className="bg-white rounded-2xl border p-6 shadow-lg">
+                <div className="grid grid-cols-2 gap-4 mb-4">
+                  <div className="p-3 bg-muted/30 rounded-lg text-center">
+                    <div className="text-2xl font-bold text-primary">99,497</div>
+                    <div className="text-xs text-muted-foreground">Produccion BPD</div>
+                  </div>
+                  <div className="p-3 bg-muted/30 rounded-lg text-center">
+                    <div className="text-2xl font-bold text-primary">63</div>
+                    <div className="text-xs text-muted-foreground">Pozos Activos</div>
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  {[
+                    { type: "PCP", count: 16, bpd: "32,045", color: "bg-green-500", pct: 32 },
+                    { type: "SRP", count: 20, bpd: "27,559", color: "bg-amber-500", pct: 28 },
+                    { type: "ESP", count: 18, bpd: "25,447", color: "bg-blue-500", pct: 26 },
+                    { type: "Gas Lift", count: 9, bpd: "14,446", color: "bg-purple-500", pct: 14 },
+                  ].map((item) => (
+                    <div key={item.type} className="flex items-center gap-3">
+                      <div className="w-16 text-xs font-medium">{item.type} ({item.count})</div>
+                      <div className="flex-1 bg-muted/50 rounded-full h-4 overflow-hidden">
+                        <div className={`h-full ${item.color} rounded-full`} style={{ width: `${item.pct}%` }} />
+                      </div>
+                      <div className="text-xs font-mono w-16 text-right">{item.bpd}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {dashboardFeatures.map((feature) => (
               <Card key={feature.title} className="hover:shadow-md transition-shadow">
                 <CardContent className="p-6">
@@ -509,9 +709,9 @@ export default function PozosPage() {
                     <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                       <feature.icon className="h-5 w-5 text-primary" />
                     </div>
-                    <h3 className="font-bold">{feature.title}</h3>
+                    <h3 className="font-bold text-sm">{feature.title}</h3>
                   </div>
-                  <p className="text-sm text-muted-foreground">{feature.description}</p>
+                  <p className="text-xs text-muted-foreground">{feature.description}</p>
                 </CardContent>
               </Card>
             ))}
