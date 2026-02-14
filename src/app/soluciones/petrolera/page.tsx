@@ -394,6 +394,57 @@ export default function PetroleraPage() {
         </div>
       </section>
 
+      {/* Optimization Service Banner */}
+      <section className="py-16 bg-gradient-to-r from-primary/5 via-secondary/5 to-primary/5">
+        <div className="container-lg">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-secondary/20 text-secondary-foreground rounded-full text-sm font-medium mb-4">
+                <TrendingUp className="h-4 w-4" />
+                Nuevo: Servicio de Optimizacion
+              </div>
+              <h2 className="text-3xl font-bold mb-4">
+                Optimizacion Inteligente de Pozos
+              </h2>
+              <p className="text-muted-foreground text-lg mb-4">
+                Transforme el monitoreo pasivo en optimizacion proactiva. Nuestro servicio de IA analiza continuamente la telemetria de cada pozo y genera recomendaciones autonomas por tipo de levantamiento.
+              </p>
+              <ul className="space-y-2 mb-6">
+                <li className="flex items-center gap-2 text-sm">
+                  <CheckCircle2 className="h-4 w-4 text-green-500 shrink-0" />
+                  <span>3-8% incremento de produccion de campo</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <CheckCircle2 className="h-4 w-4 text-green-500 shrink-0" />
+                  <span>Prediccion de fallas con Machine Learning</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <CheckCircle2 className="h-4 w-4 text-green-500 shrink-0" />
+                  <span>Analisis nodal automatizado y Well Health Score</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <CheckCircle2 className="h-4 w-4 text-green-500 shrink-0" />
+                  <span>Optimizacion multi-pozo a nivel de campo</span>
+                </li>
+              </ul>
+              <Link href="/soluciones/optimizacion">
+                <Button size="lg" className="bg-primary">
+                  Conocer el servicio de optimizacion
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+            </div>
+            <div>
+              <ImagePlaceholder
+                label="optimizacion-preview-petrolera.jpg"
+                className="aspect-[4/3] rounded-2xl shadow-xl"
+                iconSize="lg"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-20 bg-primary">
         <div className="container-lg text-center">

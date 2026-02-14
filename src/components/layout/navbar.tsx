@@ -22,6 +22,11 @@ const navigation = [
         description: "Pozos, estaciones y tanques"
       },
       {
+        name: "Optimizacion de Pozos",
+        href: "/soluciones/optimizacion",
+        description: "IA predictiva y analisis nodal"
+      },
+      {
         name: "Infraestructura y Edificaciones",
         href: "/soluciones/infraestructura",
         description: "Residenciales, comerciales y servicios"
