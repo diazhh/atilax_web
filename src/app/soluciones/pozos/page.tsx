@@ -28,6 +28,7 @@ import { PageHeader } from "@/components/shared/page-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
 import { ImagePlaceholder } from "@/components/shared/image-placeholder";
 
 export const metadata: Metadata = {
@@ -500,10 +501,17 @@ export default function PozosPage() {
                 >
                   {/* Left: Image + Telemetry Table */}
                   <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
-                    <ImagePlaceholder
-                      label={method.image}
-                      className="aspect-[4/3] rounded-2xl mb-8"
-                      iconSize="lg"
+                    <Image
+                      src={
+                        method.id === "esp" ? "/images/capturas/monitoreo/05_detalle_esp_kpis.png"
+                        : method.id === "srp" ? "/images/capturas/monitoreo/05_detalle_srp_kpis.png"
+                        : method.id === "pcp" ? "/images/capturas/monitoreo/06_detalle_esp_tendencia.png"
+                        : "/images/capturas/optimizacion/03_optimizacion_detalle_ranking.png"
+                      }
+                      alt={`Monitoreo de ${method.title} - Dashboard de detalle en tiempo real`}
+                      width={1920}
+                      height={1080}
+                      className="rounded-2xl w-full h-auto shadow-lg mb-8"
                     />
 
                     {/* Telemetry Variables Table */}
@@ -653,7 +661,7 @@ export default function PozosPage() {
               </h2>
               <p className="text-muted-foreground text-lg mb-6">
                 El dashboard principal muestra los 63 pozos en formato mosaico con KPIs de produccion
-                total (99,497 BPD), potencial optimizado, oportunidad de mejora y distribucion
+                total (98,302 BPD), potencial optimizado (130,986 BPD), oportunidad de mejora (+32,684 BPD, +33.2%) y distribucion
                 por tipo de levantamiento. Filtros instantaneos por campo, macolla, tipo de bomba
                 y estado operacional.
               </p>
@@ -673,7 +681,7 @@ export default function PozosPage() {
               <div className="bg-white rounded-2xl border p-6 shadow-lg">
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <div className="p-3 bg-muted/30 rounded-lg text-center">
-                    <div className="text-2xl font-bold text-primary">99,497</div>
+                    <div className="text-2xl font-bold text-primary">98,302</div>
                     <div className="text-xs text-muted-foreground">Produccion BPD</div>
                   </div>
                   <div className="p-3 bg-muted/30 rounded-lg text-center">
@@ -699,6 +707,16 @@ export default function PozosPage() {
                 </div>
               </div>
             </div>
+          </div>
+
+          <div className="mb-12 rounded-2xl overflow-hidden border shadow-xl">
+            <Image
+              src="/images/capturas/monitoreo/01_monitoreo_mosaico_63_pozos.png"
+              alt="Vista mosaico de 63 pozos petroleros con KPIs en tiempo real"
+              width={1920}
+              height={1080}
+              className="w-full h-auto"
+            />
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -928,10 +946,12 @@ export default function PozosPage() {
             </div>
 
             <div>
-              <ImagePlaceholder
-                label="pozos-configuracion-pozo.jpg"
-                className="aspect-[4/3] rounded-2xl mb-6"
-                iconSize="lg"
+              <Image
+                src="/images/capturas/general/02_administracion_tabla_pozos.png"
+                alt="Panel de administracion - Tabla de configuracion de 63 pozos"
+                width={1920}
+                height={1080}
+                className="rounded-2xl w-full h-auto shadow-lg mb-6"
               />
 
               <div className="grid grid-cols-2 gap-4">

@@ -17,6 +17,7 @@ import {
 import { PageHeader } from "@/components/shared/page-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import { ImagePlaceholder } from "@/components/shared/image-placeholder";
 
 export const metadata: Metadata = {
@@ -26,10 +27,10 @@ export const metadata: Metadata = {
 };
 
 const benefits = [
-  { value: "5-10%", label: "Incremento de produccion" },
-  { value: "30-50%", label: "Reduccion de fallas" },
-  { value: "60-70%", label: "Menos visitas a campo" },
-  { value: "24/7", label: "Monitoreo continuo" },
+  { value: "+33%", label: "Potencial de produccion" },
+  { value: "63", label: "Pozos monitoreados" },
+  { value: "15", label: "Motores de IA" },
+  { value: "<5min", label: "Deteccion de anomalias" },
 ];
 
 const liftingMethods = [
@@ -196,10 +197,13 @@ export default function PetroleraPage() {
               </Link>
             </div>
             <div className="relative">
-              <ImagePlaceholder
-                label="petrolera-hero-faja-orinoco.jpg"
-                className="aspect-[4/3] rounded-2xl"
-                iconSize="lg"
+              <Image
+                src="/images/capturas/monitoreo/01_monitoreo_mosaico_63_pozos.png"
+                alt="Centro de monitoreo ATILAX - 63 pozos en tiempo real con KPIs de produccion"
+                width={1920}
+                height={1080}
+                className="rounded-2xl w-full h-auto shadow-xl"
+                priority
               />
             </div>
           </div>
@@ -228,11 +232,31 @@ export default function PetroleraPage() {
                 }`}
               >
                 <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
-                  <ImagePlaceholder
-                    label={method.image}
-                    className="aspect-[4/3] rounded-2xl"
-                    iconSize="lg"
-                  />
+                  {method.id === "bm" ? (
+                    <Image
+                      src="/images/capturas/monitoreo/05_detalle_srp_kpis.png"
+                      alt="Detalle de pozo SRP - KPIs de bombeo mecanico en tiempo real"
+                      width={1920}
+                      height={1080}
+                      className="rounded-2xl w-full h-auto shadow-lg"
+                    />
+                  ) : method.id === "bcp" ? (
+                    <Image
+                      src="/images/capturas/monitoreo/05_detalle_esp_kpis.png"
+                      alt="Detalle de pozo ESP - KPIs de bombeo electrosumergible"
+                      width={1920}
+                      height={1080}
+                      className="rounded-2xl w-full h-auto shadow-lg"
+                    />
+                  ) : (
+                    <Image
+                      src="/images/capturas/optimizacion/03_optimizacion_detalle_ranking.png"
+                      alt="Ranking de optimizacion de pozos Gas Lift"
+                      width={1920}
+                      height={1080}
+                      className="rounded-2xl w-full h-auto shadow-lg"
+                    />
+                  )}
                 </div>
 
                 <div className={index % 2 === 1 ? "lg:col-start-1" : ""}>
@@ -298,12 +322,17 @@ export default function PetroleraPage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {infrastructure.map((item) => (
+            {infrastructure.map((item, idx) => (
               <Card key={item.title} className="overflow-hidden">
-                <ImagePlaceholder
-                  label={item.image}
-                  className="aspect-[16/9]"
-                  iconSize="lg"
+                <Image
+                  src={idx === 0 ? "/images/capturas/monitoreo/02_monitoreo_mosaico_scroll.png"
+                    : idx === 1 ? "/images/capturas/general/02_administracion_tabla_pozos.png"
+                    : idx === 2 ? "/images/capturas/monitoreo/06_detalle_esp_tendencia.png"
+                    : "/images/capturas/general/04_thingsboard_dashboards.png"}
+                  alt={item.title}
+                  width={1920}
+                  height={1080}
+                  className="w-full h-auto aspect-[16/9] object-cover"
                 />
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-3">
@@ -330,50 +359,97 @@ export default function PetroleraPage() {
         </div>
       </section>
 
+      {/* Production Results */}
+      <section className="py-20 bg-primary text-white">
+        <div className="container-lg">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Resultados Comprobados
+            </h2>
+            <p className="text-lg text-white/70">
+              Plataforma validada con datos reales de 3 campos petroleros venezolanos,
+              63 pozos y 4 metodos de levantamiento artificial.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            {[
+              { field: "Cerro Negro", region: "Faja del Orinoco", crude: "Extra-pesado (6-12 API)", wells: 27, bpd: "45,225" },
+              { field: "Boscan", region: "Lago de Maracaibo", crude: "Pesado/Mediano (18-25 API)", wells: 24, bpd: "40,249" },
+              { field: "Anaco", region: "Oriente", crude: "Liviano (28-36 API)", wells: 12, bpd: "12,828" },
+            ].map((f) => (
+              <div key={f.field} className="bg-white/10 rounded-xl p-6 backdrop-blur-sm">
+                <h3 className="text-xl font-bold text-secondary mb-1">{f.field}</h3>
+                <p className="text-sm text-white/60 mb-4">{f.region}</p>
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between"><span className="text-white/70">Crudo</span><span>{f.crude}</span></div>
+                  <div className="flex justify-between"><span className="text-white/70">Pozos</span><span className="font-bold">{f.wells}</span></div>
+                  <div className="flex justify-between"><span className="text-white/70">Produccion</span><span className="font-bold text-secondary">{f.bpd} BPD</span></div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 bg-white/5 rounded-xl p-8">
+            {[
+              { value: "98,302", label: "BPD Produccion actual" },
+              { value: "130,986", label: "BPD Produccion optimizada" },
+              { value: "+32,684", label: "BPD Ganancia potencial" },
+              { value: "+33.2%", label: "Incremento de produccion" },
+            ].map((s) => (
+              <div key={s.label} className="text-center">
+                <div className="text-2xl md:text-3xl font-bold text-secondary">{s.value}</div>
+                <div className="text-xs text-white/60 mt-1">{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Dashboard Preview */}
       <section className="py-20">
         <div className="container-lg">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold mb-4">
-                Dashboard de Campo Petrolero
+                33 Widgets Especializados en 4 Dashboards
               </h2>
               <p className="text-muted-foreground text-lg mb-6">
-                Visualice el estado de todos sus activos en tiempo real desde cualquier
-                dispositivo. Dashboards personalizados por rol de usuario.
+                Visualice el estado de los 63 pozos en tiempo real con navegacion jerarquica:
+                campo, macolla, pozo, subsistema. Dashboards de monitoreo, optimizacion y administracion.
               </p>
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start gap-3">
                   <TrendingUp className="h-5 w-5 text-primary mt-0.5" />
                   <div>
-                    <span className="font-medium">Graficos en tiempo real</span>
+                    <span className="font-medium">Analisis nodal integrado</span>
                     <p className="text-sm text-muted-foreground">
-                      Curvas de produccion, tendencias y analisis historico
+                      Curvas IPR y VLP con punto de operacion, 5 modelos IPR + Beggs & Brill
                     </p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <Activity className="h-5 w-5 text-primary mt-0.5" />
                   <div>
-                    <span className="font-medium">Estado de pozos en vivo</span>
+                    <span className="font-medium">Waterfall de produccion</span>
                     <p className="text-sm text-muted-foreground">
-                      Indicadores LED, gauges y alertas instantaneas
+                      Visualizacion del impacto de cada optimizacion: base, ganancias por pozo, total optimizado
                     </p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <BarChart3 className="h-5 w-5 text-primary mt-0.5" />
                   <div>
-                    <span className="font-medium">Reportes automaticos</span>
+                    <span className="font-medium">Well Health Score 0-100</span>
                     <p className="text-sm text-muted-foreground">
-                      Produccion diaria, eficiencia y balance de campo
+                      Evaluacion de salud con radar de 5 componentes: mecanico, electrico, hidraulico, produccion, eficiencia
                     </p>
                   </div>
                 </li>
               </ul>
               <div className="flex gap-4">
-                <Link href="/plataforma">
-                  <Button variant="outline">Ver plataforma</Button>
+                <Link href="/soluciones/pozos">
+                  <Button variant="outline">Ver monitoreo de pozos</Button>
                 </Link>
                 <a href="https://panel.atilax.io" target="_blank" rel="noopener noreferrer">
                   <Button className="bg-primary">
@@ -384,61 +460,86 @@ export default function PetroleraPage() {
               </div>
             </div>
             <div>
-              <ImagePlaceholder
-                label="petrolera-dashboard-preview.jpg"
-                className="aspect-[4/3] rounded-2xl shadow-2xl"
-                iconSize="lg"
+              <Image
+                src="/images/capturas/monitoreo/06_detalle_srp_tendencia.png"
+                alt="Dashboard de campo petrolero - Tendencias de produccion en tiempo real"
+                width={1920}
+                height={1080}
+                className="rounded-2xl w-full h-auto shadow-2xl"
               />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Optimization Service Banner */}
+      {/* AI Capabilities */}
       <section className="py-16 bg-gradient-to-r from-primary/5 via-secondary/5 to-primary/5">
         <div className="container-lg">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-secondary/20 text-secondary-foreground rounded-full text-sm font-medium mb-4">
+              <TrendingUp className="h-4 w-4" />
+              Motor de Optimizacion con IA
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              15 Motores de Calculo con Inteligencia Artificial
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Procesamiento continuo en tres capas: monitoreo en tiempo real (cada 5 min),
+              diagnostico y anomalias (horario), y optimizacion avanzada (diario).
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            {[
+              { title: "Analisis Nodal", desc: "5 modelos IPR + VLP Beggs & Brill para encontrar el punto optimo de operacion de cada pozo" },
+              { title: "Pronostico DCA", desc: "Curvas de declinacion Arps + Monte Carlo probabilistico con bandas P10/P50/P90" },
+              { title: "Deteccion de Anomalias", desc: "Sistema hibrido: CUSUM estadistico + 24 reglas especificas + LSTM-Autoencoder por pozo" },
+              { title: "Prediccion de Fallas", desc: "XGBoost clasificador que anticipa fallas ESP con 30 dias de anticipacion" },
+              { title: "NSGA-II Multi-Objetivo", desc: "Optimizacion simultanea de produccion, energia y vida util del equipo con frente de Pareto" },
+              { title: "Reinforcement Learning", desc: "Agente PPO con safety gates para control autonomo supervisado de setpoints" },
+            ].map((cap) => (
+              <div key={cap.title} className="bg-white rounded-xl p-6 border shadow-sm">
+                <h3 className="font-bold text-primary mb-2">{cap.title}</h3>
+                <p className="text-sm text-muted-foreground">{cap.desc}</p>
+              </div>
+            ))}
+          </div>
+
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-secondary/20 text-secondary-foreground rounded-full text-sm font-medium mb-4">
-                <TrendingUp className="h-4 w-4" />
-                Nuevo: Servicio de Optimizacion
+              <h3 className="text-2xl font-bold mb-4">Optimizacion por Tipo de Levantamiento</h3>
+              <div className="space-y-4">
+                {[
+                  { type: "ESP", variable: "Frecuencia (30-90 Hz)", desc: "Evaluacion BEP, leyes de afinidad, consumo especifico kWh/bbl" },
+                  { type: "SRP", variable: "SPM (4-14 cpm)", desc: "Fillage vs SPM, carta dinamometrica Gibbs, clasificacion IA" },
+                  { type: "PCP", variable: "RPM (50-400)", desc: "Balance torque/desgaste, modelo Arrhenius para vida del elastomero" },
+                  { type: "Gas Lift", variable: "Inyeccion (MSCFD)", desc: "Curvas GLPC, deteccion casing heading, asignacion multi-pozo equal-slope" },
+                ].map((opt) => (
+                  <div key={opt.type} className="flex gap-4 p-4 bg-white rounded-lg border">
+                    <div className="font-bold text-primary shrink-0 w-20">{opt.type}</div>
+                    <div>
+                      <div className="text-sm font-medium">{opt.variable}</div>
+                      <div className="text-xs text-muted-foreground">{opt.desc}</div>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <h2 className="text-3xl font-bold mb-4">
-                Optimizacion Inteligente de Pozos
-              </h2>
-              <p className="text-muted-foreground text-lg mb-4">
-                Transforme el monitoreo pasivo en optimizacion proactiva. Nuestro servicio de IA analiza continuamente la telemetria de cada pozo y genera recomendaciones autonomas por tipo de levantamiento.
-              </p>
-              <ul className="space-y-2 mb-6">
-                <li className="flex items-center gap-2 text-sm">
-                  <CheckCircle2 className="h-4 w-4 text-green-500 shrink-0" />
-                  <span>3-8% incremento de produccion de campo</span>
-                </li>
-                <li className="flex items-center gap-2 text-sm">
-                  <CheckCircle2 className="h-4 w-4 text-green-500 shrink-0" />
-                  <span>Prediccion de fallas con Machine Learning</span>
-                </li>
-                <li className="flex items-center gap-2 text-sm">
-                  <CheckCircle2 className="h-4 w-4 text-green-500 shrink-0" />
-                  <span>Analisis nodal automatizado y Well Health Score</span>
-                </li>
-                <li className="flex items-center gap-2 text-sm">
-                  <CheckCircle2 className="h-4 w-4 text-green-500 shrink-0" />
-                  <span>Optimizacion multi-pozo a nivel de campo</span>
-                </li>
-              </ul>
-              <Link href="/soluciones/optimizacion">
-                <Button size="lg" className="bg-primary">
-                  Conocer el servicio de optimizacion
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
+              <div className="mt-6">
+                <Link href="/soluciones/optimizacion">
+                  <Button size="lg" className="bg-primary">
+                    Conocer el servicio de optimizacion
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
             </div>
             <div>
-              <ImagePlaceholder
-                label="optimizacion-preview-petrolera.jpg"
-                className="aspect-[4/3] rounded-2xl shadow-xl"
-                iconSize="lg"
+              <Image
+                src="/images/capturas/optimizacion/02_optimizacion_ranking_scatter.png"
+                alt="Ranking de oportunidades y scatter eficiencia vs salud"
+                width={1920}
+                height={1080}
+                className="rounded-2xl w-full h-auto shadow-xl"
               />
             </div>
           </div>

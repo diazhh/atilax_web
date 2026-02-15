@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
 import { ImagePlaceholder } from "@/components/shared/image-placeholder";
 
 const industries = [
@@ -159,10 +160,13 @@ export default function Home() {
               <div className="relative">
                 <div className="absolute -inset-4 bg-secondary/20 rounded-2xl blur-2xl" />
                 <div className="relative bg-white/5 backdrop-blur-sm rounded-2xl p-3 border border-white/10">
-                  <ImagePlaceholder
-                    label="home-dashboard-preview.jpg"
-                    className="aspect-[4/3] rounded-xl"
-                    iconSize="lg"
+                  <Image
+                    src="/images/capturas/monitoreo/01_monitoreo_mosaico_63_pozos.png"
+                    alt="Dashboard de monitoreo ATILAX - Vista mosaico de 63 pozos petroleros en tiempo real"
+                    width={1920}
+                    height={1080}
+                    className="rounded-xl w-full h-auto"
+                    priority
                   />
                 </div>
               </div>
@@ -322,10 +326,12 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <ImagePlaceholder
-                label="home-mapa-venezuela-cobertura.jpg"
-                className="aspect-[4/3] rounded-2xl"
-                iconSize="lg"
+              <Image
+                src="/images/capturas/optimizacion/01_optimizacion_waterfall.png"
+                alt="Optimizacion de produccion petrolera - Grafico waterfall mostrando oportunidades de mejora"
+                width={1920}
+                height={1080}
+                className="rounded-2xl w-full h-auto shadow-lg"
               />
             </motion.div>
           </div>
