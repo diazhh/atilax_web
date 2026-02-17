@@ -2,7 +2,7 @@
 
 ## Resumen
 
-El **Sistema de Optimización Atilax** es un microservicio avanzado que analiza, diagnostica y optimiza la producción de pozos petroleros en tiempo real. Implementa más de 15 motores de cálculo que van desde análisis nodal clásico hasta aprendizaje por refuerzo, procesando datos de 63 pozos con 4 tipos de levantamiento artificial.
+El **Sistema de Optimización Atilax** es un microservicio avanzado que analiza, diagnostica y optimiza la producción de pozos petroleros en tiempo real. Implementa más de 15 motores de cálculo que van desde análisis nodal clásico hasta aprendizaje por refuerzo, procesando datos de múltiples pozos con 4 tipos de levantamiento artificial (ESP, SRP, PCP, Gas Lift).
 
 El servicio opera en tres capas: monitoreo en tiempo real (cada 5 minutos), diagnóstico y anomalías (horario), y optimización avanzada (diario). Publica más de 100 atributos de optimización por pozo en ThingsBoard.
 
@@ -230,6 +230,85 @@ Incluye bonus/penalización por tendencia (7 días).
 | ML | `GET /clusters`, `/anomaly-patterns`, `POST /train-lstm-ae` |
 | Campo | `GET /field/allocation`, `POST /field/allocate-gas` |
 | Alarmas | `GET /alarms`, `/alarms/{id}`, `POST /alarms/acknowledge` |
+| Simulación | `POST /simulation/create`, `/simulation/reactive`, `PATCH /{id}/params`, `PATCH /{id}/reset-params`, `POST /{id}/run`, `GET /{id}/compare`, `DELETE /{id}` |
+
+### Simulación Interactiva — Endpoint Reactivo
+
+El endpoint `POST /simulation/reactive` integra el dashboard de simulación con el motor de cálculo. Cuando un operador modifica un parámetro en el dashboard, el Motor de Reglas de ThingsBoard detecta el cambio de atributo `sim_param_*` y envía una solicitud HTTP al servicio:
+
+```
+Operador cambia slider → TB escribe sim_param_freq_hz=65 en el asset
+    → Rule Chain detecta ATTRIBUTES_UPDATED (sim_param_*)
+    → POST /simulation/reactive { well_id, params: {freq_hz: 65} }
+    → Servicio ejecuta análisis nodal + DCA con params modificados
+    → Publica sim_opt_*, sim_compare_* como server attributes
+    → Publica sim_flow_rate_bpd como telemetría con timestamps futuros
+    → Dashboard se actualiza automáticamente
+```
+
+Gestión de sesiones:
+- Si no existe sesión activa para el pozo, se crea automáticamente
+- Máximo 10 sesiones simultáneas, TTL de 2 horas por sesión
+- Limpieza automática: al cerrar se eliminan todos los datos `sim_*` del asset (atributos + 11 claves de telemetría de proyección)
+- Los datos simulados nunca se propagan a Kafka ni al detector de anomalías
+
+### Endpoint de Reset de Parámetros
+
+`PATCH /simulation/{session_id}/reset-params` permite restaurar parámetros individuales a sus valores originales sin cerrar la sesión completa.
+
+```
+Request:  { "keys": ["freq_hz", "skin_factor"] }
+Response: {
+  "session_id": "uuid",
+  "restored": ["freq_hz", "skin_factor"],
+  "not_found": [],
+  "remaining_modified": ["water_cut_pct"]
+}
+```
+
+Comportamiento:
+- Restaura los parámetros especificados al valor original capturado al inicio de la sesión
+- Elimina las claves restauradas de `modified_params` en Redis
+- Publica los valores originales como `sim_param_*` en ThingsBoard
+- Retorna las claves restauradas, no encontradas, y las que permanecen modificadas
+
+### Atributos Originales (`sim_original_*`)
+
+Al iniciar una sesión de simulación, el sistema publica tanto los valores de parámetros como sus valores originales para referencia:
+
+```
+sim_param_freq_hz = 55.0       ← Valor actual (modificable por el operador)
+sim_original_freq_hz = 55.0    ← Valor original (inmutable durante la sesión)
+```
+
+Esto permite al dashboard de simulación mostrar una tabla de comparación dinámica indicando qué parámetros han sido modificados respecto al estado original del pozo.
+
+### Telemetría Extendida para DCA
+
+El sistema de simulación obtiene historial extendido de producción para mejorar la precisión del pronóstico DCA:
+
+| Parámetro (SimulationSettings) | Valor | Descripción |
+|-------------------------------|-------|-------------|
+| `redis_buffer_count` | 288 | Entradas en buffer Redis (24h @ 5 min) |
+| `dca_history_days` | 180 | Días de historial `flow_rate_bpd` desde TB REST API |
+| `dca_tb_limit` | 10,000 | Máximo de puntos de telemetría a consultar |
+| `sim_projection_points` | 144 | Puntos de proyección futura (12h) |
+| `sim_projection_interval_ms` | 300,000 | Intervalo entre puntos de proyección (5 min) |
+
+El predictor DCA usa el historial extendido (180 días) cuando dispone de 30+ entradas, cayendo al buffer Redis como fallback.
+
+### Proyección de Telemetría Simulada
+
+Cada ejecución de simulación publica 144 puntos de telemetría con timestamps futuros (12 horas hacia adelante a intervalos de 5 minutos). Las claves de telemetría varían por tipo de levantamiento:
+
+| Tipo | Claves de Telemetría |
+|------|---------------------|
+| **ESP** | `sim_frequency_hz`, `sim_flow_rate_bpd`, `sim_intake_pressure_psi` |
+| **SRP** | `sim_spm`, `sim_flow_rate_bpd`, `sim_pump_fillage_pct` |
+| **PCP** | `sim_drive_rpm`, `sim_flow_rate_bpd`, `sim_motor_power_kw` |
+| **Gas Lift** | `sim_gas_injection_rate_mscfd`, `sim_flow_rate_bpd`, `sim_injection_pressure_psi` |
+
+Estas claves se publican como timeseries en ThingsBoard, permitiendo que los gráficos muestren la proyección simulada como extensión visual del histórico real
 
 ---
 
@@ -267,6 +346,20 @@ Incluye bonus/penalización por tendencia (7 días).
 
 ### ML
 `opt_lstm_ae_anomaly_score`, `opt_rl_recommended_action`, `opt_rl_confidence`
+
+### Simulación Interactiva
+`sim_active`, `sim_last_run`, `sim_opt_production_bpd`, `sim_opt_efficiency_pct`, `sim_opt_energy_kwh_bbl`, `sim_opt_recommended_action`, `sim_opt_ipr_curve`, `sim_opt_vlp_curve`, `sim_compare_production_delta_bpd`, `sim_compare_production_delta_pct`, `sim_compare_efficiency_delta_pct`, `sim_compare_warnings`, `sim_compare_data`
+
+### Simulación — Valores Originales
+`sim_original_freq_hz`, `sim_original_spm`, `sim_original_rpm`, `sim_original_gas_injection_rate`, `sim_original_water_cut_pct`, `sim_original_reservoir_pressure_psi`, `sim_original_skin_factor`, ...
+
+### Simulación — Telemetría de Proyección (timeseries con timestamps futuros)
+- **ESP**: `sim_frequency_hz`, `sim_flow_rate_bpd`, `sim_intake_pressure_psi`
+- **SRP**: `sim_spm`, `sim_flow_rate_bpd`, `sim_pump_fillage_pct`
+- **PCP**: `sim_drive_rpm`, `sim_flow_rate_bpd`, `sim_motor_power_kw`
+- **Gas Lift**: `sim_gas_injection_rate_mscfd`, `sim_flow_rate_bpd`, `sim_injection_pressure_psi`
+
+*Nota: Los atributos `sim_*` y `sim_original_*` son temporales — existen solo mientras hay una sesión de simulación activa. Al cerrar la sesión se eliminan todos los atributos y las 11 claves de telemetría de proyección.*
 
 ---
 

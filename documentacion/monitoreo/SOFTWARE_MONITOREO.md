@@ -2,7 +2,7 @@
 
 ## Resumen
 
-La **Plataforma de Monitoreo Atilax** es un sistema de visualización avanzado construido sobre ThingsBoard Professional Edition que proporciona dashboards interactivos para monitorear y optimizar la producción de 63 pozos petroleros en tiempo real. Incluye 33 widgets personalizados desarrollados en Angular 18 con ECharts para visualización de datos de ingeniería de petróleo.
+La **Plataforma de Monitoreo Atilax** es un sistema de visualización avanzado construido sobre ThingsBoard Professional Edition que proporciona dashboards interactivos para monitorear, optimizar y simular escenarios de producción de pozos petroleros en tiempo real. Incluye 33+ widgets (personalizados en Angular 18 con ECharts + widgets stock de TB) para visualización de datos de ingeniería de petróleo y simulación interactiva. Escalable a cualquier número de pozos, campos y macollas.
 
 ---
 
@@ -16,11 +16,11 @@ ThingsBoard es una plataforma IoT (Internet de las Cosas) de código abierto que
 - **Dashboards**: Visualización con widgets nativos y extensiones personalizadas
 - **Control de acceso**: Multi-tenancy con roles y permisos
 
-### Instancia de Producción
-- **URL**: http://144.126.150.120:8080
-- **63 activos tipo well** (pozos)
-- **7 macollas** (plataformas de producción)
-- **3 campos petroleros**: Boscán, Cerro Negro, Anaco
+### Modelo de Entidades
+- Activos tipo **well** (pozos) con atributos de equipo, yacimiento y optimización
+- **Macollas** (plataformas de producción) agrupando pozos
+- **Campos petroleros** como nivel superior de la jerarquía
+- Soporte para múltiples campos, macollas y pozos sin límite fijo
 
 ---
 
@@ -52,7 +52,14 @@ ThingsBoard es una plataforma IoT (Internet de las Cosas) de código abierto que
 │Bomba,    │ │         │ │ Avanzada:  │  │
 │Varillas  │ │         │ │ NSGA-II    │  │
 └──────────┘ └─────────┘ └────────────┘  │
-                                          │
+      │                                   │
+      │  ┌────────────────┐               │
+      │  │ SIMULACIÓN     │               │
+      └─▶│ What-If v4     │               │
+         │ Interactivo    │               │
+         │ 53 widgets     │               │
+         │ 5 estados      │               │
+         └────────────────┘               │
               ┌────────────────┐           │
               │ADMINISTRACIÓN  │◄──────────┘
               │Configuración   │
@@ -241,6 +248,62 @@ Widget polimórfico que se adapta al tipo de levantamiento:
 
 ---
 
+#### Simulación Interactiva — What-If Analysis (10 widgets por estado de tipo, 53 total en dashboard v4)
+
+**Controles de Parámetros** — Panel de modificación de variables (reducido a sizeY=5 en v4)
+- Widget stock `update_multiple_attributes` de ThingsBoard
+- Sliders/inputs numéricos para parámetros operativos por tipo de pozo:
+  - ESP: frecuencia VSD, profundidad de bomba, corte de agua, presión de yacimiento, skin
+  - SRP: SPM, longitud de carrera, profundidad de bomba, corte de agua, presión
+  - PCP: RPM, profundidad de bomba, corte de agua, presión
+  - Gas Lift: tasa de inyección, corte de agua, presión
+- Al modificar un valor, escribe `sim_param_*` en el asset → dispara simulación automática vía Motor de Reglas
+
+**KPI Producción Simulada** — Tasa simulada (BPD)
+- Widget stock `horizontal_value_card`
+- Muestra `sim_opt_production_bpd` con actualización reactiva
+
+**KPI Delta Producción** — Indicador de cambio (%)
+- Muestra `sim_compare_production_delta_pct` con flecha ↑↓ y color verde/rojo
+
+**KPI Eficiencia Simulada** — Eficiencia del sistema (%)
+- Muestra `sim_opt_efficiency_pct`
+
+**KPI Energía Simulada** — Consumo energético (kWh/bbl)
+- Muestra `sim_opt_energy_kwh_bbl`
+
+**Chart Producción Real + Simulada** — Gráfico de series de tiempo
+- Widget stock `time_series_chart` con ventana de 36 horas
+- Superpone `flow_rate_bpd` (histórico real, línea sólida) con series simuladas `sim_*` (proyección futura, **línea punteada** con colores más claros)
+- Series simuladas por tipo de levantamiento:
+  - ESP: `sim_frequency_hz`, `sim_flow_rate_bpd`, `sim_intake_pressure_psi`
+  - SRP: `sim_spm`, `sim_flow_rate_bpd`, `sim_pump_fillage_pct`
+  - PCP: `sim_drive_rpm`, `sim_flow_rate_bpd`, `sim_motor_power_kw`
+  - Gas Lift: `sim_gas_injection_rate_mscfd`, `sim_flow_rate_bpd`, `sim_injection_pressure_psi`
+- Proyección de 12 horas futuras (144 puntos a intervalos de 5 min) con `lineType: "dashed"`
+- El operador ve la producción real pasada y la proyección futura con los parámetros modificados
+
+**Tabla de Comparación de Parámetros** — Original vs Modificado *(Nuevo en v4)*
+- Widget `markdown_card` con `useMarkdownTextFunction: true`
+- Genera tabla HTML dinámica comparando `sim_param_*` vs `sim_original_*`
+- Estado por parámetro con código de color: verde "Original" / amarillo "Modificado"
+- Ubicación: debajo del panel de parámetros (row=9, col=0, sizeX=8, sizeY=2)
+
+**Tabla de Comparación** — Real vs Simulado
+- Widget `markdown_card` con tabla HTML dinámica
+- Muestra parámetros y resultados lado a lado con deltas y código de color
+
+**Curvas Nodal Simuladas** — IPR/VLP
+- Widget `markdown_card` con Canvas HTML
+- Dibuja curvas IPR/VLP reales (originales) y simuladas (con parámetros modificados)
+- Muestra punto de operación real vs simulado
+
+**Botones de Acción** — Navegación y control
+- Iniciar/cerrar sesión de simulación
+- Volver al dashboard anterior
+
+---
+
 ## Paleta de Colores Estandarizada
 
 ### Por Estado de Optimización
@@ -281,7 +344,7 @@ El servicio central que conecta todos los widgets con ThingsBoard:
 
 | Método | Función |
 |--------|---------|
-| `getWellAssets()` | Lista todos los 63 pozos con atributos resumen (cache 30s) |
+| `getWellAssets()` | Lista todos los pozos con atributos resumen (cache 30s) |
 | `getAttributes(assetId, keys?)` | Atributos de un pozo específico (opt_*, equipo, yacimiento) |
 | `getTelemetry(assetId, keys, startTs, endTs)` | Series temporales para gráficos históricos |
 | `getAlarms(assetId)` | Alarmas y anomalías por pozo |
@@ -325,6 +388,41 @@ El dashboard de Monitoreo es el más complejo con **20 estados**:
 
 ---
 
+## Dashboard Simulación v4 — Estructura de 5 Estados (53 widgets)
+
+Dashboard ID: `21b9fe80-0c15-11f1-90c6-8f12f97ce13a`
+
+| Estado | Widgets | Contenido |
+|--------|---------|-----------|
+| `default` | Tabla de pozos | Tabla de entidades con click → navega al estado sim_{tipo} según `lift_type` |
+| `sim_esp` | 13 | Parámetros ESP + KPIs + chart con proyección + comparación original/modificado |
+| `sim_srp` | 13 | Parámetros SRP + KPIs + chart con proyección + comparación original/modificado |
+| `sim_pcp` | 13 | Parámetros PCP + KPIs + chart con proyección + comparación original/modificado |
+| `sim_gaslift` | 13 | Parámetros Gas Lift + KPIs + chart con proyección + comparación original/modificado |
+
+Cada estado de tipo contiene 13 widgets (antes 12):
+1. Título con nombre del pozo
+2. Controles de parámetros (sizeY=5, reducido de 7)
+3. KPI Producción simulada
+4. KPI Delta producción
+5. KPI Eficiencia simulada
+6. KPI Energía simulada
+7. Chart real + simulado (36h, series punteadas)
+8. **Tabla comparación original vs modificado** *(nuevo en v4)*
+9. Tabla comparación real vs simulado
+10. Curvas nodal simuladas
+11. Botón volver
+12. Botón cerrar sesión
+13. Estado de simulación
+
+Cambios clave en v4:
+- **Widget de comparación de parámetros**: markdown_card con `useMarkdownTextFunction: true`, genera tabla HTML dinámica comparando `sim_param_*` vs `sim_original_*` con colores de estado
+- **Series punteadas en chart**: cada tipo incluye sus claves `sim_*` con `lineType: "dashed"` y colores más claros, mostrando 12h de proyección futura
+- **Ventana temporal extendida**: chart ampliado a 36h (antes 24h) para mostrar datos reales + proyección futura
+- **Layout ajustado**: panel de parámetros reducido (sizeY=5), widget de comparación insertado (row=9, sizeY=2)
+
+---
+
 ## Flujo de Datos Completo
 
 ```
@@ -363,7 +461,7 @@ Pozo Real / Simulador
 
 ## Valor para el Negocio
 
-1. **Visibilidad completa**: 63 pozos monitoreados en tiempo real desde un solo portal
+1. **Visibilidad completa**: Todos los pozos monitoreados en tiempo real desde un solo portal
 2. **Decisiones rápidas**: KPIs claros con código de color para identificar pozos que requieren atención
 3. **Análisis de ingeniería**: Curvas nodal, DCA, dinamométricas integradas sin software adicional
 4. **Optimización visual**: Waterfall y scatter charts muestran el potencial de mejora del campo

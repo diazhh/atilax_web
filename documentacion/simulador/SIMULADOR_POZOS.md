@@ -2,9 +2,9 @@
 
 ## Resumen
 
-El **Simulador de Pozos Atilax** es una herramienta de software que genera datos realistas de operación de campos petroleros venezolanos. Crea 63 pozos simulados con modelos físicos de producción, genera telemetría en tiempo real y datos históricos, e inyecta anomalías y escenarios de falla realistas.
+El **Simulador de Pozos Atilax** es una herramienta de software que genera datos realistas de operación de campos petroleros. Crea pozos simulados con modelos físicos de producción, genera telemetría en tiempo real y datos históricos, e inyecta anomalías y escenarios de falla realistas.
 
-El simulador alimenta la plataforma ThingsBoard IoT con datos idénticos a los que produciría instrumentación real en campo, permitiendo el desarrollo, prueba y demostración de sistemas de monitoreo y optimización sin necesidad de conexión a pozos reales.
+El simulador alimenta la plataforma ThingsBoard IoT con datos idénticos a los que produciría instrumentación real en campo, permitiendo el desarrollo, prueba y demostración de sistemas de monitoreo y optimización sin necesidad de conexión a pozos reales. Soporta múltiples campos petroleros con distintos tipos de crudo y métodos de levantamiento artificial.
 
 ---
 
@@ -19,15 +19,15 @@ El simulador alimenta la plataforma ThingsBoard IoT con datos idénticos a los q
 
 ## Campos Petroleros Simulados
 
-El simulador replica 3 campos petroleros venezolanos reales con características de yacimiento diferenciadas:
+El simulador puede replicar múltiples campos petroleros con características de yacimiento diferenciadas. Soporta la configuración de:
 
-| Campo | Región | Crudo | Pozos | Macollas | Método de Levantamiento Dominante |
-|-------|--------|-------|-------|----------|-----------------------------------|
-| **Campo Boscán** | Lago de Maracaibo | Pesado/Mediano (18-25 °API) | 24 | 3 | SRP (65%), ESP (20%) |
-| **Campo Cerro Negro** | Faja del Orinoco | Extra-pesado (6-12 °API) | 27 | 2 | PCP (55%), ESP (35%) |
-| **Campo Anaco** | Oriente (Liviano) | Liviano (28-36 °API) | 12 | 2 | Gas Lift (50%), ESP (35%) |
+| Tipo de Campo | Rango API | Métodos de Levantamiento Típicos |
+|---------------|-----------|----------------------------------|
+| Extra-pesado | 6-12 °API | PCP, ESP |
+| Pesado/Mediano | 18-25 °API | SRP, ESP |
+| Liviano | 28-36 °API | Gas Lift, ESP |
 
-**Total: 63 pozos, 7 macollas, 3 campos**
+Cada campo se configura con número de pozos, macollas, tipo de crudo, y distribución de métodos de levantamiento.
 
 ---
 
@@ -35,28 +35,28 @@ El simulador replica 3 campos petroleros venezolanos reales con características
 
 El simulador implementa modelos físicos detallados para 4 tipos de levantamiento artificial:
 
-### ESP — Bombeo Electrosumergible (18 pozos)
+### ESP — Bombeo Electrosumergible
 - Modelo de curvas de bomba con etapas (200 etapas típico)
 - Motor eléctrico sumergible (150 HP, 2200V, 45A)
 - Variador de frecuencia (VSD) con control 30-90 Hz
 - Monitoreo: vibración, temperatura de motor, resistencia de aislamiento
 - Caudal de diseño: 1,200 BPD, cabeza de diseño: 5,000 ft
 
-### SRP — Bombeo Mecánico con Balancín (18 pozos)
+### SRP — Bombeo Mecánico con Balancín
 - Unidad de bombeo C-320D-256-120
 - Carrera 144", 12 SPM, capacidad de viga 25,000 lbs
 - Modelado de carta dinamométrica (cargas de varilla)
 - Sarta de varillas multi-grado
 - Bore de bomba 2"
 
-### PCP — Bombeo de Cavidad Progresiva (16 pozos)
+### PCP — Bombeo de Cavidad Progresiva
 - Bomba Moyno 7L6, geometría 2-3 lóbulos
 - Desplazamiento 1,200 cc/rev, caudal máximo 2,000 BPD
 - Torque hasta 4,500 ft-lbs, motor 60 HP @ 460V
 - Límite térmico del elastómero: 275°F (material NBR)
-- Ideal para crudo extra-pesado de la Faja del Orinoco
+- Ideal para crudo extra-pesado
 
-### Gas Lift — Levantamiento por Gas (9 pozos)
+### Gas Lift — Levantamiento por Gas
 - 5 mandriles con válvulas configuradas por profundidad
 - Presión de inyección: 1,200 psi, tasa óptima: 500 MSCFD
 - Simulación de casing heading (oscilaciones con período de 15 min)
@@ -77,9 +77,9 @@ El simulador implementa modelos físicos detallados para 4 tipos de levantamient
 - **Correlación de Beggs-Robinson**: viscosidad del petróleo muerto y vivo
 - Cálculos de densidad multifásica (petróleo, agua, gas)
 
-### Parámetros de Yacimiento (rangos por campo)
-| Parámetro | Boscán | Cerro Negro | Anaco |
-|-----------|--------|-------------|-------|
+### Parámetros de Yacimiento Configurables (rangos típicos por tipo de crudo)
+| Parámetro | Pesado/Mediano | Extra-pesado | Liviano |
+|-----------|----------------|-------------|---------|
 | Presión (psi) | 2,200-3,000 | 800-1,500 | 2,800-4,000 |
 | Temperatura (°F) | 150-200 | 120-180 | 200-280 |
 | API | 18-25 | 6-12 | 28-36 |
@@ -177,6 +177,52 @@ Campo Petrolero (asset: field)
 - `gl_injection_rate_mscfd`, `gl_choke_pct`
 - `gl_casing_pressure_psi`, `gl_separator_pressure_psi`
 - `gl_glr_scf_stb`
+
+---
+
+## Sistema de Simulación Interactiva
+
+El simulador alimenta un sistema de simulación interactiva (What-If) que permite a los ingenieros modificar parámetros operativos desde el dashboard y ver el impacto en tiempo real.
+
+### Buffer de Telemetría Extendido (Redis)
+
+El sistema mantiene un buffer en Redis por cada pozo con sesión de simulación activa:
+
+| Parámetro | Valor | Descripción |
+|-----------|-------|-------------|
+| `redis_buffer_count` | 288 | Entradas en buffer (24h a intervalos de 5 min) |
+| `dca_history_days` | 180 | Días de historial de `flow_rate_bpd` consultados vía TB REST API |
+| `dca_tb_limit` | 10,000 | Máximo de puntos consultados a TB para historial DCA |
+
+El snapshot del pozo utiliza dos fuentes de datos:
+1. **Buffer Redis** (288 entradas) — telemetría reciente para análisis nodal y cálculos de estado actual
+2. **Historial extendido TB** (180 días de `flow_rate_bpd`) — consultado vía `_fetch_extended_telemetry()` para pronóstico DCA con mayor precisión
+
+Cuando el historial extendido tiene 30+ entradas, el predictor DCA lo usa en lugar del buffer Redis, mejorando significativamente la calidad del pronóstico.
+
+### Proyección de Telemetría Simulada
+
+Cuando se ejecuta una simulación, el sistema publica telemetría proyectada con **timestamps futuros** para que los gráficos de series de tiempo muestren la producción simulada como extensión visual del histórico real.
+
+| Parámetro | Valor | Descripción |
+|-----------|-------|-------------|
+| `sim_projection_points` | 144 | Puntos de proyección (12 horas futuras) |
+| `sim_projection_interval_ms` | 300,000 | Intervalo entre puntos (5 minutos) |
+
+**Claves de telemetría por tipo de levantamiento (`SIM_TELEMETRY_KEYS`):**
+
+| Tipo | Claves de Telemetría Simulada |
+|------|-------------------------------|
+| **ESP** | `sim_frequency_hz`, `sim_flow_rate_bpd`, `sim_intake_pressure_psi` |
+| **SRP** | `sim_spm`, `sim_flow_rate_bpd`, `sim_pump_fillage_pct` |
+| **PCP** | `sim_drive_rpm`, `sim_flow_rate_bpd`, `sim_motor_power_kw` |
+| **Gas Lift** | `sim_gas_injection_rate_mscfd`, `sim_flow_rate_bpd`, `sim_injection_pressure_psi` |
+
+La función `_publish_sim_telemetry_projection()` publica los 144 puntos como timeseries con timestamps que van desde `now` hasta `now + 12h`. Esto permite que el chart de ThingsBoard muestre la línea simulada como continuación punteada del histórico real.
+
+### Limpieza de Datos de Simulación
+
+Al cerrar una sesión de simulación, el sistema elimina **11 claves de telemetría** (todas las proyecciones de todos los tipos de levantamiento) además de los atributos `sim_*` del asset, garantizando que no queden datos residuales.
 
 ---
 

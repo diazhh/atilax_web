@@ -27,6 +27,11 @@ const navigation = [
         description: "IA predictiva y analisis nodal"
       },
       {
+        name: "Simulador Interactivo",
+        href: "/soluciones/simulador",
+        description: "What-If analysis en tiempo real"
+      },
+      {
         name: "Infraestructura y Edificaciones",
         href: "/soluciones/infraestructura",
         description: "Residenciales, comerciales y servicios"

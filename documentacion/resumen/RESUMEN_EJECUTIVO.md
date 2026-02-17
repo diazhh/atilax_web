@@ -2,15 +2,15 @@
 
 ## Resumen Ejecutivo
 
-**Atilax** es una plataforma integral de monitoreo, diagnóstico y optimización de producción petrolera que combina ingeniería de yacimientos, inteligencia artificial y visualización en tiempo real para maximizar la producción de campos petroleros con múltiples métodos de levantamiento artificial.
+**Atilax** es una plataforma integral de monitoreo, diagnóstico y optimización de producción petrolera que combina ingeniería de yacimientos, inteligencia artificial y visualización en tiempo real para maximizar la producción de campos petroleros con múltiples métodos de levantamiento artificial. Escalable a cualquier número de pozos, campos y regiones operativas.
 
 ---
 
 ## El Problema
 
-Los campos petroleros venezolanos operan con condiciones desafiantes:
+Los campos petroleros operan con condiciones desafiantes:
 - **Múltiples métodos de levantamiento** (ESP, SRP, PCP, Gas Lift) con requisitos de monitoreo distintos
-- **Crudos diversos**: desde extra-pesado (6 °API) en Faja del Orinoco hasta liviano (36 °API) en Oriente
+- **Crudos diversos**: desde extra-pesado (6 °API) hasta liviano (36+ °API) en diversas regiones
 - **Optimización manual**: ingenieros ajustan setpoints basándose en experiencia, no en datos en tiempo real
 - **Detección tardía de anomalías**: fallas detectadas después de causar pérdida de producción o daño a equipos
 - **Falta de visibilidad**: información dispersa entre sistemas SCADA, hojas de cálculo y reportes manuales
@@ -22,9 +22,12 @@ Los campos petroleros venezolanos operan con condiciones desafiantes:
 Atilax integra tres componentes que trabajan en conjunto:
 
 ### 1. Simulador de Pozos
-Genera datos realistas de 63 pozos en 3 campos petroleros para desarrollo, demostración y entrenamiento de modelos ML.
+Genera datos realistas de pozos en múltiples campos petroleros para desarrollo, demostración y entrenamiento de modelos ML.
 
-### 2. Motor de Optimización (IA)
+### 2. Simulador Interactivo (What-If)
+Permite a ingenieros evaluar escenarios hipotéticos en tiempo real: el operador modifica parámetros operativos (frecuencia, corte de agua, presión) desde el dashboard y el sistema recalcula automáticamente producción, eficiencia y pronóstico sin afectar la operación real del pozo. Incluye proyección visual de 12 horas futuras con series punteadas en los gráficos, comparación dinámica de parámetros originales vs modificados, y pronóstico DCA basado en 180 días de historial de producción.
+
+### 3. Motor de Optimización (IA)
 15 motores de cálculo que procesan telemetría cada 5 minutos:
 - **Análisis nodal** (5 modelos IPR + VLP Beggs & Brill)
 - **Curvas de declinación** (Arps + Monte Carlo probabilístico)
@@ -32,25 +35,24 @@ Genera datos realistas de 63 pozos en 3 campos petroleros para desarrollo, demos
 - **Detección de anomalías** (24 reglas + LSTM-Autoencoder)
 - **Optimización multi-objetivo** (NSGA-II + Reinforcement Learning)
 
-### 3. Software de Monitoreo
-33 widgets especializados en 4 dashboards interactivos con navegación jerárquica campo → macolla → pozo → subsistema.
+### 4. Software de Monitoreo
+33+ widgets especializados en múltiples dashboards interactivos con navegación jerárquica campo → macolla → pozo → subsistema → simulación.
 
 ---
 
-## Resultados Clave
+## Capacidades Clave
 
-| Métrica | Valor |
-|---------|-------|
-| **Producción actual** | 98,302 BPD |
-| **Producción optimizada** | 130,986 BPD |
-| **Ganancia potencial** | +32,684 BPD (+33.2%) |
-| **Pozos monitoreados** | 63 |
-| **Campos petroleros** | 3 |
-| **Macollas** | 7 |
-| **Métodos de levantamiento** | 4 (ESP, SRP, PCP, Gas Lift) |
+| Capacidad | Detalle |
+|-----------|---------|
+| **Métodos de levantamiento** | 4 tipos soportados (ESP, SRP, PCP, Gas Lift) |
 | **Detección de anomalías** | < 5 minutos |
-| **Variables por pozo** | 20+ |
+| **Variables por pozo** | 20+ telemetrías en tiempo real |
 | **Atributos de optimización** | 100+ por pozo |
+| **Motores de IA** | 15 motores de cálculo y optimización |
+| **Simulación what-if** | Tiempo real, reactiva por parámetro, proyección 12h, comparación original/modificado |
+| **Proyección de producción** | 144 puntos futuros (12h) con visualización punteada en gráficos |
+| **Widgets especializados** | 33+ componentes de visualización |
+| **Escalabilidad** | Múltiples campos, pozos y macollas sin límite fijo |
 
 ---
 
@@ -60,22 +62,29 @@ Genera datos realistas de 63 pozos en 3 campos petroleros para desarrollo, demos
 ┌──────────────┐    ┌──────────────────────┐    ┌──────────────────┐
 │  SIMULADOR   │    │  MOTOR OPTIMIZACIÓN  │    │  MONITOREO       │
 │              │    │                      │    │                  │
-│ 63 pozos     │───▶│ 15 motores de IA     │───▶│ 33 widgets       │
-│ 3 campos     │    │ ML/DL (PyTorch)      │    │ 4 dashboards     │
+│ N pozos      │───▶│ 15 motores de IA     │───▶│ 33+ widgets      │
+│ N campos     │    │ ML/DL (PyTorch)      │    │ Dashboards       │
 │ 4 lift types │    │ FastAPI + Kafka       │    │ Angular 18       │
 │ MQTT/REST    │    │ PostgreSQL + Redis    │    │ ECharts          │
 │              │    │                      │    │                  │
 │ Python       │    │ Python               │    │ TypeScript       │
 └──────────────┘    └──────────────────────┘    └──────────────────┘
-                              │
-                    ┌─────────▼─────────┐
+                              │         ▲
+                    ┌─────────▼─────────┤
                     │   ThingsBoard PE   │
                     │   Plataforma IoT   │
                     │                    │
                     │  Telemetría MQTT   │
                     │  REST API          │
                     │  Gestión entidades │
-                    │  Motor de reglas   │
+                    │  Motor de reglas ──┤
+                    │                    │
+                    │  ┌──────────────┐  │
+                    │  │ SIMULADOR    │  │
+                    │  │ INTERACTIVO  │  │
+                    │  │ What-If      │  │
+                    │  │ reactivo     │  │
+                    │  └──────────────┘  │
                     └────────────────────┘
 ```
 
@@ -101,22 +110,22 @@ Genera datos realistas de 63 pozos en 3 campos petroleros para desarrollo, demos
 ## Tipos de Levantamiento Soportados
 
 ### ESP — Bombeo Electrosumergible
-- **Pozos**: 18 | **Optimiza**: Frecuencia (Hz)
+- **Optimiza**: Frecuencia (Hz)
 - Monitoreo de motor, bomba centrífuga, variador
 - Detección: gas lock, desgaste, sobrecalentamiento, falla eléctrica
 
 ### SRP — Bombeo Mecánico con Balancín
-- **Pozos**: 18 | **Optimiza**: SPM (golpes/min)
+- **Optimiza**: SPM (golpes/min)
 - Carta dinamométrica, cargas de varilla, llenado de bomba
 - Detección: fluid pound, gas lock, varilla partida, fugas
 
 ### PCP — Bombeo de Cavidad Progresiva
-- **Pozos**: 16 | **Optimiza**: RPM
+- **Optimiza**: RPM
 - Torque, desgaste de elastómero, eficiencia
 - Modelo Arrhenius para vida remanente (NBR/HNBR/FKM)
 
 ### Gas Lift — Levantamiento por Gas
-- **Pozos**: 9 | **Optimiza**: Inyección de gas (MSCFD)
+- **Optimiza**: Inyección de gas (MSCFD)
 - Curvas GLPC, casing heading, asignación multi-pozo
 - Algoritmo equal-slope para distribución óptima de gas
 
@@ -125,10 +134,21 @@ Genera datos realistas de 63 pozos en 3 campos petroleros para desarrollo, demos
 ## Dashboards
 
 ### Monitoreo de Pozos (Mosaico)
-- 78 widgets, 20 estados
-- Vista mosaico de 63 pozos con filtros
-- Detalle por tipo con subsistemas modales
+- Vista mosaico de todos los pozos con filtros por campo, macolla y tipo
+- Detalle por tipo de levantamiento con subsistemas modales
 - KPIs en tiempo real con tendencias 24h
+- Múltiples estados y widgets especializados
+
+### Simulación Interactiva (Dashboard v4 — 53 widgets, 5 estados)
+- Análisis what-if en tiempo real desde el dashboard
+- Controles de parámetros operativos (frecuencia, SPM, RPM, inyección)
+- Resultados reactivos: cambiar slider → recálculo automático
+- Superposición de datos reales vs simulados en gráficos con series punteadas
+- Proyección de 12 horas futuras (144 puntos a intervalos de 5 min)
+- Tabla de comparación dinámica: parámetros originales vs modificados con estado coloreado
+- Pronóstico DCA basado en 180 días de historial de producción
+- Restauración selectiva de parámetros individuales a valores originales
+- Aislamiento total: datos simulados no afectan operación real
 
 ### Optimización de Producción
 - Waterfall de producción (actual → ganancias → optimizado)
@@ -138,7 +158,7 @@ Genera datos realistas de 63 pozos en 3 campos petroleros para desarrollo, demos
 
 ### Administración
 - Navegador jerárquico (campo → macolla → pozo)
-- Tabla de 63 pozos con estado de optimización
+- Tabla de pozos con estado de optimización
 - Configuración de parámetros por pozo
 - Niveles de data readiness (L1/L2/L3)
 
@@ -166,24 +186,27 @@ Genera datos realistas de 63 pozos en 3 campos petroleros para desarrollo, demos
 4. **Análisis probabilístico**: Pronósticos DCA con bandas P10/P50/P90 para decisiones informadas
 5. **Optimización de portafolio**: No solo pozo por pozo — optimización a nivel de campo con asignación de recursos
 6. **Autonomía supervisada**: RL con safety gates permite control automático con aprobación humana
-7. **Simulación incluida**: Datos realistas para demo y desarrollo sin depender de pozos reales
-8. **Escalable**: Arquitectura modular para agregar campos, pozos y algoritmos
+7. **Simulador integrado**: Generación de datos realistas para demostración y desarrollo sin depender de pozos reales
+8. **What-If interactivo**: Evaluar escenarios hipotéticos en tiempo real sin afectar la operación, con proyección visual de 12 horas y comparación dinámica de parámetros
+9. **Escalable**: Arquitectura modular para agregar campos, pozos y algoritmos
 
 ---
 
-## Campos Petroleros
+## Soporte Multi-Campo
 
-| Campo | Región | Crudo | Pozos | Producción |
-|-------|--------|-------|-------|------------|
-| **Cerro Negro** | Faja del Orinoco | Extra-pesado (6-12 °API) | 27 | 45,225 BPD |
-| **Boscán** | Lago de Maracaibo | Pesado/Mediano (18-25 °API) | 24 | 40,249 BPD |
-| **Anaco** | Oriente | Liviano (28-36 °API) | 12 | 12,828 BPD |
-| **Total** | | | **63** | **98,302 BPD** |
+La plataforma soporta múltiples campos petroleros con características de yacimiento diferenciadas:
+
+| Tipo de Crudo | Rango API | Regiones Típicas |
+|---------------|-----------|-----------------|
+| Extra-pesado | 6-12 °API | Faja del Orinoco |
+| Pesado/Mediano | 18-25 °API | Lago de Maracaibo |
+| Liviano | 28-36 °API | Oriente |
+
+Cada campo se configura con sus parámetros de yacimiento, tipos de levantamiento predominantes y estructura de macollas. La arquitectura permite agregar campos y pozos de forma ilimitada.
 
 ---
 
 ## Contacto
 
 - **Web**: https://atilax.io
-- **Demo**: https://panel.atilax.io
-- **Plataforma**: ThingsBoard Professional Edition
+- **Plataforma base**: ThingsBoard Professional Edition

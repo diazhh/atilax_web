@@ -13,6 +13,7 @@ const footerLinks = {
     { name: "Zonas Industriales", href: "/soluciones/industria" },
   ],
   soluciones: [
+    { name: "Simulador Interactivo", href: "/soluciones/simulador" },
     { name: "Gestion de Flota", href: "/soluciones/flota" },
     { name: "Seguridad con IA", href: "/soluciones/seguridad" },
     { name: "Monitoreo de Activos", href: "/plataforma" },
@@ -136,9 +137,21 @@ export function Footer() {
 
         <Separator className="my-8 bg-white/10" />
 
+        {/* Technology Partner */}
+        <div className="flex flex-col md:flex-row items-center justify-center gap-3 mb-6">
+          <span className="text-xs text-white/40 uppercase tracking-wider">Desarrollado por</span>
+          <Image
+            src="/images/logos/ControlTech B.png"
+            alt="ControlTech"
+            width={120}
+            height={35}
+            className="h-7 w-auto opacity-70 hover:opacity-100 transition-opacity"
+          />
+        </div>
+
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-white/60">
-            &copy; {new Date().getFullYear()} ATILAX. Todos los derechos reservados.
+            &copy; {new Date().getFullYear()} ATILAX by ControlTech. Todos los derechos reservados.
           </p>
 
           {/* Social Links */}
