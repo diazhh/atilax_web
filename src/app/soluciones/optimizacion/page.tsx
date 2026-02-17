@@ -27,7 +27,7 @@ import { PageHeader } from "@/components/shared/page-header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ImagePlaceholder } from "@/components/shared/image-placeholder";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Optimizacion de Pozos | ATILAX",
@@ -353,10 +353,12 @@ export default function OptimizacionPage() {
               </div>
             </div>
             <div className="relative">
-              <ImagePlaceholder
-                label="optimizacion-hero-dashboard.jpg"
-                className="aspect-[4/3] rounded-2xl"
-                iconSize="lg"
+              <Image
+                src="/images/capturas/optimizacion/01_optimizacion_waterfall.png"
+                alt="Dashboard de optimizacion - Waterfall de produccion por pozo"
+                width={1920}
+                height={1080}
+                className="rounded-2xl w-full h-auto shadow-lg"
               />
             </div>
           </div>
@@ -613,10 +615,12 @@ export default function OptimizacionPage() {
             </div>
 
             <div className="space-y-6">
-              <ImagePlaceholder
-                label="optimizacion-health-score-dashboard.jpg"
-                className="aspect-[4/3] rounded-2xl"
-                iconSize="lg"
+              <Image
+                src="/images/capturas/optimizacion/02_optimizacion_ranking_scatter.png"
+                alt="Well Health Score - Ranking de pozos y scatter eficiencia vs salud"
+                width={1920}
+                height={1080}
+                className="rounded-2xl w-full h-auto shadow-lg"
               />
               <Card>
                 <CardContent className="p-6">
@@ -805,10 +809,12 @@ export default function OptimizacionPage() {
               </div>
             </div>
             <div>
-              <ImagePlaceholder
-                label="optimizacion-campo-multipozo.jpg"
-                className="aspect-[4/3] rounded-2xl"
-                iconSize="lg"
+              <Image
+                src="/images/capturas/optimizacion/03_optimizacion_detalle_ranking.png"
+                alt="Optimizacion a nivel de campo - Detalle de ranking multi-pozo"
+                width={1920}
+                height={1080}
+                className="rounded-2xl w-full h-auto shadow-lg"
               />
             </div>
           </div>

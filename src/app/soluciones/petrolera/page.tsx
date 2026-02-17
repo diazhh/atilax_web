@@ -18,7 +18,7 @@ import { PageHeader } from "@/components/shared/page-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { ImagePlaceholder } from "@/components/shared/image-placeholder";
+
 
 export const metadata: Metadata = {
   title: "Industria Petrolera | ATILAX",
@@ -328,7 +328,7 @@ export default function PetroleraPage() {
                   src={idx === 0 ? "/images/capturas/monitoreo/02_monitoreo_mosaico_scroll.png"
                     : idx === 1 ? "/images/capturas/general/02_administracion_tabla_pozos.png"
                     : idx === 2 ? "/images/capturas/monitoreo/06_detalle_esp_tendencia.png"
-                    : "/images/capturas/general/04_thingsboard_dashboards.png"}
+                    : "/images/capturas/general/01_login_atilax.png"}
                   alt={item.title}
                   width={1920}
                   height={1080}

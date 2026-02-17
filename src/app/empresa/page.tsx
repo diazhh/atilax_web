@@ -4,7 +4,7 @@ import { ArrowRight, Lightbulb, Award, Users, Eye } from "lucide-react";
 import { PageHeader } from "@/components/shared/page-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ImagePlaceholder } from "@/components/shared/image-placeholder";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Empresa",
@@ -36,7 +36,7 @@ const values = [
 ];
 
 const stats = [
-  { value: "+5,000", label: "Instalaciones ThingsBoard globales" },
+  { value: "+5,000", label: "Instalaciones IoT globales" },
   { value: "24/7", label: "Soporte técnico" },
   { value: "100%", label: "Equipo en Venezuela" },
 ];
@@ -72,10 +72,12 @@ export default function EmpresaPage() {
               </p>
             </div>
             <div>
-              <ImagePlaceholder
-                label="team-working.jpg"
-                className="aspect-[4/3] rounded-xl"
-                iconSize="lg"
+              <Image
+                src="/images/capturas/monitoreo/01_monitoreo_mosaico_63_pozos.png"
+                alt="Centro de monitoreo ATILAX - 63 pozos en tiempo real"
+                width={1920}
+                height={1080}
+                className="rounded-xl w-full h-auto shadow-lg"
               />
             </div>
           </div>
@@ -131,10 +133,12 @@ export default function EmpresaPage() {
         <div className="container-lg">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1">
-              <ImagePlaceholder
-                label="oil-field-venezuela.jpg"
-                className="aspect-[4/3] rounded-xl"
-                iconSize="lg"
+              <Image
+                src="/images/capturas/optimizacion/01_optimizacion_waterfall.png"
+                alt="Resultados de optimizacion ATILAX - Waterfall de produccion"
+                width={1920}
+                height={1080}
+                className="rounded-xl w-full h-auto shadow-lg"
               />
             </div>
             <div className="order-1 lg:order-2">
@@ -149,7 +153,7 @@ export default function EmpresaPage() {
                   },
                   {
                     title: "Tecnología Probada",
-                    desc: "Basado en ThingsBoard con +5,000 instalaciones globales.",
+                    desc: "Plataforma IoT madura con mas de 5,000 instalaciones en 100+ paises.",
                   },
                   {
                     title: "Soporte Local",

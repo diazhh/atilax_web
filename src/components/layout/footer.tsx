@@ -54,10 +54,15 @@ export function Footer() {
                 <Mail className="h-4 w-4" />
                 info@atilax.io
               </a>
-              <div className="flex items-center gap-3 text-sm text-white/70">
+              <a
+                href="https://wa.me/584126099040"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 text-sm text-white/70 hover:text-white transition-colors"
+              >
                 <Phone className="h-4 w-4" />
-                Soporte 24/7
-              </div>
+                +58 412 609 9040
+              </a>
               <div className="flex items-center gap-3 text-sm text-white/70">
                 <MapPin className="h-4 w-4" />
                 Venezuela

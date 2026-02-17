@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     title: "ATILAX | Plataforma IoT para la Industria Petrolera",
     description:
       "Plataforma integral de monitoreo industrial IoT para el sector petrolero.",
-    url: "https://www.atilax-solutions.com",
+    url: "https://www.atilax.io",
     siteName: "ATILAX",
     locale: "es_VE",
     type: "website",

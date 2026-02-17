@@ -92,7 +92,6 @@ const liftingParams = [
       { name: "Presion de yacimiento", unit: "psi", range: "500 - 8,000", effect: "Simula deplecion o estimulacion" },
       { name: "Factor de dano (skin)", unit: "-", range: "-5 a 50", effect: "Simula estimulacion o dano de formacion" },
     ],
-    telemetry: ["sim_frequency_hz", "sim_flow_rate_bpd", "sim_intake_pressure_psi"],
   },
   {
     type: "SRP",
@@ -105,7 +104,6 @@ const liftingParams = [
       { name: "Corte de agua", unit: "%", range: "0 - 99", effect: "Afecta gravedad del fluido" },
       { name: "Presion de yacimiento", unit: "psi", range: "500 - 8,000", effect: "Simula deplecion" },
     ],
-    telemetry: ["sim_spm", "sim_flow_rate_bpd", "sim_pump_fillage_pct"],
   },
   {
     type: "PCP",
@@ -117,7 +115,6 @@ const liftingParams = [
       { name: "Corte de agua", unit: "%", range: "0 - 99", effect: "Modifica viscosidad efectiva" },
       { name: "Presion de yacimiento", unit: "psi", range: "500 - 8,000", effect: "Simula deplecion" },
     ],
-    telemetry: ["sim_drive_rpm", "sim_flow_rate_bpd", "sim_motor_power_kw"],
   },
   {
     type: "Gas Lift",
@@ -128,7 +125,6 @@ const liftingParams = [
       { name: "Corte de agua", unit: "%", range: "0 - 99", effect: "Afecta densidad de mezcla" },
       { name: "Presion de yacimiento", unit: "psi", range: "500 - 8,000", effect: "Simula deplecion" },
     ],
-    telemetry: ["sim_gas_injection_rate_mscfd", "sim_flow_rate_bpd", "sim_injection_pressure_psi"],
   },
 ];
 
@@ -162,13 +158,13 @@ const securityFeatures = [
     icon: Lock,
   },
   {
-    title: "Aislamiento por prefijo sim_",
-    description: "Todo dato simulado usa el prefijo sim_ — imposible confundir con datos reales.",
+    title: "Aislamiento completo de datos",
+    description: "Los datos simulados se almacenan por separado — imposible confundir con datos reales.",
     icon: Shield,
   },
   {
     title: "Limpieza automatica garantizada",
-    description: "Al cerrar sesion, el sistema elimina todos los datos sim_* del asset automaticamente.",
+    description: "Al cerrar sesion, el sistema elimina todos los datos simulados automaticamente.",
     icon: RefreshCw,
   },
   {
@@ -182,8 +178,8 @@ const securityFeatures = [
     icon: Target,
   },
   {
-    title: "Sin propagacion a Kafka",
-    description: "Los datos sim_* no se propagan a Kafka ni al detector de anomalias.",
+    title: "Sin interferencia con el monitoreo",
+    description: "Los datos simulados no afectan el sistema de deteccion de anomalias ni las alarmas operativas.",
     icon: Layers,
   },
 ];
@@ -384,14 +380,6 @@ export default function SimuladorPage() {
                       </tbody>
                     </table>
                   </div>
-                  <div className="mt-4 pt-4 border-t">
-                    <p className="text-xs text-muted-foreground">
-                      <span className="font-medium">Telemetria de proyeccion:</span>{" "}
-                      {lift.telemetry.map((t, i) => (
-                        <code key={t} className="bg-muted px-1.5 py-0.5 rounded text-xs mx-0.5">{t}</code>
-                      ))}
-                    </p>
-                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -405,7 +393,7 @@ export default function SimuladorPage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Modelos de Simulacion</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Utiliza los mismos modelos de ingenieria del Motor de Optimizacion, pero ejecutados con los parametros modificados por el operador.
+              Utiliza los mismos modelos de ingenieria del servicio de optimizacion, pero ejecutados con los parametros modificados por el operador.
             </p>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
@@ -476,7 +464,7 @@ export default function SimuladorPage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Seguridad y Aislamiento</h2>
             <p className="text-white/70 max-w-2xl mx-auto">
-              Los datos de simulacion coexisten en el mismo asset que los datos reales, pero con aislamiento total.
+              Los datos de simulacion coexisten con los datos reales del pozo, pero con aislamiento total.
               Nunca se afecta la operacion real del pozo.
             </p>
           </div>
@@ -500,7 +488,7 @@ export default function SimuladorPage() {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Arquitectura Tecnica</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Flujo de datos reactivo: cuando el operador cambia un parametro, ThingsBoard detecta el cambio y dispara la simulacion automaticamente.
+              Flujo de datos reactivo: cuando el operador cambia un parametro, la plataforma detecta el cambio y dispara la simulacion automaticamente.
             </p>
           </div>
           <Card className="max-w-4xl mx-auto">
@@ -510,36 +498,36 @@ export default function SimuladorPage() {
                   <div className="p-4 bg-blue-50 rounded-xl">
                     <SlidersHorizontal className="h-8 w-8 text-blue-600 mx-auto mb-2" />
                     <h4 className="font-semibold text-sm">Widget de Control</h4>
-                    <p className="text-xs text-muted-foreground mt-1">Operador modifica sim_param_*</p>
+                    <p className="text-xs text-muted-foreground mt-1">Operador modifica parametros</p>
                   </div>
                   <div className="p-4 bg-green-50 rounded-xl">
                     <Cpu className="h-8 w-8 text-green-600 mx-auto mb-2" />
-                    <h4 className="font-semibold text-sm">Motor de Reglas TB</h4>
-                    <p className="text-xs text-muted-foreground mt-1">Detecta cambio y envia HTTP POST</p>
+                    <h4 className="font-semibold text-sm">Motor de Reglas</h4>
+                    <p className="text-xs text-muted-foreground mt-1">Detecta cambio y ejecuta simulacion</p>
                   </div>
                   <div className="p-4 bg-purple-50 rounded-xl">
                     <Zap className="h-8 w-8 text-purple-600 mx-auto mb-2" />
                     <h4 className="font-semibold text-sm">Servicio de Simulacion</h4>
-                    <p className="text-xs text-muted-foreground mt-1">FastAPI ejecuta modelo y publica resultados</p>
+                    <p className="text-xs text-muted-foreground mt-1">Ejecuta modelo y publica resultados</p>
                   </div>
                 </div>
                 <div className="flex items-center justify-center gap-2 text-muted-foreground">
                   <ArrowRight className="h-4 w-4" />
-                  <span className="text-sm">Los resultados se publican como server attributes y telemetria con timestamps futuros</span>
+                  <span className="text-sm">Los resultados se publican como datos simulados con timestamps futuros</span>
                   <ArrowRight className="h-4 w-4" />
                 </div>
                 <div className="grid md:grid-cols-4 gap-3 text-center">
                   <div className="p-3 bg-muted rounded-lg">
                     <p className="text-xs font-medium">KPIs Simulados</p>
-                    <p className="text-xs text-muted-foreground">sim_opt_production_bpd</p>
+                    <p className="text-xs text-muted-foreground">Produccion, eficiencia, consumo</p>
                   </div>
                   <div className="p-3 bg-muted rounded-lg">
                     <p className="text-xs font-medium">Deltas</p>
-                    <p className="text-xs text-muted-foreground">sim_compare_*</p>
+                    <p className="text-xs text-muted-foreground">Comparacion real vs simulado</p>
                   </div>
                   <div className="p-3 bg-muted rounded-lg">
                     <p className="text-xs font-medium">Curvas Nodal</p>
-                    <p className="text-xs text-muted-foreground">sim_opt_ipr/vlp_curve</p>
+                    <p className="text-xs text-muted-foreground">IPR y VLP simuladas</p>
                   </div>
                   <div className="p-3 bg-muted rounded-lg">
                     <p className="text-xs font-medium">Proyeccion 12h</p>

@@ -15,14 +15,14 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email",
-    value: "info@atilax-solutions.com",
-    href: "mailto:info@atilax-solutions.com",
+    value: "info@atilax.io",
+    href: "mailto:info@atilax.io",
   },
   {
     icon: Phone,
-    title: "Soporte",
-    value: "soporte@atilax.com",
-    href: "mailto:soporte@atilax.com",
+    title: "Teléfono / WhatsApp",
+    value: "+58 412 609 9040",
+    href: "https://wa.me/584126099040",
   },
   {
     icon: Clock,

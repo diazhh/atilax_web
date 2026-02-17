@@ -15,12 +15,12 @@ import { PageHeader } from "@/components/shared/page-header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ImagePlaceholder } from "@/components/shared/image-placeholder";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Plataforma",
   description:
-    "Plataforma IoT basada en ThingsBoard con dashboards personalizados, motor de reglas, alarmas y notificaciones multicanal.",
+    "Plataforma IoT industrial con dashboards personalizados, motor de reglas, alarmas y notificaciones multicanal.",
 };
 
 const features = [
@@ -56,7 +56,7 @@ const features = [
   },
 ];
 
-const protocols = ["Modbus RTU", "Modbus TCP/IP", "OPC-UA", "MQTT", "REST API"];
+const protocols = ["Modbus RTU", "Modbus TCP/IP", "OPC-UA", "REST API"];
 
 const communications = [
   { name: "LoRaWAN", range: "Hasta 15 km" },
@@ -71,7 +71,7 @@ export default function PlataformaPage() {
     <>
       <PageHeader
         title="Plataforma"
-        description="Arquitectura IoT de grado industrial basada en ThingsBoard. Robusta, escalable y probada globalmente."
+        description="Arquitectura IoT de grado industrial. Robusta, escalable y probada en mas de 5,000 instalaciones globales."
         badge="Tecnología"
       />
 
@@ -148,10 +148,12 @@ export default function PlataformaPage() {
               </div>
             </div>
             <div>
-              <ImagePlaceholder
-                label="architecture-diagram.png"
-                className="aspect-square rounded-xl"
-                iconSize="lg"
+              <Image
+                src="/images/capturas/monitoreo/01_monitoreo_mosaico_63_pozos.png"
+                alt="Vista mosaico de 63 pozos - Arquitectura de monitoreo en tiempo real"
+                width={1920}
+                height={1080}
+                className="rounded-xl w-full h-auto shadow-lg"
               />
             </div>
           </div>
@@ -163,10 +165,12 @@ export default function PlataformaPage() {
         <div className="container-lg">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1">
-              <ImagePlaceholder
-                label="edge-device.png"
-                className="aspect-[4/3] rounded-xl"
-                iconSize="lg"
+              <Image
+                src="/images/capturas/monitoreo/05_detalle_esp_kpis.png"
+                alt="Detalle ESP - Procesamiento de datos en tiempo real"
+                width={1920}
+                height={1080}
+                className="rounded-xl w-full h-auto shadow-lg"
               />
             </div>
             <div className="order-1 lg:order-2">
@@ -196,18 +200,18 @@ export default function PlataformaPage() {
         </div>
       </section>
 
-      {/* ThingsBoard */}
+      {/* Platform Trust */}
       <section className="py-16 md:py-24 bg-primary text-white">
         <div className="container-lg text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">
-            Basado en ThingsBoard
+            Plataforma IoT de Clase Mundial
           </h2>
           <p className="text-white/70 mb-6 max-w-2xl mx-auto">
-            Plataforma IoT open source con más de 5,000 instalaciones globales.
-            Madura, estable y en constante evolución.
+            Tecnologia madura y estable con mas de 5,000 instalaciones globales.
+            En constante evolucion y adaptada a la industria petrolera.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            {["+5,000 instalaciones", "Open Source", "APIs abiertas", "Sin vendor lock-in"].map(
+            {["+5,000 instalaciones globales", "APIs abiertas", "Sin vendor lock-in", "Escalable a miles de dispositivos"].map(
               (item) => (
                 <Badge key={item} variant="secondary" className="bg-white/10 text-white border-0">
                   {item}

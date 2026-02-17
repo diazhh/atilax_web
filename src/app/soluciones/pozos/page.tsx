@@ -29,7 +29,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
-import { ImagePlaceholder } from "@/components/shared/image-placeholder";
+
 
 export const metadata: Metadata = {
   title: "Monitoreo de Pozos Petroleros | ATILAX",
@@ -863,7 +863,7 @@ export default function PozosPage() {
                 step: "2",
                 title: "Transmision",
                 icon: Server,
-                detail: "Datos enviados via MQTT/REST a la plataforma central con operacion offline y reconexion automatica",
+                detail: "Datos enviados de forma segura a la plataforma central con operacion offline y reconexion automatica",
               },
               {
                 step: "3",
