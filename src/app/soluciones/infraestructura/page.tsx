@@ -39,7 +39,7 @@ import {
 import { PageHeader } from "@/components/shared/page-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ImagePlaceholder } from "@/components/shared/image-placeholder";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Infraestructura y Edificaciones | ATILAX",
@@ -376,10 +376,12 @@ export default function InfraestructuraPage() {
                 Estilo: Fotografia profesional, luz natural, ambiente urbano venezolano.
                 Resolucion: 1920x1440px (4:3)
               */}
-              <ImagePlaceholder
-                label="infraestructura-hero-edificaciones.jpg"
-                className="aspect-[4/3] rounded-2xl"
-                iconSize="lg"
+              <Image
+                src="/images/stock/infraestructura_power.jpg"
+                alt="Infraestructura critica - Monitoreo de edificaciones y servicios"
+                width={1200}
+                height={800}
+                className="aspect-[4/3] rounded-2xl object-cover w-full"
               />
             </div>
           </div>
@@ -421,10 +423,12 @@ export default function InfraestructuraPage() {
                   IMAGEN: {sector.image}
                   Ver documentacion de imagenes al final del archivo
                 */}
-                <ImagePlaceholder
-                  label={sector.image}
-                  className="aspect-[4/3] rounded-2xl mb-6"
-                  iconSize="lg"
+                <Image
+                  src="/images/stock/infraestructura_water.jpg"
+                  alt="Subestacion electrica - Monitoreo de infraestructura energetica"
+                  width={1200}
+                  height={800}
+                  className="aspect-[4/3] rounded-2xl mb-6 object-cover w-full"
                 />
                 <div className="bg-green-50 border border-green-100 rounded-xl p-6">
                   <h4 className="font-semibold text-green-800 mb-3 flex items-center gap-2">
@@ -549,10 +553,12 @@ export default function InfraestructuraPage() {
                 Estilo: Interfaz moderna, colores corporativos ATILAX
                 Resolucion: 1920x1440px (4:3)
               */}
-              <ImagePlaceholder
-                label="infraestructura-dashboard-unificado.jpg"
-                className="aspect-[4/3] rounded-2xl shadow-2xl"
-                iconSize="lg"
+              <Image
+                src="/images/stock/iot_dashboard.jpg"
+                alt="Centro de control unificado - Dashboard IoT para infraestructura"
+                width={1200}
+                height={673}
+                className="aspect-[4/3] rounded-2xl shadow-2xl object-cover w-full"
               />
             </div>
             <div className="order-1 lg:order-2">

@@ -75,8 +75,8 @@ const crossSolutions = [
   },
   {
     icon: Shield,
-    title: "Seguridad con IA",
-    description: "Vigilancia perimetral con vision artificial y deteccion automatica.",
+    title: "ATILAX Vision",
+    description: "Vigilancia inteligente con IA y deteccion automatica de amenazas.",
     href: "/soluciones/seguridad",
   },
 ];
@@ -327,8 +327,8 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <Image
-                src="/images/capturas/optimizacion/01_optimizacion_waterfall.png"
-                alt="Optimizacion de produccion petrolera - Grafico waterfall mostrando oportunidades de mejora"
+                src="/images/capturas/general/01_login_atilax.png"
+                alt="Plataforma ATILAX - Interfaz de acceso seguro con autenticacion empresarial"
                 width={1920}
                 height={1080}
                 className="rounded-2xl w-full h-auto shadow-lg"

@@ -20,7 +20,7 @@ import {
 import { PageHeader } from "@/components/shared/page-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ImagePlaceholder } from "@/components/shared/image-placeholder";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Mineria | ATILAX",
@@ -219,10 +219,12 @@ export default function MineriaPage() {
                 }`}
               >
                 <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
-                  <ImagePlaceholder
-                    label={solution.image}
-                    className="aspect-[4/3] rounded-2xl"
-                    iconSize="lg"
+                  <Image
+                    src="/images/stock/mineria_operacion.jpg"
+                    alt="Monitoreo de maquinaria pesada minera - Excavadoras y camiones instrumentados"
+                    width={1200}
+                    height={800}
+                    className="aspect-[4/3] rounded-2xl object-cover w-full"
                   />
                 </div>
 
@@ -287,10 +289,12 @@ export default function MineriaPage() {
               </div>
             </div>
             <div>
-              <ImagePlaceholder
-                label={fleetManagement.image}
-                className="aspect-[4/3] rounded-2xl"
-                iconSize="lg"
+              <Image
+                src="/images/stock/mineria_excavadora.jpg"
+                alt="Gestion de flota minera - Camiones y maquinaria pesada con telemetria"
+                width={1200}
+                height={800}
+                className="aspect-[4/3] rounded-2xl object-cover w-full"
               />
             </div>
           </div>
@@ -302,10 +306,12 @@ export default function MineriaPage() {
         <div className="container-lg">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1">
-              <ImagePlaceholder
-                label={arcoMinero.image}
-                className="aspect-[4/3] rounded-2xl"
-                iconSize="lg"
+              <Image
+                src="/images/stock/mineria_procesamiento.jpg"
+                alt="Arco Minero del Orinoco - Operaciones mineras con monitoreo digital"
+                width={1200}
+                height={800}
+                className="aspect-[4/3] rounded-2xl object-cover w-full"
               />
             </div>
             <div className="order-1 lg:order-2">
@@ -366,10 +372,12 @@ export default function MineriaPage() {
             </p>
           </div>
           <div className="max-w-4xl mx-auto">
-            <ImagePlaceholder
-              label="mineria-dashboard-control.jpg"
-              className="aspect-[16/9] rounded-2xl shadow-2xl"
-              iconSize="lg"
+            <Image
+              src="/images/stock/iot_dashboard.jpg"
+              alt="Centro de control minero - Dashboard IoT de monitoreo integrado"
+              width={1200}
+              height={673}
+              className="aspect-[16/9] rounded-2xl shadow-2xl object-cover w-full"
             />
           </div>
           <div className="text-center mt-8">

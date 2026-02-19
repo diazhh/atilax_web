@@ -15,7 +15,7 @@ const footerLinks = {
   soluciones: [
     { name: "Simulador Interactivo", href: "/soluciones/simulador" },
     { name: "Gestion de Flota", href: "/soluciones/flota" },
-    { name: "Seguridad con IA", href: "/soluciones/seguridad" },
+    { name: "ATILAX Vision", href: "/soluciones/seguridad" },
     { name: "Monitoreo de Activos", href: "/plataforma" },
     { name: "Todas las Soluciones", href: "/soluciones" },
   ],

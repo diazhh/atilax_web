@@ -20,7 +20,7 @@ import {
 import { PageHeader } from "@/components/shared/page-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ImagePlaceholder } from "@/components/shared/image-placeholder";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Puertos y Logistica | ATILAX",
@@ -213,10 +213,12 @@ export default function PuertosPage() {
               </Link>
             </div>
             <div className="relative">
-              <ImagePlaceholder
-                label="puertos-hero-puerto-cabello.jpg"
-                className="aspect-[4/3] rounded-2xl"
-                iconSize="lg"
+              <Image
+                src="/images/stock/puertos_terminal.jpg"
+                alt="Terminal portuario - Infraestructura portuaria con monitoreo inteligente"
+                width={1200}
+                height={800}
+                className="aspect-[4/3] rounded-2xl object-cover w-full"
               />
             </div>
           </div>
@@ -244,10 +246,12 @@ export default function PuertosPage() {
                 }`}
               >
                 <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
-                  <ImagePlaceholder
-                    label={solution.image}
-                    className="aspect-[4/3] rounded-2xl"
-                    iconSize="lg"
+                  <Image
+                    src="/images/stock/vision_security_camera.jpg"
+                    alt="Seguridad perimetral portuaria - Vigilancia con IA en terminales"
+                    width={1200}
+                    height={800}
+                    className="aspect-[4/3] rounded-2xl object-cover w-full"
                   />
                 </div>
 
@@ -317,10 +321,12 @@ export default function PuertosPage() {
         <div className="container-lg">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1">
-              <ImagePlaceholder
-                label="puertos-aeropuerto-maiquetia.jpg"
-                className="aspect-[4/3] rounded-2xl"
-                iconSize="lg"
+              <Image
+                src="/images/stock/puertos_logistica.jpg"
+                alt="Terminal aerea - Monitoreo de infraestructura aeroportuaria"
+                width={1200}
+                height={1600}
+                className="aspect-[4/3] rounded-2xl object-cover w-full"
               />
             </div>
             <div className="order-1 lg:order-2">
@@ -370,10 +376,12 @@ export default function PuertosPage() {
             </p>
           </div>
           <div className="max-w-4xl mx-auto">
-            <ImagePlaceholder
-              label="puertos-dashboard-control.jpg"
-              className="aspect-[16/9] rounded-2xl shadow-2xl"
-              iconSize="lg"
+            <Image
+              src="/images/stock/iot_dashboard.jpg"
+              alt="Centro de control portuario - Dashboard IoT de monitoreo integrado"
+              width={1200}
+              height={673}
+              className="aspect-[16/9] rounded-2xl shadow-2xl object-cover w-full"
             />
           </div>
           <div className="text-center mt-8">

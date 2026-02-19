@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { PageHeader } from "@/components/shared/page-header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ImagePlaceholder } from "@/components/shared/image-placeholder";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Estaciones de Flujo",
@@ -113,10 +113,12 @@ export default function EstacionesPage() {
               </Link>
             </div>
             <div>
-              <ImagePlaceholder
-                label="pid-diagram.png"
-                className="aspect-[4/3] rounded-xl"
-                iconSize="lg"
+              <Image
+                src="/images/stock/estaciones_flow_station.jpg"
+                alt="Estacion de flujo industrial - Monitoreo de procesos en tiempo real"
+                width={1200}
+                height={960}
+                className="aspect-[4/3] rounded-xl object-cover w-full"
               />
             </div>
           </div>

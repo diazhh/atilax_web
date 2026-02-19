@@ -73,8 +73,8 @@ export default function EmpresaPage() {
             </div>
             <div>
               <Image
-                src="/images/capturas/monitoreo/01_monitoreo_mosaico_63_pozos.png"
-                alt="Centro de monitoreo ATILAX - 63 pozos en tiempo real"
+                src="/images/capturas/general/02_administracion_tabla_pozos.png"
+                alt="Panel de administracion ATILAX - Gestion centralizada de activos"
                 width={1920}
                 height={1080}
                 className="rounded-xl w-full h-auto shadow-lg"
@@ -134,8 +134,8 @@ export default function EmpresaPage() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1">
               <Image
-                src="/images/capturas/optimizacion/01_optimizacion_waterfall.png"
-                alt="Resultados de optimizacion ATILAX - Waterfall de produccion"
+                src="/images/capturas/general/04_administracion_dashboards.png"
+                alt="Dashboards ATILAX - Paneles configurables para cada operacion"
                 width={1920}
                 height={1080}
                 className="rounded-xl w-full h-auto shadow-lg"

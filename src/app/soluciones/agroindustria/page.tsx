@@ -20,7 +20,7 @@ import {
 import { PageHeader } from "@/components/shared/page-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ImagePlaceholder } from "@/components/shared/image-placeholder";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Agroindustria | ATILAX",
@@ -208,10 +208,12 @@ export default function AgroindustriaPage() {
               </Link>
             </div>
             <div className="relative">
-              <ImagePlaceholder
-                label="agroindustria-hero-campo-venezolano.jpg"
-                className="aspect-[4/3] rounded-2xl"
-                iconSize="lg"
+              <Image
+                src="/images/stock/agroindustria_farm.jpg"
+                alt="Agricultura de precision - Campo venezolano con tecnologia IoT"
+                width={1200}
+                height={800}
+                className="aspect-[4/3] rounded-2xl object-cover w-full"
               />
             </div>
           </div>
@@ -239,10 +241,12 @@ export default function AgroindustriaPage() {
                 }`}
               >
                 <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
-                  <ImagePlaceholder
-                    label={solution.image}
-                    className="aspect-[4/3] rounded-2xl"
-                    iconSize="lg"
+                  <Image
+                    src="/images/stock/agroindustria_riego.jpg"
+                    alt="Riego tecnificado inteligente - Sistema de irrigacion con sensores IoT"
+                    width={1200}
+                    height={881}
+                    className="aspect-[4/3] rounded-2xl object-cover w-full"
                   />
                 </div>
 
@@ -302,10 +306,12 @@ export default function AgroindustriaPage() {
               </div>
             </div>
             <div>
-              <ImagePlaceholder
-                label={weatherStation.image}
-                className="aspect-[4/3] rounded-2xl"
-                iconSize="lg"
+              <Image
+                src="/images/stock/agroindustria_maquinaria.jpg"
+                alt="Estacion meteorologica agricola - Monitoreo climatico para cultivos"
+                width={1200}
+                height={899}
+                className="aspect-[4/3] rounded-2xl object-cover w-full"
               />
             </div>
           </div>
@@ -342,10 +348,12 @@ export default function AgroindustriaPage() {
         <div className="container-lg">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1">
-              <ImagePlaceholder
-                label="agroindustria-seguridad-finca.jpg"
-                className="aspect-[4/3] rounded-2xl"
-                iconSize="lg"
+              <Image
+                src="/images/stock/vision_ai_surveillance.jpg"
+                alt="Seguridad rural con IA - Vigilancia inteligente para fincas agricolas"
+                width={1200}
+                height={807}
+                className="aspect-[4/3] rounded-2xl object-cover w-full"
               />
             </div>
             <div className="order-1 lg:order-2">
@@ -401,10 +409,12 @@ export default function AgroindustriaPage() {
             </p>
           </div>
           <div className="max-w-4xl mx-auto">
-            <ImagePlaceholder
-              label="agroindustria-dashboard-finca.jpg"
-              className="aspect-[16/9] rounded-2xl shadow-2xl"
-              iconSize="lg"
+            <Image
+              src="/images/stock/iot_dashboard.jpg"
+              alt="Dashboard agricola - Panel de control IoT para operaciones agroindustriales"
+              width={1200}
+              height={673}
+              className="aspect-[16/9] rounded-2xl shadow-2xl object-cover w-full"
             />
           </div>
         </div>

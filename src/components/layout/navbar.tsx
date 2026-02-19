@@ -62,9 +62,9 @@ const navigation = [
         description: "GPS y control vehicular"
       },
       {
-        name: "Seguridad con IA",
+        name: "ATILAX Vision",
         href: "/soluciones/seguridad",
-        description: "Vigilancia perimetral"
+        description: "Vigilancia inteligente con IA"
       },
     ],
   },

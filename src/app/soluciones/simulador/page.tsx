@@ -322,15 +322,15 @@ export default function SimuladorPage() {
             </div>
             <div className="rounded-xl overflow-hidden shadow-lg border">
               <Image
-                src="/images/capturas/optimizacion/01_optimizacion_waterfall.png"
-                alt="Waterfall de produccion - resultado de optimizacion simulada"
+                src="/images/capturas/monitoreo/06_detalle_srp_tendencia.png"
+                alt="Grafico de tendencia SRP - visualizacion de datos simulados vs reales"
                 width={1920}
                 height={1080}
                 className="w-full h-auto"
               />
               <div className="bg-white p-4">
-                <p className="text-sm font-medium">Resultado de Optimizacion</p>
-                <p className="text-xs text-muted-foreground">Cascada mostrando produccion actual vs ganancias por pozo vs total optimizado</p>
+                <p className="text-sm font-medium">Tendencias Real vs Simulado</p>
+                <p className="text-xs text-muted-foreground">Series historicas y proyeccion simulada superpuestas para comparacion visual</p>
               </div>
             </div>
           </div>

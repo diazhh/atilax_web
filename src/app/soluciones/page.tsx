@@ -15,7 +15,7 @@ import {
 import { PageHeader } from "@/components/shared/page-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ImagePlaceholder } from "@/components/shared/image-placeholder";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Soluciones | ATILAX",
@@ -178,10 +178,12 @@ export default function SolucionesPage() {
                 {/* Image */}
                 <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
                   <div className="relative rounded-2xl overflow-hidden">
-                    <ImagePlaceholder
-                      label={industry.image}
-                      className="aspect-[4/3]"
-                      iconSize="lg"
+                    <Image
+                      src="/images/stock/iot_dashboard.jpg"
+                      alt="Soluciones industriales ATILAX - Plataforma IoT para multiples sectores"
+                      width={1200}
+                      height={673}
+                      className="aspect-[4/3] object-cover w-full"
                     />
                   </div>
                 </div>
@@ -237,10 +239,12 @@ export default function SolucionesPage() {
             {crossSolutions.map((solution) => (
               <Card key={solution.title} className="overflow-hidden border-dashed border-2">
                 <div className="grid md:grid-cols-2">
-                  <ImagePlaceholder
-                    label={solution.image}
-                    className="aspect-[4/3] md:aspect-auto md:h-full"
-                    iconSize="md"
+                  <Image
+                    src="/images/stock/flota_gps_tracking.jpg"
+                    alt="Gestion de flota vehicular - Rastreo GPS y telemetria"
+                    width={1200}
+                    height={795}
+                    className="aspect-[4/3] md:aspect-auto md:h-full object-cover w-full"
                   />
                   <CardContent className="p-6">
                     <div className="flex items-center gap-3 mb-3">

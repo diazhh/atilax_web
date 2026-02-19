@@ -19,7 +19,7 @@ import {
 import { PageHeader } from "@/components/shared/page-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ImagePlaceholder } from "@/components/shared/image-placeholder";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Zonas Industriales | ATILAX",
@@ -224,10 +224,12 @@ export default function IndustriaPage() {
               </Link>
             </div>
             <div className="relative">
-              <ImagePlaceholder
-                label="industria-hero-fabrica-venezuela.jpg"
-                className="aspect-[4/3] rounded-2xl"
-                iconSize="lg"
+              <Image
+                src="/images/stock/industria_factory.jpg"
+                alt="Zona industrial venezolana - Manufactura con monitoreo IoT"
+                width={1200}
+                height={675}
+                className="aspect-[4/3] rounded-2xl object-cover w-full"
               />
             </div>
           </div>
@@ -255,10 +257,12 @@ export default function IndustriaPage() {
                 }`}
               >
                 <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
-                  <ImagePlaceholder
-                    label={solution.image}
-                    className="aspect-[4/3] rounded-2xl"
-                    iconSize="lg"
+                  <Image
+                    src="/images/stock/industria_manufactura.jpg"
+                    alt="Linea de produccion industrial - Monitoreo de equipos en tiempo real"
+                    width={1200}
+                    height={800}
+                    className="aspect-[4/3] rounded-2xl object-cover w-full"
                   />
                 </div>
 
@@ -323,10 +327,12 @@ export default function IndustriaPage() {
               </div>
             </div>
             <div>
-              <ImagePlaceholder
-                label={industria40.image}
-                className="aspect-[4/3] rounded-2xl"
-                iconSize="lg"
+              <Image
+                src="/images/stock/iot_platform_2.jpg"
+                alt="Industria 4.0 - Fabrica inteligente con automatizacion y IoT"
+                width={1200}
+                height={800}
+                className="aspect-[4/3] rounded-2xl object-cover w-full"
               />
             </div>
           </div>
@@ -373,10 +379,12 @@ export default function IndustriaPage() {
             </p>
           </div>
           <div className="max-w-4xl mx-auto">
-            <ImagePlaceholder
-              label="industria-dashboard-planta.jpg"
-              className="aspect-[16/9] rounded-2xl shadow-2xl"
-              iconSize="lg"
+            <Image
+              src="/images/stock/iot_dashboard.jpg"
+              alt="Dashboard de planta industrial - Centro de control IoT integrado"
+              width={1200}
+              height={673}
+              className="aspect-[16/9] rounded-2xl shadow-2xl object-cover w-full"
             />
           </div>
           <div className="text-center mt-8">

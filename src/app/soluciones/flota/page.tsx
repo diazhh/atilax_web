@@ -4,7 +4,7 @@ import { ArrowRight, MapPin, Fuel, User, Route } from "lucide-react";
 import { PageHeader } from "@/components/shared/page-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ImagePlaceholder } from "@/components/shared/image-placeholder";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Gestión de Flota",
@@ -117,10 +117,12 @@ export default function FlotaPage() {
               </Link>
             </div>
             <div>
-              <ImagePlaceholder
-                label="fleet-map.png"
-                className="aspect-[4/3] rounded-xl"
-                iconSize="lg"
+              <Image
+                src="/images/stock/flota_gps_tracking.jpg"
+                alt="Gestion de flota vehicular con GPS - Rastreo y control en tiempo real"
+                width={1200}
+                height={795}
+                className="aspect-[4/3] rounded-xl object-cover w-full"
               />
             </div>
           </div>
