@@ -35,7 +35,7 @@ const industries = [
       "Balance de produccion",
       "Alertas en tiempo real"
     ],
-    image: "soluciones-petrolera.jpg",
+    image: "/images/stock/soluciones_petrolera.jpg",
     color: "amber"
   },
   {
@@ -49,7 +49,7 @@ const industries = [
       "Monitoreo de tanques y bombas",
       "Gestion de estacionamientos"
     ],
-    image: "soluciones-infraestructura.jpg",
+    image: "/images/stock/soluciones_infraestructura.jpg",
     color: "yellow"
   },
   {
@@ -63,7 +63,7 @@ const industries = [
       "Control ambiental",
       "Trazabilidad de mineral"
     ],
-    image: "soluciones-mineria.jpg",
+    image: "/images/stock/soluciones_mineria.jpg",
     color: "orange"
   },
   {
@@ -77,7 +77,7 @@ const industries = [
       "Datos climaticos en tiempo real",
       "GPS de tractores y cosechadoras"
     ],
-    image: "soluciones-agroindustria.jpg",
+    image: "/images/stock/soluciones_agroindustria.jpg",
     color: "green"
   },
   {
@@ -91,7 +91,7 @@ const industries = [
       "Flota de montacargas",
       "Acceso vehicular automatizado"
     ],
-    image: "soluciones-puertos.jpg",
+    image: "/images/stock/soluciones_puertos.jpg",
     color: "blue"
   },
   {
@@ -105,7 +105,7 @@ const industries = [
       "Medicion energetica",
       "Industria 4.0"
     ],
-    image: "soluciones-industria.jpg",
+    image: "/images/stock/soluciones_industria.jpg",
     color: "purple"
   },
 ];
@@ -122,11 +122,11 @@ const crossSolutions = [
       "Geocercas configurables",
       "Optimizacion de rutas"
     ],
-    image: "soluciones-flota.jpg"
+    image: "/images/stock/soluciones_flota.jpg"
   },
   {
     icon: Shield,
-    title: "Seguridad con IA",
+    title: "ATILAX Vision",
     description: "Vigilancia perimetral con inteligencia artificial: deteccion de intrusos, reconocimiento de vehiculos y placas, procesamiento Edge con 99% menos consumo de datos.",
     href: "/soluciones/seguridad",
     features: [
@@ -135,7 +135,7 @@ const crossSolutions = [
       "Procesamiento en el borde",
       "70-90% reduccion de robos"
     ],
-    image: "soluciones-seguridad.jpg"
+    image: "/images/stock/soluciones_seguridad.jpg"
   },
 ];
 
@@ -179,8 +179,8 @@ export default function SolucionesPage() {
                 <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
                   <div className="relative rounded-2xl overflow-hidden">
                     <Image
-                      src="/images/stock/iot_dashboard.jpg"
-                      alt="Soluciones industriales ATILAX - Plataforma IoT para multiples sectores"
+                      src={industry.image}
+                      alt={`${industry.title} - Soluciones IoT ATILAX`}
                       width={1200}
                       height={673}
                       className="aspect-[4/3] object-cover w-full"
@@ -240,8 +240,8 @@ export default function SolucionesPage() {
               <Card key={solution.title} className="overflow-hidden border-dashed border-2">
                 <div className="grid md:grid-cols-2">
                   <Image
-                    src="/images/stock/flota_gps_tracking.jpg"
-                    alt="Gestion de flota vehicular - Rastreo GPS y telemetria"
+                    src={solution.image}
+                    alt={`${solution.title} - Soluciones transversales ATILAX`}
                     width={1200}
                     height={795}
                     className="aspect-[4/3] md:aspect-auto md:h-full object-cover w-full"

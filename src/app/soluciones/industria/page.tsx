@@ -46,7 +46,7 @@ const solutions = [
       "Deteccion de anomalias con IA",
       "Alertas de mantenimiento predictivo"
     ],
-    image: "industria-linea-produccion.jpg"
+    image: "/images/stock/industria_linea_produccion.jpg"
   },
   {
     icon: Zap,
@@ -59,7 +59,7 @@ const solutions = [
       "Consumo energetico por equipo",
       "Compatible con ABB, Siemens, Schneider, Allen-Bradley"
     ],
-    image: "industria-variadores-motores.jpg"
+    image: "/images/stock/industria_variadores_motores.jpg"
   },
   {
     icon: BarChart3,
@@ -72,7 +72,7 @@ const solutions = [
       "Reportes para optimizacion de contratos",
       "Ahorro promedio del 10-20%"
     ],
-    image: "industria-eficiencia-energetica.jpg"
+    image: "/images/stock/industria_energia.jpg"
   },
   {
     icon: Shield,
@@ -85,7 +85,7 @@ const solutions = [
       "Alertas con evidencia visual",
       "Integracion con guardias de seguridad"
     ],
-    image: "industria-seguridad-parque.jpg"
+    image: "/images/stock/industria_seguridad_parque.jpg"
   },
 ];
 
@@ -258,8 +258,8 @@ export default function IndustriaPage() {
               >
                 <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
                   <Image
-                    src="/images/stock/industria_manufactura.jpg"
-                    alt="Linea de produccion industrial - Monitoreo de equipos en tiempo real"
+                    src={solution.image}
+                    alt={`${solution.title} - Soluciones IoT para manufactura`}
                     width={1200}
                     height={800}
                     className="aspect-[4/3] rounded-2xl object-cover w-full"

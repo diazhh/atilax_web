@@ -47,7 +47,7 @@ const solutions = [
       "Alertas instantaneas con evidencia visual",
       "Integracion con sistemas de vigilancia existentes"
     ],
-    image: "puertos-seguridad-perimetral.jpg"
+    image: "/images/stock/puertos_seguridad.jpg"
   },
   {
     icon: Truck,
@@ -60,7 +60,7 @@ const solutions = [
       "Optimizacion de movimientos de carga",
       "Historial de recorridos y tiempos"
     ],
-    image: "puertos-flota-montacargas.jpg"
+    image: "/images/stock/puertos_montacargas.jpg"
   },
   {
     icon: Container,
@@ -73,7 +73,7 @@ const solutions = [
       "Alertas de desviacion de temperatura",
       "Integracion con sistemas TOS"
     ],
-    image: "puertos-contenedores-reefer.jpg"
+    image: "/images/stock/puertos_contenedores.jpg"
   },
   {
     icon: Warehouse,
@@ -86,7 +86,7 @@ const solutions = [
       "Inventario con sensores de peso",
       "Alertas de condiciones fuera de rango"
     ],
-    image: "puertos-almacen-bodega.jpg"
+    image: "/images/stock/puertos_almacen.jpg"
   },
 ];
 
@@ -247,8 +247,8 @@ export default function PuertosPage() {
               >
                 <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
                   <Image
-                    src="/images/stock/vision_security_camera.jpg"
-                    alt="Seguridad perimetral portuaria - Vigilancia con IA en terminales"
+                    src={solution.image}
+                    alt={`${solution.title} - Soluciones IoT para puertos y logistica`}
                     width={1200}
                     height={800}
                     className="aspect-[4/3] rounded-2xl object-cover w-full"

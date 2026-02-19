@@ -90,7 +90,7 @@ const sectors = [
       "Proteccion contra vandalismo y robos",
       "Cumplimiento de normativas de seguridad"
     ],
-    image: "infraestructura-subestacion-electrica.jpg"
+    image: "/images/stock/infraestructura_subestacion.jpg"
   },
   {
     id: "agua",
@@ -127,7 +127,7 @@ const sectors = [
       "Mejor gestion del inventario de agua",
       "Menor tiempo de respuesta ante emergencias"
     ],
-    image: "infraestructura-estacion-bombeo-agua.jpg"
+    image: "/images/stock/infraestructura_bombeo_agua.jpg"
   },
   {
     id: "telecom",
@@ -164,7 +164,7 @@ const sectors = [
       "Respuesta rapida ante fallas",
       "Optimizacion del mantenimiento preventivo"
     ],
-    image: "infraestructura-torre-telecomunicaciones.jpg"
+    image: "/images/stock/infraestructura_telecomunicaciones.jpg"
   },
   {
     id: "residencial",
@@ -212,7 +212,7 @@ const sectors = [
       "Reduccion de robos y hurtos 70-90%",
       "Tranquilidad y confianza"
     ],
-    image: "infraestructura-conjunto-residencial.jpg"
+    image: "/images/stock/infraestructura_residencial.jpg"
   },
   {
     id: "comercial",
@@ -260,7 +260,7 @@ const sectors = [
       "Optimizacion del consumo energetico",
       "Cumplimiento de normativas de seguridad"
     ],
-    image: "infraestructura-centro-comercial.jpg"
+    image: "/images/stock/infraestructura_comercial.jpg"
   }
 ];
 
@@ -419,13 +419,9 @@ export default function InfraestructuraPage() {
             <div className="grid lg:grid-cols-2 gap-12 mb-12">
               {/* Image and Benefits */}
               <div>
-                {/*
-                  IMAGEN: {sector.image}
-                  Ver documentacion de imagenes al final del archivo
-                */}
                 <Image
-                  src="/images/stock/infraestructura_water.jpg"
-                  alt="Subestacion electrica - Monitoreo de infraestructura energetica"
+                  src={sector.image}
+                  alt={`${sector.title} - Monitoreo IoT para infraestructura`}
                   width={1200}
                   height={800}
                   className="aspect-[4/3] rounded-2xl mb-6 object-cover w-full"

@@ -47,7 +47,7 @@ const solutions = [
       "Ubicacion GPS y geocercas",
       "Alertas de mantenimiento preventivo"
     ],
-    image: "mineria-maquinaria-pesada.jpg"
+    image: "/images/stock/mineria_maquinaria_pesada.jpg"
   },
   {
     icon: Activity,
@@ -60,7 +60,7 @@ const solutions = [
       "Temperatura de proceso",
       "Eficiencia de recuperacion"
     ],
-    image: "mineria-planta-procesamiento.jpg"
+    image: "/images/stock/mineria_procesamiento.jpg"
   },
   {
     icon: Shield,
@@ -73,7 +73,7 @@ const solutions = [
       "Alertas con evidencia visual",
       "Reduccion 70-90% de robos"
     ],
-    image: "mineria-seguridad-perimetral.jpg"
+    image: "/images/stock/mineria_seguridad_perimetral.jpg"
   },
   {
     icon: Leaf,
@@ -86,7 +86,7 @@ const solutions = [
       "Alertas de derrames",
       "Reportes para entes reguladores"
     ],
-    image: "mineria-monitoreo-ambiental.jpg"
+    image: "/images/stock/mineria_monitoreo_ambiental.jpg"
   },
 ];
 
@@ -220,8 +220,8 @@ export default function MineriaPage() {
               >
                 <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
                   <Image
-                    src="/images/stock/mineria_operacion.jpg"
-                    alt="Monitoreo de maquinaria pesada minera - Excavadoras y camiones instrumentados"
+                    src={solution.image}
+                    alt={`${solution.title} - Monitoreo IoT para operaciones mineras`}
                     width={1200}
                     height={800}
                     className="aspect-[4/3] rounded-2xl object-cover w-full"

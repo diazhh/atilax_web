@@ -47,7 +47,7 @@ const solutions = [
       "Integracion con datos meteorologicos",
       "Ahorro de agua hasta 30%"
     ],
-    image: "agroindustria-riego-tecnificado.jpg"
+    image: "/images/stock/agroindustria_riego_tecnificado.jpg"
   },
   {
     icon: Sun,
@@ -60,7 +60,7 @@ const solutions = [
       "Alertas de falla y mantenimiento",
       "Operacion 100% off-grid"
     ],
-    image: "agroindustria-bombeo-solar.jpg"
+    image: "/images/stock/agroindustria_bombeo_solar.jpg"
   },
   {
     icon: Tractor,
@@ -73,7 +73,7 @@ const solutions = [
       "Comportamiento del operador",
       "Optimizacion de rutas de cosecha"
     ],
-    image: "agroindustria-maquinaria-tractores.jpg"
+    image: "/images/stock/agroindustria_tractores.jpg"
   },
   {
     icon: Factory,
@@ -86,7 +86,7 @@ const solutions = [
       "Control de cadena de frio",
       "Eficiencia de lineas de produccion"
     ],
-    image: "agroindustria-planta-procesamiento.jpg"
+    image: "/images/stock/agroindustria_procesamiento.jpg"
   },
 ];
 
@@ -242,8 +242,8 @@ export default function AgroindustriaPage() {
               >
                 <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
                   <Image
-                    src="/images/stock/agroindustria_riego.jpg"
-                    alt="Riego tecnificado inteligente - Sistema de irrigacion con sensores IoT"
+                    src={solution.image}
+                    alt={`${solution.title} - Soluciones IoT para agroindustria`}
                     width={1200}
                     height={881}
                     className="aspect-[4/3] rounded-2xl object-cover w-full"
