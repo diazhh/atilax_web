@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   CheckCircle2,
@@ -15,6 +16,7 @@ import {
   Globe,
   Clock,
   Database,
+  ExternalLink,
 } from "lucide-react";
 import { PageHeader } from "@/components/shared/page-header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -126,6 +128,17 @@ const featuredModules = [
   },
 ];
 
+const screenshots = [
+  { src: "/images/erp/dashboard-principal.png", label: "Dashboard Principal" },
+  { src: "/images/erp/finanzas-dashboard.png", label: "Finanzas y Tesorería" },
+  { src: "/images/erp/afe-dashboard.png", label: "Autorización de Gasto (AFE)" },
+  { src: "/images/erp/hse-dashboard.png", label: "HSE — Seguridad Industrial" },
+  { src: "/images/erp/dashboard-kpis.png", label: "KPIs Ejecutivos" },
+  { src: "/images/erp/jib-dashboard.png", label: "Joint Interest Billing" },
+  { src: "/images/erp/proyectos-dashboard.png", label: "Gestión de Proyectos" },
+  { src: "/images/erp/crm-dashboard.png", label: "CRM y Clientes" },
+];
+
 export default function ERPPage() {
   return (
     <>
@@ -149,6 +162,17 @@ export default function ERPPage() {
                 <div className="text-sm text-white/70">{stat.label}</div>
               </div>
             ))}
+          </div>
+          <div className="mt-6 text-center">
+            <a href="https://erp.atilax.io/" target="_blank" rel="noopener noreferrer">
+              <Button
+                size="lg"
+                className="bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold"
+              >
+                Acceder al Sistema
+                <ExternalLink className="ml-2 h-4 w-4" />
+              </Button>
+            </a>
           </div>
         </div>
       </section>
@@ -284,6 +308,39 @@ export default function ERPPage() {
         </div>
       </section>
 
+      {/* Screenshots Gallery */}
+      <section className="py-16 md:py-24 bg-muted">
+        <div className="container-lg">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Así se ve ATILAX ERP
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Interfaz moderna, intuitiva y adaptada a su industria
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {screenshots.map((shot) => (
+              <div key={shot.label} className="group">
+                <div className="overflow-hidden rounded-lg shadow-md transition-all duration-300 group-hover:shadow-xl group-hover:scale-[1.02]">
+                  <Image
+                    src={shot.src}
+                    alt={shot.label}
+                    width={800}
+                    height={500}
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+                <p className="mt-2 text-sm text-center text-muted-foreground font-medium">
+                  {shot.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-20 bg-primary">
         <div className="container-lg text-center">
@@ -295,6 +352,15 @@ export default function ERPPage() {
             procesos de su organizacion en una sola plataforma.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="https://erp.atilax.io/" target="_blank" rel="noopener noreferrer">
+              <Button
+                size="lg"
+                className="bg-amber-500 text-white hover:bg-amber-600 font-semibold text-base"
+              >
+                🚀 Probar el Sistema
+                <ExternalLink className="ml-2 h-4 w-4" />
+              </Button>
+            </a>
             <Link href="/contacto">
               <Button
                 size="lg"
