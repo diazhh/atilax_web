@@ -69,6 +69,7 @@ const navigation = [
     ],
   },
   { name: "Plataforma", href: "/plataforma" },
+  { name: "ERP", href: "/erp" },
   { name: "Empresa", href: "/empresa" },
 ];
 

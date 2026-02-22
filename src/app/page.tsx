@@ -14,7 +14,8 @@ import {
   Ship,
   Factory,
   CheckCircle2,
-  ExternalLink
+  ExternalLink,
+  Building2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -335,6 +336,64 @@ export default function Home() {
               />
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* ERP Banner */}
+      <section className="py-16 md:py-20 bg-gradient-to-r from-primary/5 via-secondary/5 to-primary/5">
+        <div className="container-lg">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <Card className="overflow-hidden border-primary/20">
+              <CardContent className="p-0">
+                <div className="grid md:grid-cols-[1fr_auto] items-center">
+                  <div className="p-8 md:p-10">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                        <Building2 className="h-5 w-5 text-primary" />
+                      </div>
+                      <span className="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">
+                        Nuevo
+                      </span>
+                    </div>
+                    <h3 className="text-2xl md:text-3xl font-bold mb-3">
+                      ATILAX ERP
+                    </h3>
+                    <p className="text-muted-foreground text-lg mb-2">
+                      Sistema de Gestion Empresarial Integrado
+                    </p>
+                    <p className="text-muted-foreground mb-6 max-w-lg">
+                      36 modulos para produccion, finanzas, RRHH, contratos y operaciones.
+                      Disenado para la industria Oil & Gas en Venezuela.
+                    </p>
+                    <Link href="/erp">
+                      <Button className="bg-primary">
+                        Conocer el ERP
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
+                  </div>
+                  <div className="hidden md:flex items-center justify-center p-10">
+                    <div className="grid grid-cols-3 gap-3 text-center">
+                      {[
+                        { value: "36", label: "Modulos" },
+                        { value: "190+", label: "Modelos" },
+                        { value: "24/7", label: "Disponible" },
+                      ].map((s) => (
+                        <div key={s.label} className="bg-primary/5 rounded-xl p-4">
+                          <div className="text-2xl font-bold text-primary">{s.value}</div>
+                          <div className="text-xs text-muted-foreground">{s.label}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </motion.div>
         </div>
       </section>
 
