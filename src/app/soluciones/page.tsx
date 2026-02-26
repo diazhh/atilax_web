@@ -10,7 +10,8 @@ import {
   Truck,
   Shield,
   ArrowRight,
-  CheckCircle2
+  CheckCircle2,
+  Drill
 } from "lucide-react";
 import { PageHeader } from "@/components/shared/page-header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -37,6 +38,20 @@ const industries = [
     ],
     image: "/images/stock/soluciones_petrolera.jpg",
     color: "amber"
+  },
+  {
+    icon: Drill,
+    title: "Perforacion Direccional",
+    description: "Monitoreo completo spud-to-TD: parametros mecanicos, lodo, gas, trayectoria y BOP. 7 dashboards especializados y 25+ alarmas inteligentes para cada fase de perforacion.",
+    href: "/soluciones/perforacion",
+    features: [
+      "Deteccion multi-condicion de KICK",
+      "Gas logging C1-C5 + H2S en tiempo real",
+      "Trayectoria VSP vs plan direccional",
+      "Reporte DDR automatico cada 12h"
+    ],
+    image: "/images/stock/soluciones_petrolera.jpg",
+    color: "red"
   },
   {
     icon: Zap,
@@ -141,6 +156,7 @@ const crossSolutions = [
 
 const colorClasses: Record<string, string> = {
   amber: "bg-amber-500/10 text-amber-600 border-amber-200",
+  red: "bg-red-500/10 text-red-600 border-red-200",
   yellow: "bg-yellow-500/10 text-yellow-600 border-yellow-200",
   orange: "bg-orange-500/10 text-orange-600 border-orange-200",
   green: "bg-green-500/10 text-green-600 border-green-200",
