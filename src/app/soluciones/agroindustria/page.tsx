@@ -20,7 +20,7 @@ import {
 import { PageHeader } from "@/components/shared/page-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import { ImagePlaceholder } from "@/components/shared/image-placeholder";
 
 export const metadata: Metadata = {
   title: "Agroindustria | ATILAX",
@@ -47,7 +47,10 @@ const solutions = [
       "Integracion con datos meteorologicos",
       "Ahorro de agua hasta 30%"
     ],
-    image: "/images/stock/agroindustria_riego_tecnificado.jpg"
+    placeholder: {
+      label: "Riego Tecnificado",
+      description: "Sistema de riego por goteo o aspersión en campo agrícola venezolano, con sensores de humedad visibles en el suelo."
+    }
   },
   {
     icon: Sun,
@@ -60,7 +63,10 @@ const solutions = [
       "Alertas de falla y mantenimiento",
       "Operacion 100% off-grid"
     ],
-    image: "/images/stock/agroindustria_bombeo_solar.jpg"
+    placeholder: {
+      label: "Bombeo Solar Agrícola",
+      description: "Instalación de paneles solares con bomba de agua en zona rural, sin red eléctrica. Contexto de llanos venezolanos."
+    }
   },
   {
     icon: Tractor,
@@ -73,7 +79,10 @@ const solutions = [
       "Comportamiento del operador",
       "Optimizacion de rutas de cosecha"
     ],
-    image: "/images/stock/agroindustria_tractores.jpg"
+    placeholder: {
+      label: "Maquinaria Agrícola con GPS",
+      description: "Tractor o cosechadora en campo venezolano con dispositivo GPS instalado, trabajando en cultivo de maíz o arroz."
+    }
   },
   {
     icon: Factory,
@@ -86,7 +95,10 @@ const solutions = [
       "Control de cadena de frio",
       "Eficiencia de lineas de produccion"
     ],
-    image: "/images/stock/agroindustria_procesamiento.jpg"
+    placeholder: {
+      label: "Planta de Procesamiento Agrícola",
+      description: "Interior de planta agroindustrial con silos, tolvas y líneas de procesamiento de granos o productos agrícolas."
+    }
   },
 ];
 
@@ -101,7 +113,6 @@ const weatherStation = {
     { icon: Activity, name: "Velocidad del viento", unit: "km/h" },
     { icon: Gauge, name: "Presion atmosferica", unit: "hPa" },
   ],
-  image: "agroindustria-estacion-meteorologica.jpg"
 };
 
 const sectors = [
@@ -208,12 +219,11 @@ export default function AgroindustriaPage() {
               </Link>
             </div>
             <div className="relative">
-              <Image
-                src="/images/stock/agroindustria_farm.jpg"
-                alt="Agricultura de precision - Campo venezolano con tecnologia IoT"
-                width={1200}
-                height={800}
-                className="aspect-[4/3] rounded-2xl object-cover w-full"
+              <ImagePlaceholder
+                label="Campo Agrícola Venezolano"
+                description="Vista panorámica de finca o cultivo venezolano con tecnología IoT visible: sensores en campo, panel solar y antena LoRaWAN."
+                className="aspect-[4/3] rounded-2xl"
+                iconSize="lg"
               />
             </div>
           </div>
@@ -241,12 +251,11 @@ export default function AgroindustriaPage() {
                 }`}
               >
                 <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
-                  <Image
-                    src={solution.image}
-                    alt={`${solution.title} - Soluciones IoT para agroindustria`}
-                    width={1200}
-                    height={881}
-                    className="aspect-[4/3] rounded-2xl object-cover w-full"
+                  <ImagePlaceholder
+                    label={solution.placeholder.label}
+                    description={solution.placeholder.description}
+                    className="aspect-[4/3] rounded-2xl"
+                    iconSize="lg"
                   />
                 </div>
 
@@ -306,12 +315,11 @@ export default function AgroindustriaPage() {
               </div>
             </div>
             <div>
-              <Image
-                src="/images/stock/agroindustria_maquinaria.jpg"
-                alt="Estacion meteorologica agricola - Monitoreo climatico para cultivos"
-                width={1200}
-                height={899}
-                className="aspect-[4/3] rounded-2xl object-cover w-full"
+              <ImagePlaceholder
+                label="Estación Meteorológica Agrícola"
+                description="Estación meteorológica instalada en campo agrícola con sensores de viento, lluvia y temperatura. Cielo azul venezolano de fondo."
+                className="aspect-[4/3] rounded-2xl"
+                iconSize="lg"
               />
             </div>
           </div>
@@ -348,12 +356,11 @@ export default function AgroindustriaPage() {
         <div className="container-lg">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1">
-              <Image
-                src="/images/stock/vision_ai_surveillance.jpg"
-                alt="Seguridad rural con IA - Vigilancia inteligente para fincas agricolas"
-                width={1200}
-                height={807}
-                className="aspect-[4/3] rounded-2xl object-cover w-full"
+              <ImagePlaceholder
+                label="Seguridad Rural con IA"
+                description="Cámara de vigilancia con IA instalada en galera o almacén agrícola, mostrando detección de intruso. Contexto rural venezolano."
+                className="aspect-[4/3] rounded-2xl"
+                iconSize="lg"
               />
             </div>
             <div className="order-1 lg:order-2">
@@ -409,12 +416,11 @@ export default function AgroindustriaPage() {
             </p>
           </div>
           <div className="max-w-4xl mx-auto">
-            <Image
-              src="/images/stock/iot_dashboard.jpg"
-              alt="Dashboard agricola - Panel de control IoT para operaciones agroindustriales"
-              width={1200}
-              height={673}
-              className="aspect-[16/9] rounded-2xl shadow-2xl object-cover w-full"
+            <ImagePlaceholder
+              label="Dashboard Agrícola ATILAX"
+              description="Captura del dashboard mostrando: mapa de finca con sensores, gráficos de humedad del suelo, estado de riego activo, alertas meteorológicas y posición de tractores."
+              className="aspect-[16/9] rounded-2xl shadow-2xl"
+              iconSize="lg"
             />
           </div>
         </div>

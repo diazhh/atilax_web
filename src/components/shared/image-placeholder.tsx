@@ -3,12 +3,14 @@ import { ImageIcon } from "lucide-react";
 
 interface ImagePlaceholderProps {
   label?: string;
+  description?: string;
   className?: string;
   iconSize?: "sm" | "md" | "lg";
 }
 
 export function ImagePlaceholder({
   label,
+  description,
   className,
   iconSize = "md",
 }: ImagePlaceholderProps) {
@@ -25,9 +27,10 @@ export function ImagePlaceholder({
         className
       )}
     >
-      <div className="flex flex-col items-center gap-2 text-muted-foreground/60">
+      <div className="flex flex-col items-center gap-2 text-muted-foreground/60 px-4 text-center">
         <ImageIcon className={iconSizes[iconSize]} />
-        {label && <span className="text-xs font-medium">{label}</span>}
+        {label && <span className="text-xs font-semibold">{label}</span>}
+        {description && <span className="text-xs opacity-75 max-w-[200px]">{description}</span>}
       </div>
     </div>
   );

@@ -19,7 +19,7 @@ import {
 import { PageHeader } from "@/components/shared/page-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import { ImagePlaceholder } from "@/components/shared/image-placeholder";
 
 export const metadata: Metadata = {
   title: "Zonas Industriales | ATILAX",
@@ -46,7 +46,10 @@ const solutions = [
       "Deteccion de anomalias con IA",
       "Alertas de mantenimiento predictivo"
     ],
-    image: "/images/stock/industria_linea_produccion.jpg"
+    placeholder: {
+      label: "Línea de Producción Industrial",
+      description: "Interior de planta de manufactura venezolana con línea de producción activa, sensores de vibración y temperatura instalados en maquinaria."
+    }
   },
   {
     icon: Zap,
@@ -59,7 +62,10 @@ const solutions = [
       "Consumo energetico por equipo",
       "Compatible con ABB, Siemens, Schneider, Allen-Bradley"
     ],
-    image: "/images/stock/industria_variadores_motores.jpg"
+    placeholder: {
+      label: "Variadores y Motores Eléctricos",
+      description: "Panel de variadores de frecuencia (VFDs) instalados en tablero industrial con conexiones Modbus visibles."
+    }
   },
   {
     icon: BarChart3,
@@ -72,7 +78,10 @@ const solutions = [
       "Reportes para optimizacion de contratos",
       "Ahorro promedio del 10-20%"
     ],
-    image: "/images/stock/industria_energia.jpg"
+    placeholder: {
+      label: "Medidores de Energía Industrial",
+      description: "Tablero eléctrico industrial con medidores inteligentes de energía multifunción instalados y conectados al sistema ATILAX."
+    }
   },
   {
     icon: Shield,
@@ -85,7 +94,10 @@ const solutions = [
       "Alertas con evidencia visual",
       "Integracion con guardias de seguridad"
     ],
-    image: "/images/stock/industria_seguridad_parque.jpg"
+    placeholder: {
+      label: "Seguridad Parque Industrial",
+      description: "Caseta de acceso vehicular de parque industrial con barrera automática y cámara de lectura de placas (LPR)."
+    }
   },
 ];
 
@@ -132,7 +144,6 @@ const industria40 = {
       description: "Ordenes de trabajo automaticas por condicion"
     },
   ],
-  image: "industria-fabrica-inteligente-4.0.jpg"
 };
 
 export default function IndustriaPage() {
@@ -224,12 +235,11 @@ export default function IndustriaPage() {
               </Link>
             </div>
             <div className="relative">
-              <Image
-                src="/images/stock/industria_factory.jpg"
-                alt="Zona industrial venezolana - Manufactura con monitoreo IoT"
-                width={1200}
-                height={675}
-                className="aspect-[4/3] rounded-2xl object-cover w-full"
+              <ImagePlaceholder
+                label="Planta Industrial Venezolana"
+                description="Interior o exterior de planta de manufactura venezolana en Valencia o Carabobo, mostrando maquinaria y proceso productivo activo."
+                className="aspect-[4/3] rounded-2xl"
+                iconSize="lg"
               />
             </div>
           </div>
@@ -257,12 +267,11 @@ export default function IndustriaPage() {
                 }`}
               >
                 <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
-                  <Image
-                    src={solution.image}
-                    alt={`${solution.title} - Soluciones IoT para manufactura`}
-                    width={1200}
-                    height={800}
-                    className="aspect-[4/3] rounded-2xl object-cover w-full"
+                  <ImagePlaceholder
+                    label={solution.placeholder.label}
+                    description={solution.placeholder.description}
+                    className="aspect-[4/3] rounded-2xl"
+                    iconSize="lg"
                   />
                 </div>
 
@@ -327,12 +336,11 @@ export default function IndustriaPage() {
               </div>
             </div>
             <div>
-              <Image
-                src="/images/stock/iot_platform_2.jpg"
-                alt="Industria 4.0 - Fabrica inteligente con automatizacion y IoT"
-                width={1200}
-                height={800}
-                className="aspect-[4/3] rounded-2xl object-cover w-full"
+              <ImagePlaceholder
+                label="Fábrica Inteligente - Industria 4.0"
+                description="Planta de manufactura moderna con brazos robóticos, sensores IoT y pantallas de monitoreo. Concepto de Industria 4.0 aplicado a Venezuela."
+                className="aspect-[4/3] rounded-2xl"
+                iconSize="lg"
               />
             </div>
           </div>
@@ -379,12 +387,11 @@ export default function IndustriaPage() {
             </p>
           </div>
           <div className="max-w-4xl mx-auto">
-            <Image
-              src="/images/stock/iot_dashboard.jpg"
-              alt="Dashboard de planta industrial - Centro de control IoT integrado"
-              width={1200}
-              height={673}
-              className="aspect-[16/9] rounded-2xl shadow-2xl object-cover w-full"
+            <ImagePlaceholder
+              label="Dashboard Planta Industrial ATILAX"
+              description="Captura del dashboard mostrando: OEE de equipos en tiempo real, gráficos de consumo energético por área, alertas de mantenimiento predictivo y estado de líneas de producción."
+              className="aspect-[16/9] rounded-2xl shadow-2xl"
+              iconSize="lg"
             />
           </div>
           <div className="text-center mt-8">

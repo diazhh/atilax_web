@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import {
   ArrowRight,
   Eye,
@@ -25,6 +24,8 @@ import { PageHeader } from "@/components/shared/page-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { ImagePlaceholder } from "@/components/shared/image-placeholder";
+
 
 export const metadata: Metadata = {
   title: "ATILAX Vision | Vigilancia Inteligente con IA",
@@ -204,12 +205,11 @@ export default function VisionPage() {
               </div>
             </div>
             <div>
-              <Image
-                src="/images/stock/vision_ai_surveillance.jpg"
-                alt="ATILAX Vision - Vigilancia inteligente con IA para la industria petrolera"
-                width={1200}
-                height={807}
-                className="rounded-xl w-full h-auto shadow-lg"
+              <ImagePlaceholder
+                label="ATILAX Vision - Vigilancia con IA"
+                description="Pantalla de monitoreo de cámaras con detecciones marcadas: casco detectado (verde), zona restringida (rojo). Interfaz ATILAX Vision."
+                className="aspect-[4/3] rounded-xl shadow-lg"
+                iconSize="lg"
               />
             </div>
           </div>
@@ -365,19 +365,17 @@ export default function VisionPage() {
               </ul>
             </div>
             <div className="space-y-4">
-              <Image
-                src="/images/stock/vision_security_camera.jpg"
-                alt="Sistema de camaras de seguridad industrial con IA"
-                width={1200}
-                height={800}
-                className="rounded-xl w-full h-auto shadow-lg"
+              <ImagePlaceholder
+                label="Centro de Control ATILAX Vision"
+                description="Grid de cámaras en tiempo real con eventos activos, mapa de calor de actividad y panel lateral de alertas. Múltiples feeds simultáneos."
+                className="aspect-[4/3] rounded-xl shadow-lg"
+                iconSize="md"
               />
-              <Image
-                src="/images/stock/vision_industrial_safety.jpg"
-                alt="Monitoreo de seguridad industrial con vision artificial"
-                width={1200}
-                height={800}
-                className="rounded-xl w-full h-auto shadow-lg"
+              <ImagePlaceholder
+                label="Detección HSE Automatizada"
+                description="Imagen de trabajador en campo con bounding boxes de IA: casco (verde), chaleco (verde), zona restringida (rojo). Frame de cámara industrial."
+                className="aspect-[4/3] rounded-xl shadow-lg"
+                iconSize="md"
               />
             </div>
           </div>

@@ -39,7 +39,7 @@ import {
 import { PageHeader } from "@/components/shared/page-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import { ImagePlaceholder } from "@/components/shared/image-placeholder";
 
 export const metadata: Metadata = {
   title: "Infraestructura y Edificaciones | ATILAX",
@@ -90,7 +90,7 @@ const sectors = [
       "Proteccion contra vandalismo y robos",
       "Cumplimiento de normativas de seguridad"
     ],
-    image: "/images/stock/infraestructura_subestacion.jpg"
+    placeholder: "Subestación eléctrica venezolana con transformadores de potencia, torres de alta tensión y cercas de seguridad perimetral."
   },
   {
     id: "agua",
@@ -127,7 +127,7 @@ const sectors = [
       "Mejor gestion del inventario de agua",
       "Menor tiempo de respuesta ante emergencias"
     ],
-    image: "/images/stock/infraestructura_bombeo_agua.jpg"
+    placeholder: "Estación de bombeo de agua potable con bombas centrífugas, tuberías industriales y tablero de control."
   },
   {
     id: "telecom",
@@ -164,7 +164,7 @@ const sectors = [
       "Respuesta rapida ante fallas",
       "Optimizacion del mantenimiento preventivo"
     ],
-    image: "/images/stock/infraestructura_telecomunicaciones.jpg"
+    placeholder: "Torre de telecomunicaciones con múltiples antenas, caseta de equipos en base y sistema de iluminación de seguridad."
   },
   {
     id: "residencial",
@@ -212,7 +212,7 @@ const sectors = [
       "Reduccion de robos y hurtos 70-90%",
       "Tranquilidad y confianza"
     ],
-    image: "/images/stock/infraestructura_residencial.jpg"
+    placeholder: "Entrada principal de conjunto residencial venezolano con garita de seguridad, barrera vehicular automática y cámara de reconocimiento de placas."
   },
   {
     id: "comercial",
@@ -260,7 +260,7 @@ const sectors = [
       "Optimizacion del consumo energetico",
       "Cumplimiento de normativas de seguridad"
     ],
-    image: "/images/stock/infraestructura_comercial.jpg"
+    placeholder: "Acceso vehicular de centro comercial venezolano con señalización LED de espacios disponibles, barrera automática y cámara de seguridad visible."
   }
 ];
 
@@ -369,19 +369,11 @@ export default function InfraestructuraPage() {
               </ul>
             </div>
             <div className="relative">
-              {/*
-                IMAGEN: infraestructura-hero-edificaciones.jpg
-                Descripcion: Vista panoramica que muestre la diversidad de aplicaciones:
-                conjunto residencial moderno, edificio corporativo y/o centro comercial.
-                Estilo: Fotografia profesional, luz natural, ambiente urbano venezolano.
-                Resolucion: 1920x1440px (4:3)
-              */}
-              <Image
-                src="/images/stock/infraestructura_power.jpg"
-                alt="Infraestructura critica - Monitoreo de edificaciones y servicios"
-                width={1200}
-                height={800}
-                className="aspect-[4/3] rounded-2xl object-cover w-full"
+              <ImagePlaceholder
+                label="Infraestructura y Edificaciones"
+                description="Composición que muestre diversidad: conjunto residencial moderno, edificio corporativo y centro comercial venezolano. Luz natural, ambiente urbano."
+                className="aspect-[4/3] rounded-2xl"
+                iconSize="lg"
               />
             </div>
           </div>
@@ -419,12 +411,11 @@ export default function InfraestructuraPage() {
             <div className="grid lg:grid-cols-2 gap-12 mb-12">
               {/* Image and Benefits */}
               <div>
-                <Image
-                  src={sector.image}
-                  alt={`${sector.title} - Monitoreo IoT para infraestructura`}
-                  width={1200}
-                  height={800}
-                  className="aspect-[4/3] rounded-2xl mb-6 object-cover w-full"
+                <ImagePlaceholder
+                  label={sector.title}
+                  description={sector.placeholder}
+                  className="aspect-[4/3] rounded-2xl mb-6"
+                  iconSize="lg"
                 />
                 <div className="bg-green-50 border border-green-100 rounded-xl p-6">
                   <h4 className="font-semibold text-green-800 mb-3 flex items-center gap-2">
@@ -539,22 +530,11 @@ export default function InfraestructuraPage() {
         <div className="container-lg">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1">
-              {/*
-                IMAGEN: infraestructura-dashboard-unificado.jpg
-                Descripcion: Captura de pantalla del dashboard mostrando:
-                - Mapa con ubicaciones de instalaciones
-                - Graficos de estado de sistemas
-                - Panel de alarmas activas
-                - Indicadores de acceso vehicular/peatonal
-                Estilo: Interfaz moderna, colores corporativos ATILAX
-                Resolucion: 1920x1440px (4:3)
-              */}
-              <Image
-                src="/images/stock/iot_dashboard.jpg"
-                alt="Centro de control unificado - Dashboard IoT para infraestructura"
-                width={1200}
-                height={673}
-                className="aspect-[4/3] rounded-2xl shadow-2xl object-cover w-full"
+              <ImagePlaceholder
+                label="Centro de Control Unificado ATILAX"
+                description="Captura del dashboard mostrando: mapa con instalaciones georreferenciadas, estado de tanques y bombas, panel de alarmas activas, registros de acceso vehicular y peatonal."
+                className="aspect-[4/3] rounded-2xl shadow-2xl"
+                iconSize="lg"
               />
             </div>
             <div className="order-1 lg:order-2">

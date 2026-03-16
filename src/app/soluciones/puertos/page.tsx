@@ -20,7 +20,7 @@ import {
 import { PageHeader } from "@/components/shared/page-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import { ImagePlaceholder } from "@/components/shared/image-placeholder";
 
 export const metadata: Metadata = {
   title: "Puertos y Logistica | ATILAX",
@@ -47,7 +47,10 @@ const solutions = [
       "Alertas instantaneas con evidencia visual",
       "Integracion con sistemas de vigilancia existentes"
     ],
-    image: "/images/stock/puertos_seguridad.jpg"
+    placeholder: {
+      label: "Seguridad Perimetral Portuaria",
+      description: "Cámara de seguridad con IA instalada en perímetro de terminal portuaria, mostrando reconocimiento de placas de camión."
+    }
   },
   {
     icon: Truck,
@@ -60,7 +63,10 @@ const solutions = [
       "Optimizacion de movimientos de carga",
       "Historial de recorridos y tiempos"
     ],
-    image: "/images/stock/puertos_montacargas.jpg"
+    placeholder: {
+      label: "Flota Portuaria con GPS",
+      description: "Montacargas o camión de patio en operación dentro de terminal portuaria, con contenedores apilados de fondo."
+    }
   },
   {
     icon: Container,
@@ -73,7 +79,10 @@ const solutions = [
       "Alertas de desviacion de temperatura",
       "Integracion con sistemas TOS"
     ],
-    image: "/images/stock/puertos_contenedores.jpg"
+    placeholder: {
+      label: "Patio de Contenedores",
+      description: "Vista aérea o panorámica de patio de contenedores portuario con contenedores refrigerados (reefer) conectados."
+    }
   },
   {
     icon: Warehouse,
@@ -86,7 +95,10 @@ const solutions = [
       "Inventario con sensores de peso",
       "Alertas de condiciones fuera de rango"
     ],
-    image: "/images/stock/puertos_almacen.jpg"
+    placeholder: {
+      label: "Bodega Portuaria Monitorizada",
+      description: "Interior de almacén o bodega portuaria con sensores de temperatura/humedad instalados y racks de mercancía."
+    }
   },
 ];
 
@@ -213,12 +225,11 @@ export default function PuertosPage() {
               </Link>
             </div>
             <div className="relative">
-              <Image
-                src="/images/stock/puertos_terminal.jpg"
-                alt="Terminal portuario - Infraestructura portuaria con monitoreo inteligente"
-                width={1200}
-                height={800}
-                className="aspect-[4/3] rounded-2xl object-cover w-full"
+              <ImagePlaceholder
+                label="Terminal Portuaria de Venezuela"
+                description="Vista panorámica de terminal portuaria venezolana con grúas, contenedores y barco atracado. Puerto Cabello o La Guaira."
+                className="aspect-[4/3] rounded-2xl"
+                iconSize="lg"
               />
             </div>
           </div>
@@ -246,12 +257,11 @@ export default function PuertosPage() {
                 }`}
               >
                 <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
-                  <Image
-                    src={solution.image}
-                    alt={`${solution.title} - Soluciones IoT para puertos y logistica`}
-                    width={1200}
-                    height={800}
-                    className="aspect-[4/3] rounded-2xl object-cover w-full"
+                  <ImagePlaceholder
+                    label={solution.placeholder.label}
+                    description={solution.placeholder.description}
+                    className="aspect-[4/3] rounded-2xl"
+                    iconSize="lg"
                   />
                 </div>
 
@@ -321,12 +331,11 @@ export default function PuertosPage() {
         <div className="container-lg">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1">
-              <Image
-                src="/images/stock/puertos_logistica.jpg"
-                alt="Terminal aerea - Monitoreo de infraestructura aeroportuaria"
-                width={1200}
-                height={1600}
-                className="aspect-[4/3] rounded-2xl object-cover w-full"
+              <ImagePlaceholder
+                label="Terminal Aérea"
+                description="Vista de terminal aérea o plataforma de aeropuerto venezolano (Maiquetía) con aviones y vehículos de handling."
+                className="aspect-[4/3] rounded-2xl"
+                iconSize="lg"
               />
             </div>
             <div className="order-1 lg:order-2">
@@ -376,12 +385,11 @@ export default function PuertosPage() {
             </p>
           </div>
           <div className="max-w-4xl mx-auto">
-            <Image
-              src="/images/stock/iot_dashboard.jpg"
-              alt="Centro de control portuario - Dashboard IoT de monitoreo integrado"
-              width={1200}
-              height={673}
-              className="aspect-[16/9] rounded-2xl shadow-2xl object-cover w-full"
+            <ImagePlaceholder
+              label="Dashboard Centro de Control Portuario"
+              description="Captura del dashboard ATILAX mostrando: mapa de terminal con posición de equipos, alertas de seguridad, estado de contenedores reefer y KPIs de flota."
+              className="aspect-[16/9] rounded-2xl shadow-2xl"
+              iconSize="lg"
             />
           </div>
           <div className="text-center mt-8">

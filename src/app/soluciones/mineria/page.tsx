@@ -20,7 +20,7 @@ import {
 import { PageHeader } from "@/components/shared/page-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import { ImagePlaceholder } from "@/components/shared/image-placeholder";
 
 export const metadata: Metadata = {
   title: "Mineria | ATILAX",
@@ -47,7 +47,10 @@ const solutions = [
       "Ubicacion GPS y geocercas",
       "Alertas de mantenimiento preventivo"
     ],
-    image: "/images/stock/mineria_maquinaria_pesada.jpg"
+    placeholder: {
+      label: "Maquinaria Pesada Minera",
+      description: "Excavadora o camión minero de gran tamaño en operación en campo abierto, con sensor GPS visible."
+    }
   },
   {
     icon: Activity,
@@ -60,7 +63,10 @@ const solutions = [
       "Temperatura de proceso",
       "Eficiencia de recuperacion"
     ],
-    image: "/images/stock/mineria_procesamiento.jpg"
+    placeholder: {
+      label: "Planta de Procesamiento Mineral",
+      description: "Interior de planta de procesamiento con molinos, tuberías y equipos industriales en operación."
+    }
   },
   {
     icon: Shield,
@@ -73,7 +79,10 @@ const solutions = [
       "Alertas con evidencia visual",
       "Reduccion 70-90% de robos"
     ],
-    image: "/images/stock/mineria_seguridad_perimetral.jpg"
+    placeholder: {
+      label: "Seguridad Perimetral Minera",
+      description: "Cámara de vigilancia con IA en perímetro de operación minera, mostrando detección de intrusos en tiempo real."
+    }
   },
   {
     icon: Leaf,
@@ -86,7 +95,10 @@ const solutions = [
       "Alertas de derrames",
       "Reportes para entes reguladores"
     ],
-    image: "/images/stock/mineria_monitoreo_ambiental.jpg"
+    placeholder: {
+      label: "Monitoreo Ambiental",
+      description: "Estación de monitoreo ambiental con sensores de agua y aire instalada cerca de zona minera."
+    }
   },
 ];
 
@@ -115,7 +127,6 @@ const fleetManagement = {
       description: "Peso de carga, ciclos de acarreo y productividad"
     },
   ],
-  image: "mineria-flota-camiones.jpg"
 };
 
 const arcoMinero = {
@@ -133,7 +144,6 @@ const arcoMinero = {
     "Edge computing con almacenamiento local",
     "Integracion con sistemas de pesaje"
   ],
-  image: "mineria-arco-minero-orinoco.jpg"
 };
 
 const minerals = [
@@ -219,12 +229,11 @@ export default function MineriaPage() {
                 }`}
               >
                 <div className={index % 2 === 1 ? "lg:col-start-2" : ""}>
-                  <Image
-                    src={solution.image}
-                    alt={`${solution.title} - Monitoreo IoT para operaciones mineras`}
-                    width={1200}
-                    height={800}
-                    className="aspect-[4/3] rounded-2xl object-cover w-full"
+                  <ImagePlaceholder
+                    label={solution.placeholder.label}
+                    description={solution.placeholder.description}
+                    className="aspect-[4/3] rounded-2xl"
+                    iconSize="lg"
                   />
                 </div>
 
@@ -289,12 +298,11 @@ export default function MineriaPage() {
               </div>
             </div>
             <div>
-              <Image
-                src="/images/stock/mineria_excavadora.jpg"
-                alt="Gestion de flota minera - Camiones y maquinaria pesada con telemetria"
-                width={1200}
-                height={800}
-                className="aspect-[4/3] rounded-2xl object-cover w-full"
+              <ImagePlaceholder
+                label="Flota de Camiones Mineros"
+                description="Fila de camiones mineros de gran tonelaje estacionados o en operación, con vista de campo minero de fondo."
+                className="aspect-[4/3] rounded-2xl"
+                iconSize="lg"
               />
             </div>
           </div>
@@ -306,12 +314,11 @@ export default function MineriaPage() {
         <div className="container-lg">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1">
-              <Image
-                src="/images/stock/mineria_procesamiento.jpg"
-                alt="Arco Minero del Orinoco - Operaciones mineras con monitoreo digital"
-                width={1200}
-                height={800}
-                className="aspect-[4/3] rounded-2xl object-cover w-full"
+              <ImagePlaceholder
+                label="Arco Minero del Orinoco"
+                description="Vista aérea o panorámica de operación minera en el Arco Minero del Orinoco, selva y ríos de fondo."
+                className="aspect-[4/3] rounded-2xl"
+                iconSize="lg"
               />
             </div>
             <div className="order-1 lg:order-2">
@@ -372,12 +379,11 @@ export default function MineriaPage() {
             </p>
           </div>
           <div className="max-w-4xl mx-auto">
-            <Image
-              src="/images/stock/iot_dashboard.jpg"
-              alt="Centro de control minero - Dashboard IoT de monitoreo integrado"
-              width={1200}
-              height={673}
-              className="aspect-[16/9] rounded-2xl shadow-2xl object-cover w-full"
+            <ImagePlaceholder
+              label="Dashboard Centro de Control Minero"
+              description="Captura de pantalla del dashboard ATILAX mostrando: mapa con ubicaciones de equipos, KPIs de producción, alertas activas y estado de flota minera."
+              className="aspect-[16/9] rounded-2xl shadow-2xl"
+              iconSize="lg"
             />
           </div>
           <div className="text-center mt-8">

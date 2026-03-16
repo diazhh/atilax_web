@@ -19,6 +19,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
+import { ImagePlaceholder } from "@/components/shared/image-placeholder";
 
 
 const industries = [
@@ -326,12 +327,11 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
             >
-              <Image
-                src="/images/capturas/general/01_login_atilax.png"
-                alt="Plataforma ATILAX - Interfaz de acceso seguro con autenticacion empresarial"
-                width={1920}
-                height={1080}
-                className="rounded-2xl w-full h-auto shadow-lg"
+              <ImagePlaceholder
+                label="Dashboard ATILAX - Diseñado para Venezuela"
+                description="Panel de monitoreo IoT mostrando operaciones activas: pozos, flota y alertas. Contexto venezolano, interfaz en español."
+                className="aspect-[16/9] rounded-2xl shadow-lg"
+                iconSize="lg"
               />
             </motion.div>
           </div>

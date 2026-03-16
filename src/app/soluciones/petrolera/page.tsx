@@ -18,6 +18,7 @@ import { PageHeader } from "@/components/shared/page-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { ImagePlaceholder } from "@/components/shared/image-placeholder";
 
 
 export const metadata: Metadata = {
@@ -322,17 +323,13 @@ export default function PetroleraPage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {infrastructure.map((item, idx) => (
+            {infrastructure.map((item) => (
               <Card key={item.title} className="overflow-hidden">
-                <Image
-                  src={idx === 0 ? "/images/capturas/monitoreo/02_monitoreo_mosaico_scroll.png"
-                    : idx === 1 ? "/images/capturas/general/02_administracion_tabla_pozos.png"
-                    : idx === 2 ? "/images/capturas/monitoreo/06_detalle_esp_tendencia.png"
-                    : "/images/capturas/general/01_login_atilax.png"}
-                  alt={item.title}
-                  width={1920}
-                  height={1080}
-                  className="w-full h-auto aspect-[16/9] object-cover"
+                <ImagePlaceholder
+                  label={item.title}
+                  description={`Captura del dashboard ATILAX mostrando ${item.title.toLowerCase()}: ${item.description}`}
+                  className="aspect-[16/9]"
+                  iconSize="md"
                 />
                 <CardContent className="p-6">
                   <div className="flex items-center gap-3 mb-3">
