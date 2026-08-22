@@ -67,7 +67,7 @@ Before writing or modifying page content (feature lists, product descriptions, t
 
 **Deploy after pushing to GitHub:**
 ```bash
-ssh 144 "cd /var/proyectos/atilax_web && git pull && npm run build && pm2 restart atilax-web"
+ssh 144 "cd /var/proyectos/atilax_web && git pull && npm ci && npm run build && pm2 restart atilax-web"
 ```
 
 Only restart `atilax-web` — do NOT restart all PM2 processes.
