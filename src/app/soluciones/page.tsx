@@ -19,7 +19,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Soluciones | ATILAX",
+  title: "Soluciones",
   description:
     "Soluciones IoT para todas las industrias: petroleo, infraestructura critica, mineria, agroindustria, puertos, manufactura, flota y seguridad perimetral.",
 };

@@ -23,7 +23,7 @@ import { Button } from "@/components/ui/button";
 import { ImagePlaceholder } from "@/components/shared/image-placeholder";
 
 export const metadata: Metadata = {
-  title: "Mineria | ATILAX",
+  title: "Mineria",
   description:
     "Monitoreo IoT para operaciones mineras: maquinaria pesada, plantas de procesamiento, seguridad perimetral y control ambiental en el Arco Minero del Orinoco.",
 };

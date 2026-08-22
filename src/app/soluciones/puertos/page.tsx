@@ -23,7 +23,7 @@ import { Button } from "@/components/ui/button";
 import { ImagePlaceholder } from "@/components/shared/image-placeholder";
 
 export const metadata: Metadata = {
-  title: "Puertos y Logistica | ATILAX",
+  title: "Puertos y Logistica",
   description:
     "Monitoreo IoT para puertos, terminales y operaciones logisticas: seguridad perimetral, gestion de flota, control de almacenes y equipos portuarios.",
 };

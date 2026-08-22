@@ -2,8 +2,16 @@ import Link from "next/link";
 import Image from "next/image";
 import { Mail, Phone, MapPin, ExternalLink, Linkedin, Twitter, Youtube } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import { productosDestacados } from "@/lib/productos";
 
 const footerLinks = {
+  productos: [
+    ...productosDestacados.map((p) => ({
+      name: p.nombre,
+      href: `/productos/${p.slug}`,
+    })),
+    { name: "Todo el portafolio", href: "/productos" },
+  ],
   industrias: [
     { name: "Industria Petrolera", href: "/soluciones/petrolera" },
     { name: "Infraestructura Critica", href: "/soluciones/infraestructura" },
@@ -13,7 +21,7 @@ const footerLinks = {
     { name: "Zonas Industriales", href: "/soluciones/industria" },
   ],
   soluciones: [
-    { name: "Simulador Interactivo", href: "/soluciones/simulador" },
+    { name: "Simulador IoT", href: "/productos/simulador" },
     { name: "Gestion de Flota", href: "/soluciones/flota" },
     { name: "ATILAX Vision", href: "/soluciones/seguridad" },
     { name: "Monitoreo de Activos", href: "/plataforma" },
@@ -30,7 +38,7 @@ export function Footer() {
   return (
     <footer className="bg-primary text-white">
       <div className="container-lg py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-x-8 gap-y-12">
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block mb-4">
@@ -79,6 +87,23 @@ export function Footer() {
               Acceder a la Plataforma
               <ExternalLink className="h-4 w-4" />
             </a>
+          </div>
+
+          {/* Products */}
+          <div>
+            <h4 className="font-semibold mb-4">Productos</h4>
+            <ul className="space-y-3">
+              {footerLinks.productos.map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-white/70 hover:text-white transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Industries */}

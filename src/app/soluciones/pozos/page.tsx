@@ -32,7 +32,7 @@ import Image from "next/image";
 
 
 export const metadata: Metadata = {
-  title: "Monitoreo de Pozos Petroleros | ATILAX",
+  title: "Monitoreo de Pozos Petroleros",
   description:
     "Monitoreo en tiempo real de pozos petroleros: ESP, Bombeo Mecanico, BCP y Gas Lift. Telemetria completa, deteccion automatica de anomalias y analitica avanzada.",
 };

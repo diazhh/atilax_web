@@ -42,7 +42,7 @@ import { Button } from "@/components/ui/button";
 import { ImagePlaceholder } from "@/components/shared/image-placeholder";
 
 export const metadata: Metadata = {
-  title: "Infraestructura y Edificaciones | ATILAX",
+  title: "Infraestructura y Edificaciones",
   description:
     "Monitoreo IoT para infraestructura critica, conjuntos residenciales y centros comerciales: subestaciones electricas, sistemas de agua, control de acceso, seguridad perimetral y automatizacion.",
 };

@@ -30,7 +30,7 @@ import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Optimizacion de Pozos | ATILAX",
+  title: "Optimizacion de Pozos",
   description:
     "Servicio de optimizacion inteligente de pozos petroleros: recomendaciones autonomas por tipo de levantamiento, prediccion de fallas con IA, analisis nodal automatizado y optimizacion a nivel de campo.",
 };

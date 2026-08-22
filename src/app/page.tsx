@@ -20,6 +20,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
 import { ImagePlaceholder } from "@/components/shared/image-placeholder";
+import { EstadoBadge } from "@/components/shared/estado-badge";
+import { productosDestacados } from "@/lib/productos";
 
 
 const industries = [
@@ -199,8 +201,81 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Industries Section */}
+      {/* Productos Section */}
       <section className="py-20 md:py-28">
+        <div className="container-lg">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14"
+          >
+            <div className="max-w-2xl">
+              <span className="inline-block text-amber-700 font-medium text-sm mb-3">
+                Portafolio propio
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                No revendemos plataformas: las construimos
+              </h2>
+              <p className="text-lg text-muted-foreground">
+                Cada producto nacio de un problema concreto en campo venezolano —
+                una refineria sin bitacora trazable, un taladro sin enlace
+                satelital, una nomina que ningun ERP generico calcula bien.
+              </p>
+            </div>
+            <Link href="/productos" className="shrink-0">
+              <Button variant="outline" size="lg">
+                Ver el portafolio
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {productosDestacados.map((producto, index) => {
+              const Icon = producto.icon;
+              return (
+                <motion.div
+                  key={producto.slug}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: (index % 3) * 0.1 }}
+                >
+                  <Link href={`/productos/${producto.slug}`} className="block h-full">
+                    <Card className="group h-full border-border hover:border-primary/40 hover:shadow-lg transition-smooth">
+                      <CardContent className="p-6">
+                        <div className="flex items-start justify-between gap-3 mb-4">
+                          <div className="h-11 w-11 rounded-xl bg-primary/10 flex items-center justify-center">
+                            <Icon className="h-5 w-5 text-primary" />
+                          </div>
+                          <EstadoBadge estado={producto.estado} />
+                        </div>
+                        <h3 className="text-lg font-bold text-foreground mb-1">
+                          {producto.nombre}
+                        </h3>
+                        <p className="text-sm text-amber-700 font-medium mb-3">
+                          {producto.tagline}
+                        </p>
+                        <p className="text-sm text-muted-foreground leading-relaxed">
+                          {producto.resumen}
+                        </p>
+                        <div className="mt-5 inline-flex items-center text-sm font-medium text-primary">
+                          Ver detalle
+                          <ArrowRight className="ml-1.5 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </Link>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Industries Section */}
+      <section className="py-20 md:py-28 bg-muted/50 border-t">
         <div className="container-lg">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -290,7 +365,7 @@ export default function Home() {
       </section>
 
       {/* Why ATILAX Section */}
-      <section className="py-20 md:py-28 bg-muted/50">
+      <section className="py-20 md:py-28">
         <div className="container-lg">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div

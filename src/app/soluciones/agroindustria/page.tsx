@@ -23,7 +23,7 @@ import { Button } from "@/components/ui/button";
 import { ImagePlaceholder } from "@/components/shared/image-placeholder";
 
 export const metadata: Metadata = {
-  title: "Agroindustria | ATILAX",
+  title: "Agroindustria",
   description:
     "Monitoreo IoT para el sector agroindustrial: riego tecnificado, bombeo solar, maquinaria agricola y seguridad de instalaciones rurales.",
 };

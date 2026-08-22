@@ -23,7 +23,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 export const metadata: Metadata = {
-  title: "Perforacion Direccional | ATILAX",
+  title: "Perforacion Direccional",
   description:
     "Monitoreo inteligente de perforacion petrolera: parametros mecanicos, lodo, gas, trayectoria y BOP en tiempo real. Desde el primer metro hasta la profundidad total.",
 };

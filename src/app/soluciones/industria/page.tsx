@@ -22,7 +22,7 @@ import { Button } from "@/components/ui/button";
 import { ImagePlaceholder } from "@/components/shared/image-placeholder";
 
 export const metadata: Metadata = {
-  title: "Zonas Industriales | ATILAX",
+  title: "Zonas Industriales",
   description:
     "Monitoreo IoT para manufactura y zonas industriales: equipos de produccion, variadores, motores, eficiencia energetica y seguridad perimetral.",
 };

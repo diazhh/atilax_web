@@ -22,7 +22,7 @@ import { ImagePlaceholder } from "@/components/shared/image-placeholder";
 
 
 export const metadata: Metadata = {
-  title: "Industria Petrolera | ATILAX",
+  title: "Industria Petrolera",
   description:
     "Monitoreo IoT integral para operaciones petroleras: pozos BM, BCP y Gas Lift, estaciones de flujo, tanques de almacenamiento y equipos de proceso.",
 };

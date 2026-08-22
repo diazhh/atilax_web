@@ -9,12 +9,24 @@ import { Menu, ChevronDown, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import { productosDestacados } from "@/lib/productos";
 
 const navigation = [
   { name: "Inicio", href: "/" },
   {
+    name: "Productos",
+    href: "/productos",
+    verTodo: "Ver todo el portafolio",
+    children: productosDestacados.map((p) => ({
+      name: p.nombre,
+      href: `/productos/${p.slug}`,
+      description: p.tagline,
+    })),
+  },
+  {
     name: "Soluciones",
     href: "/soluciones",
+    verTodo: "Ver todas las soluciones",
     children: [
       {
         name: "Industria Petrolera",
@@ -179,10 +191,10 @@ export function Navbar() {
                         </div>
                         <div className="mt-4 pt-4 border-t">
                           <Link
-                            href="/soluciones"
+                            href={item.href}
                             className="text-sm text-primary font-medium hover:underline"
                           >
-                            Ver todas las soluciones →
+                            {item.verTodo} →
                           </Link>
                         </div>
                       </div>
@@ -250,9 +262,13 @@ export function Navbar() {
                     <div key={item.name}>
                       {item.children ? (
                         <div className="space-y-1">
-                          <div className="px-4 py-2 text-sm font-semibold text-muted-foreground">
+                          <Link
+                            href={item.href}
+                            onClick={() => setMobileOpen(false)}
+                            className="block px-4 py-2 text-sm font-semibold text-muted-foreground hover:text-foreground transition-colors"
+                          >
                             {item.name}
-                          </div>
+                          </Link>
                           {item.children.map((child) => (
                             <Link
                               key={child.name}
