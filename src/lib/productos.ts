@@ -177,9 +177,11 @@ export const productos: Producto[] = [
     ],
     demo: {
       url: "https://balancin.atilax.io",
-      estado: "activacion",
+      estado: "vivo",
       usuario: "visor",
-      rol: "Rol «visor»: ve todas las pantallas; arrancar, parar y configurar están bloqueados.",
+      // Generada en el contenedor balancin-demo (/root/visor.pass). Verificado 2026-10-18: POST de mando → 403.
+      clave: "h7gjr6-xhge5j-demo",
+      rol: "Rol «visor»: ve operación, pozo, salud, alarmas y auditoría; los mandos están bloqueados. Para entrar, pulse «Entrar como técnico / admin» y use este usuario y clave.",
       descripcion: "HMI del balancín hidráulico con un simulador conectado: carta dinamométrica en vivo, alarmas y auditoría.",
     },
   },
