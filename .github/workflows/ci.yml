@@ -1,0 +1,21 @@
+# CI en el runner propio del VPS 144 (los jobs alojados de GitHub no arrancan: cuenta sin cobro).
+# Guía: docs/CICD.md
+name: ci
+on:
+  push:
+    branches: [dev, stage, main]
+  pull_request:
+    branches: [dev, stage, main]
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  gate:
+    runs-on: [self-hosted, webhh-ci]
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm ci --no-audit --no-fund
+      - run: npm run lint
+      - run: npx tsc --noEmit
+      - run: npm run build
