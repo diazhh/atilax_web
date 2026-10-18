@@ -43,10 +43,14 @@ ssh 144 'set -e; cd /var/proyectos/atilax_web; git checkout -q $(cat .deploy-ant
 ```
 Luego revertir en GitHub (`git revert`) para que main vuelva a coincidir con lo desplegado.
 
-## Primer arranque en pm2 (2026-10-17: la web vieja se retiró y su proceso se borró)
+## Proceso pm2 (con topes de reinicio)
+Definido en `ecosystem.config.cjs`: `max_restarts: 10`, `min_uptime: 30s`, backoff exponencial y
+`max_memory_restart: 512M`. Si falla al arrancar, queda en `errored` en vez de entrar en bucle.
+Recrearlo (p. ej. tras cambiar el ecosystem):
 ```bash
-ssh 144 'cd /var/proyectos/atilax_web && pm2 start npm --name atilax-web -- start -- -H 127.0.0.1 -p 3020 && pm2 save'
+ssh 144 'cd /var/proyectos/atilax_web && pm2 delete atilax-web; pm2 start ecosystem.config.cjs && pm2 save'
 ```
+Si queda `errored`: `pm2 logs atilax-web --lines 50`, arreglar y `pm2 restart atilax-web`.
 
 ## Webhook viejo, DESACTIVADO (2026-10-18)
 `diazhh/atilax_web` tenía un webhook (id 598437521) hacia el `erp-webhook` del 144
