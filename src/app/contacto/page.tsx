@@ -34,15 +34,11 @@ const contactInfo = [
 ];
 
 const solutions = [
-  "Monitoreo de Pozos Petroleros",
-  "Monitoreo de Perforacion",
-  "Optimizacion de Produccion",
-  "Estaciones de Flujo",
-  "Gestion de Flota",
-  "Seguridad Perimetral con IA (ATILAX Vision)",
-  "Simulador de Pozos",
-  "Solucion Integral",
-  "Consultoria IoT",
+  "ATILAX WellOS",
+  "TankOS",
+  "ATILAX LiftOS",
+  "ATILAX ERP",
+  "Otro / no estoy seguro",
 ];
 
 export default function ContactoPage() {
@@ -85,7 +81,7 @@ export default function ContactoPage() {
     <>
       <PageHeader
         title="Contacto"
-        description="Estamos listos para transformar su operacion. Solicite una demostracion personalizada."
+        description="Cuéntenos su operación y le preparamos una demostración a su medida."
         badge="Hablemos"
       />
 
@@ -231,7 +227,7 @@ export default function ContactoPage() {
 
                           <div>
                             <label className="block text-sm font-medium mb-2">
-                              Que solucion le interesa? *
+                              ¿Qué producto le interesa? *
                             </label>
                             <select
                               required

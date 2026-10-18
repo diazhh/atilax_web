@@ -10,24 +10,17 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://atilax.io"),
   title: {
-    default: "ATILAX | Plataforma IoT para la Industria Petrolera",
+    default: "ATILAX | Software industrial para petróleo y gas",
     template: "%s | ATILAX",
   },
   description:
-    "Plataforma integral de monitoreo industrial IoT para el sector petrolero. Monitoreo de pozos, gestión de flota y seguridad perimetral con IA.",
-  keywords: [
-    "IoT petrolero",
-    "monitoreo de pozos",
-    "industria petrolera Venezuela",
-    "plataforma IoT industrial",
-  ],
-  authors: [{ name: "ATILAX Solutions" }],
+    "ATILAX WellOS, TankOS, LiftOS y ATILAX ERP: plataformas de operación para petróleo y gas que se instalan en el servidor de su empresa. Demos en vivo con usuario de solo lectura.",
   openGraph: {
-    title: "ATILAX | Plataforma IoT para la Industria Petrolera",
-    description:
-      "Plataforma integral de monitoreo industrial IoT para el sector petrolero.",
-    url: "https://www.atilax.io",
+    title: "ATILAX | Software industrial para petróleo y gas",
+    description: "WellOS, TankOS, LiftOS y ERP. Pruebe los demos en vivo.",
+    url: "https://atilax.io",
     siteName: "ATILAX",
     locale: "es_VE",
     type: "website",

@@ -1,229 +1,33 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, Phone, MapPin, ExternalLink, Linkedin, Twitter, Youtube } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
-import { productosDestacados } from "@/lib/productos";
-
-const footerLinks = {
-  productos: [
-    ...productosDestacados.map((p) => ({
-      name: p.nombre,
-      href: `/productos/${p.slug}`,
-    })),
-    { name: "Todo el portafolio", href: "/productos" },
-  ],
-  industrias: [
-    { name: "Industria Petrolera", href: "/soluciones/petrolera" },
-    { name: "Infraestructura Critica", href: "/soluciones/infraestructura" },
-    { name: "Mineria", href: "/soluciones/mineria" },
-    { name: "Agroindustria", href: "/soluciones/agroindustria" },
-    { name: "Puertos y Logistica", href: "/soluciones/puertos" },
-    { name: "Zonas Industriales", href: "/soluciones/industria" },
-  ],
-  soluciones: [
-    { name: "Simulador IoT", href: "/productos/simulador" },
-    { name: "Gestion de Flota", href: "/soluciones/flota" },
-    { name: "ATILAX Vision", href: "/soluciones/seguridad" },
-    { name: "Monitoreo de Activos", href: "/plataforma" },
-    { name: "Todas las Soluciones", href: "/soluciones" },
-  ],
-  empresa: [
-    { name: "Plataforma", href: "/plataforma" },
-    { name: "Nosotros", href: "/empresa" },
-    { name: "Contacto", href: "/contacto" },
-  ],
-};
+import { productos } from "@/lib/productos";
 
 export function Footer() {
   return (
-    <footer className="bg-primary text-white">
-      <div className="container-lg py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-x-8 gap-y-12">
-          {/* Brand */}
-          <div className="lg:col-span-2">
-            <Link href="/" className="inline-block mb-4">
-              <Image
-                src="/images/logos/Logotipo Atilax Blanco.png"
-                alt="ATILAX"
-                width={150}
-                height={45}
-                className="h-9 w-auto"
-              />
-            </Link>
-            <p className="text-white/70 text-sm leading-relaxed mb-6 max-w-sm">
-              Plataforma IoT para la industria. Monitoreo inteligente de activos,
-              flota y seguridad perimetral con inteligencia artificial.
-            </p>
-            <div className="space-y-3 mb-6">
-              <a
-                href="mailto:info@atilax.io"
-                className="flex items-center gap-3 text-sm text-white/70 hover:text-white transition-colors"
-              >
-                <Mail className="h-4 w-4" />
-                info@atilax.io
-              </a>
-              <a
-                href="https://wa.me/584126099040"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 text-sm text-white/70 hover:text-white transition-colors"
-              >
-                <Phone className="h-4 w-4" />
-                +58 412 609 9040
-              </a>
-              <div className="flex items-center gap-3 text-sm text-white/70">
-                <MapPin className="h-4 w-4" />
-                Venezuela
-              </div>
-            </div>
-
-            {/* Platform Access */}
-            <a
-              href="https://panel.atilax.io"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-lg text-sm font-medium hover:bg-white/20 transition-colors"
-            >
-              Acceder a la Plataforma
-              <ExternalLink className="h-4 w-4" />
-            </a>
-          </div>
-
-          {/* Products */}
-          <div>
-            <h4 className="font-semibold mb-4">Productos</h4>
-            <ul className="space-y-3">
-              {footerLinks.productos.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-white/70 hover:text-white transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Industries */}
-          <div>
-            <h4 className="font-semibold mb-4">Industrias</h4>
-            <ul className="space-y-3">
-              {footerLinks.industrias.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-white/70 hover:text-white transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Solutions */}
-          <div>
-            <h4 className="font-semibold mb-4">Soluciones</h4>
-            <ul className="space-y-3">
-              {footerLinks.soluciones.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-white/70 hover:text-white transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Company & CTA */}
-          <div>
-            <h4 className="font-semibold mb-4">Empresa</h4>
-            <ul className="space-y-3 mb-6">
-              {footerLinks.empresa.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-white/70 hover:text-white transition-colors"
-                  >
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-
-            <Link
-              href="/contacto"
-              className="inline-flex items-center justify-center rounded-lg bg-secondary text-secondary-foreground px-4 py-2.5 text-sm font-semibold hover:bg-secondary/90 transition-colors"
-            >
-              Solicitar Demo
-            </Link>
-          </div>
+    <footer className="bg-foreground py-12 text-sm text-slate-300">
+      <div className="container-lg grid gap-10 md:grid-cols-[2fr_1fr_1fr]">
+        <div className="space-y-3">
+          <Image src="/images/logos/Logotipo Atilax Blanco.png" alt="ATILAX" width={130} height={38} />
+          <p>Software industrial propio para petróleo y gas. Un producto de CONTROLTECH.</p>
+          <p>VENECORR NDT lleva TankOS, WellOS y LiftOS al mercado.</p>
         </div>
-
-        <Separator className="my-8 bg-white/10" />
-
-        {/* Technology Partner */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-3 mb-6">
-          <span className="text-xs text-white/40 uppercase tracking-wider">Desarrollado por</span>
-          <Image
-            src="/images/logos/ControlTech B.png"
-            alt="ControlTech"
-            width={120}
-            height={35}
-            className="h-7 w-auto opacity-70 hover:opacity-100 transition-opacity"
-          />
-        </div>
-
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-white/60">
-            &copy; {new Date().getFullYear()} ATILAX by ControlTech. Todos los derechos reservados.
-          </p>
-
-          {/* Social Links */}
-          <div className="flex items-center gap-4">
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white/60 hover:text-white transition-colors"
-              aria-label="LinkedIn"
-            >
-              <Linkedin className="h-5 w-5" />
-            </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white/60 hover:text-white transition-colors"
-              aria-label="Twitter"
-            >
-              <Twitter className="h-5 w-5" />
-            </a>
-            <a
-              href="https://youtube.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white/60 hover:text-white transition-colors"
-              aria-label="YouTube"
-            >
-              <Youtube className="h-5 w-5" />
-            </a>
-          </div>
-
-          <div className="flex gap-6 text-sm text-white/60">
-            <Link href="/privacidad" className="hover:text-white transition-colors">
-              Privacidad
+        <div className="space-y-2">
+          <p className="font-semibold text-white">Productos</p>
+          {productos.map((p) => (
+            <Link key={p.slug} href={`/productos/${p.slug}`} className="block hover:text-white">
+              {p.nombre}
             </Link>
-            <Link href="/terminos" className="hover:text-white transition-colors">
-              Terminos
-            </Link>
-          </div>
+          ))}
         </div>
+        <div className="space-y-2">
+          <p className="font-semibold text-white">Contacto</p>
+          <a href="mailto:info@atilax.io" className="block hover:text-white">info@atilax.io</a>
+          <Link href="/demos" className="block hover:text-white">Demos en vivo</Link>
+          <Link href="/contacto" className="block hover:text-white">Escríbanos</Link>
+        </div>
+      </div>
+      <div className="container-lg mt-10 border-t border-slate-700 pt-6 text-xs text-slate-400">
+        © {new Date().getFullYear()} ATILAX · CONTROLTECH. Las cifras de las capturas y los demos son de demostración.
       </div>
     </footer>
   );
