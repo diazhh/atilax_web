@@ -47,3 +47,11 @@ Luego revertir en GitHub (`git revert`) para que main vuelva a coincidir con lo 
 ```bash
 ssh 144 'cd /var/proyectos/atilax_web && pm2 start npm --name atilax-web -- start -- -H 127.0.0.1 -p 3020 && pm2 save'
 ```
+
+## Webhook viejo, DESACTIVADO (2026-10-18)
+`diazhh/atilax_web` tenía un webhook (id 598437521) hacia el `erp-webhook` del 144
+(`/var/proyectos/erp/deploy-config.yml`, que es del ERP de ACE y no se toca). En cada push a main hacía
+`npm install --production` y `pm2 restart` **sin build**: borraba TypeScript/Tailwind, y el siguiente
+`next build` instaló TypeScript 7 con yarn y tumbó la web ~20 min. Quedó con `active=false` en GitHub
+(no borrado). El único despliegue es el manual de arriba. No reactivarlo sin cambiar antes sus pasos
+(que haga `npm ci` y `npm run build`), y eso hay que pedírselo a la sesión del ERP.
