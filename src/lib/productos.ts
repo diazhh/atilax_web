@@ -92,9 +92,12 @@ export const productos: Producto[] = [
     videos: [],
     demo: {
       url: "https://wellos.atilax.io",
+      // Pasa a "vivo" cuando haproxy + DNS de wellos.atilax.io estén aplicados y probado en navegador.
       estado: "activacion",
       usuario: "visor@atilax.io",
-      rol: "Rol «viewer»: ve todo el campo; no comanda ni edita.",
+      // Generada en la caja wellos-demo; verificada por loopback 2026-10-18 (POST /commands, /assets → 403).
+      clave: "pAVhhlNtnIk7tAjfzH7k",
+      rol: "Rol «viewer»: ve todo el campo (Campo Llanos, 30 pozos, estación EF-1); no comanda ni edita.",
       descripcion: "Un campo de demostración con pozos, estaciones, SCADA y alarmas en vivo.",
     },
     ficha: "https://www.venecorr.com/wellos",
