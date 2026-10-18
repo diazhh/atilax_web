@@ -93,12 +93,12 @@ export const productos: Producto[] = [
     demo: {
       url: "https://wellos.atilax.io",
       // Público desde 2026-10-18 (haproxy wellos_web + DNS). Probado por la URL pública: login OIDC,
-      // /home con Campo Llanos; POST assets/commands/admin/users → 403 INSUFFICIENT_AUTHORITY.
+      // /home con Campo Llanos; POST assets/commands → 403 READ_ONLY_ROLE (Chrome, 18-10).
       estado: "vivo",
       usuario: "visor@atilax.io",
-      // Generada en la caja wellos-demo.
-      clave: "pAVhhlNtnIk7tAjfzH7k",
-      rol: "Rol «viewer»: ve todo el campo (Campo Llanos, 30 pozos, estación EF-1); no comanda ni edita.",
+      // Rotada por field-iot al montar el demo autónomo (18-10); el formulario de /login ya la trae escrita.
+      clave: "Visor-WellOS-2026",
+      rol: "Rol de solo lectura: ve todo el campo (Campo Llanos, 30 pozos, estación EF-1); no comanda ni edita. El formulario ya trae el usuario y la clave: basta con pulsar «Entrar».",
       descripcion: "Un campo de demostración con pozos, estaciones, SCADA y alarmas en vivo.",
     },
     ficha: "https://www.venecorr.com/wellos",
