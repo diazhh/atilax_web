@@ -12,7 +12,8 @@ Punto seguro: todo commiteado y en origin (atilax_web, venecorr_web, claude-mods
     `/root/backups/haproxy.cfg.pre-wellos-20261018-130252`).
   - LiftOS — vivo. `visor` / `h7gjr6-xhge5j-demo` (rol nuevo en balancin, 162dd648). Demo DETENIDO: necesita
     START de Héctor. Cualquiera puede pulsar STOP INMEDIATO (diseño de seguridad).
-  - TankOS — en activación. Espera URL/usuario `custody_inspector`/clave de la sesión TankOS (thr_2meuaeu3bf).
+  - TankOS — vivo (18-10). `https://tankos.atilax.io` (no tk.atilax.io, que apunta al 147), `visor` / `visor-tankos`,
+    ya escritos en su login. Escrituras de custodia, laboratorio, alarmas, ingeniería y admin → 403.
   - ERP — en activación por decisión de Héctor: el rol «Demo / Visitante» (demo/demo123) tiene rutas de
     escritura sin `authorize` (p. ej. requisiciones). No se publica hasta cerrarlas en su repo.
 - **venecorr.com**: enlace «Probar el demo en vivo» (4 idiomas) a atilax.io/demos; fotos propias en Obras
@@ -26,8 +27,7 @@ Punto seguro: todo commiteado y en origin (atilax_web, venecorr_web, claude-mods
 - **guardia-envios 0.2.0** (claude-mods): en Cloudroom pide «ENVIAR <código>» escrito por la persona.
 
 ## Qué sigue
-1. TankOS: al llegar sus datos, probar en navegador (entra, ve, registrar/aprobar → 403), poner
-   `estado: "vivo"` + `clave` en `productos.ts`, CI y desplegar (receta en `CICD.md`, con `pipefail`).
+1. (hecho) TankOS publicado.
 2. Respuesta de María: cargar proyectos en la BD de venecorr (admin `/admin/proyectos`), fotos sin EXIF,
    recortadas; cambiar Geomembrana (stock) e Incendio si sus fotos no son nuestras.
 3. Decidir con Héctor: ¿quitar la clave de WellOS de /demos (su login ya la trae)?
