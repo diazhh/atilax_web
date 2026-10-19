@@ -151,10 +151,13 @@ export const productos: Producto[] = [
       { titulo: "TankOS, el recorrido completo", duracion: "5:53", src: `${VC}/tankos-v2-web.mp4`, poster: `${IMG}/tankos/tankos-v2-poster.jpg` },
     ],
     demo: {
-      url: "https://tk.atilax.io",
-      estado: "activacion",
-      usuario: "inspector@atilax.io",
-      rol: "Rol «inspector de custodia»: ve tanques, cálculos y tickets; no registra ni aprueba.",
+      url: "https://tankos.atilax.io",
+      // Demo LXD tankos-demo (18-10). Probado en Chrome: /dashboard y GET /api/tanks 200; POST custody/batches,
+      // lab/samples, alarms ack/clear, engineering/devices y admin/api-keys → 403 INSUFFICIENT_AUTHORITY.
+      estado: "vivo",
+      usuario: "visor",
+      clave: "visor-tankos",
+      rol: "Rol de solo lectura: ve tanques, cálculos, tickets y laboratorio; no registra, no aprueba ni emite. El formulario ya trae el usuario y la clave: basta con pulsar «Iniciar sesión».",
       descripcion: "Patio de tanques simulado con telemetría de radar, cálculo MPMS y tickets de custodia.",
     },
     ficha: "https://www.venecorr.com/tankos",

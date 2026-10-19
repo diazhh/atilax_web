@@ -23,7 +23,7 @@ export default function Home() {
         </div>
         <div className="border border-foreground">
           <div className="flex h-7 items-center gap-2 border-b bg-muted px-3 text-[11px] text-muted-foreground">
-            ● ● ● <span className="ml-2">tk.atilax.io</span>
+            ● ● ● <span className="ml-2">tankos.atilax.io</span>
           </div>
           <Image
             src="/images/productos/tankos/calculo.webp"
