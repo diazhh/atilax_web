@@ -26,6 +26,11 @@ Punto seguro: todo commiteado y en origin (atilax_web, venecorr_web, claude-mods
   guía en `docs/CICD.md` de cada repo.
 - **guardia-envios 0.2.0** (claude-mods): en Cloudroom pide «ENVIAR <código>» escrito por la persona.
 
+- **ATILAX Historiador** (22-10, rama `dev`, SIN publicar): `/productos/historiador` y `/videos` (lista de
+  reproducción). Los 4 mp4 web (15–22 MB) están en `venecorr_web/public/video/historiador-*-web.mp4` (fuera de git):
+  al publicar hay que copiarlos a `/var/proyectos/venecorr_web/public/video/` del 144 ANTES de desplegar atilax.io.
+  Los vídeos traen el texto quemado: la pista .vtt va apagada por defecto.
+
 ## Qué sigue
 1. (hecho) TankOS publicado.
 2. Respuesta de María: cargar proyectos en la BD de venecorr (admin `/admin/proyectos`), fotos sin EXIF,
