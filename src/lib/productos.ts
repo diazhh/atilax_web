@@ -32,6 +32,8 @@ export interface Video {
   duracion: string;
   src: string;
   poster: string;
+  /** Pista .vtt en este mismo dominio (los <track> no cruzan dominios sin CORS). */
+  subtitulos?: string;
 }
 
 export interface Producto {
@@ -238,3 +240,16 @@ export const productos: Producto[] = [
 export const productoPorSlug = (slug: string) => productos.find((p) => p.slug === slug);
 
 export const videos = productos.flatMap((p) => p.videos);
+
+/** Lista de reproducción del Historiador, en el orden en que se ven. */
+export const videosHistoriador: Video[] = [
+  { titulo: "Un historiador por sitio: cada negocio ve lo suyo", duracion: "1:54", n: "ecosistema" },
+  { titulo: "ATILAX Historiador en un campo de producción", duracion: "2:31", n: "campo" },
+  { titulo: "ATILAX Historiador en una refinería", duracion: "3:03", n: "refineria" },
+  { titulo: "El Historiador corporativo, por área", duracion: "2:09", n: "corporativo" },
+].map(({ n, ...v }) => ({
+  ...v,
+  src: `${VC}/historiador-${n}-web.mp4`,
+  poster: `${IMG}/historiador/historiador-${n}-poster.jpg`,
+  subtitulos: `/subtitulos/historiador-${n}.vtt`,
+}));

@@ -66,6 +66,31 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="py-16 md:py-20">
+        <div className="container-lg grid items-center gap-12 lg:grid-cols-[1fr_1.1fr]">
+          <div>
+            <span className="chip border-primary bg-primary/10 text-primary">Nuevo</span>
+            <h2 className="mt-4 text-3xl font-bold tracking-tight md:text-[34px]">ATILAX Historiador</h2>
+            <p className="mt-2 text-xl font-semibold">Donde toda la suite se junta para decidir</p>
+            <p className="mt-4 text-lg text-muted-foreground">
+              Un historiador por sitio, leído por OPC en una sola dirección, y un historiador corporativo donde cada
+              área ve lo suyo. TankOS y WellOS le tributan.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link href="/productos/historiador" className="btn btn-primary">Conocer el Historiador</Link>
+              <Link href="/videos" className="btn">Ver la lista de reproducción</Link>
+            </div>
+          </div>
+          <Image
+            src="/images/productos/historiador/vp-produccion.webp"
+            alt="Tablero corporativo del Historiador: producción del día contra plan y proyección de cierre de mes."
+            width={1600}
+            height={1000}
+            className="h-auto w-full border border-foreground"
+          />
+        </div>
+      </section>
+
       <section className="bg-primary py-12 text-white">
         <div className="container-lg flex flex-col justify-between gap-6 md:flex-row md:items-center">
           <div>

@@ -4,8 +4,9 @@ import { Menu } from "lucide-react";
 
 const links = [
   { name: "Productos", href: "/#productos" },
+  { name: "Historiador", href: "/productos/historiador" },
+  { name: "Videos", href: "/videos" },
   { name: "Demos", href: "/demos" },
-  { name: "Tutoriales", href: "/#tutoriales" },
   { name: "Contacto", href: "/contacto" },
 ];
 

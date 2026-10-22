@@ -1,0 +1,161 @@
+WEBVTT
+
+1
+00:00:00.320 --> 00:00:02.468
+Producción, mejoramiento,
+
+2
+00:00:02.468 --> 00:00:04.505
+refinación, transporte.
+
+3
+00:00:04.651 --> 00:00:08.075
+Son negocios distintos, a veces de dueños distintos.
+
+4
+00:00:08.075 --> 00:00:09.991
+Cada uno con su red de control,
+
+5
+00:00:09.991 --> 00:00:12.678
+y cada uno necesita ver lo suyo.
+
+6
+00:00:13.348 --> 00:00:15.020
+ATILAX los organiza así:
+
+7
+00:00:15.020 --> 00:00:16.622
+un historiador en cada sitio,
+
+8
+00:00:16.622 --> 00:00:18.508
+y uno corporativo encima.
+
+9
+00:00:19.178 --> 00:00:22.301
+En cada sitio, lo que se mide vive en la
+
+10
+00:00:22.301 --> 00:00:24.663
+red de control, aislada.
+
+11
+00:00:24.809 --> 00:00:27.398
+El historiador lo lee por OPC,
+
+12
+00:00:27.398 --> 00:00:29.836
+en una sola dirección, y lo entrega a la
+
+13
+00:00:29.836 --> 00:00:31.420
+red administrativa.
+
+14
+00:00:31.450 --> 00:00:34.137
+El control queda intacto.
+
+15
+00:00:34.806 --> 00:00:39.229
+En el campo, el SCADA y TankOS le reportan
+
+16
+00:00:39.229 --> 00:00:40.593
+a un historiador.
+
+17
+00:00:40.681 --> 00:00:42.120
+En un complejo mejorador,
+
+18
+00:00:42.120 --> 00:00:46.804
+cada mejorador tiene su DCS y su propio historiador.
+
+19
+00:00:46.950 --> 00:00:49.300
+En la refinería, lo mismo.
+
+20
+00:00:49.970 --> 00:00:53.342
+Entre negocios, el barril viaja con su ticket.
+
+21
+00:00:53.662 --> 00:00:56.564
+A la refinería no le interesan los pozos:
+
+22
+00:00:56.564 --> 00:00:59.182
+le interesa cuánto le transfirieron.
+
+23
+00:00:59.212 --> 00:01:02.885
+El historiador enlaza los tickets y no recalcula nada.
+
+24
+00:01:03.556 --> 00:01:06.447
+Dentro de cada sitio, cada rol ve lo suyo.
+
+25
+00:01:06.447 --> 00:01:08.490
+El operador, sus alarmas.
+
+26
+00:01:08.490 --> 00:01:10.743
+El laboratorio, sus muestras.
+
+27
+00:01:10.743 --> 00:01:14.289
+El planificador, inventarios y balances.
+
+28
+00:01:14.958 --> 00:01:18.128
+Mantenimiento, la salud de cada equipo,
+
+29
+00:01:18.128 --> 00:01:19.700
+antes de que falle.
+
+30
+00:01:19.846 --> 00:01:23.334
+El ingeniero, todo en una línea de tiempo.
+
+31
+00:01:23.364 --> 00:01:26.852
+Y el gerente de planta, solo lo anormal.
+
+32
+00:01:27.522 --> 00:01:30.668
+Y cada historiador le tributa al corporativo
+
+33
+00:01:30.668 --> 00:01:34.934
+solo lo que importa: las cifras del día, con su plan.
+
+34
+00:01:35.254 --> 00:01:37.744
+El dato fino se queda en el sitio.
+
+35
+00:01:38.313 --> 00:01:39.648
+Un historiador por sitio,
+
+36
+00:01:39.648 --> 00:01:41.262
+cada negocio con lo suyo,
+
+37
+00:01:41.262 --> 00:01:43.329
+y una sola verdad arriba.
+
+38
+00:01:43.329 --> 00:01:44.362
+ATILAX.
+
+39
+00:01:44.362 --> 00:01:47.009
+El dato nace una vez, donde se mide,
+
+40
+00:01:47.009 --> 00:01:49.835
+y llega con su hora a quien decide.
