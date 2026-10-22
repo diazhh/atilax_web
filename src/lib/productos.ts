@@ -249,8 +249,8 @@ export const videosHistoriador: Video[] = [
   { titulo: "El Historiador corporativo, por área", duracion: "2:09", n: "corporativo" },
 ].map(({ n, ...v }) => ({
   ...v,
-  // Servidos por atilax.io (public/video, fuera de git): mismo dominio que la página y sus pistas.
-  src: `/video/historiador-${n}-web.mp4`,
-  poster: `${IMG}/historiador/historiador-${n}-poster.jpg`,
-  subtitulos: `/subtitulos/historiador-${n}.vtt`,
+  // Carpeta compartida /medios (la misma en disco para venecorr.com y las apps de TV y tablet).
+  src: `/medios/historiador/historiador-${n}-es-web.mp4`,
+  poster: `/medios/historiador/historiador-${n}-es-poster.jpg`,
+  subtitulos: `/medios/historiador/historiador-${n}-es.vtt`,
 }));

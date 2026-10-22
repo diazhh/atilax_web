@@ -26,11 +26,13 @@ Punto seguro: todo commiteado y en origin (atilax_web, venecorr_web, claude-mods
   guía en `docs/CICD.md` de cada repo.
 - **guardia-envios 0.2.0** (claude-mods): en Cloudroom pide «ENVIAR <código>» escrito por la persona.
 
-- **ATILAX Historiador** (22-10, rama `dev`, SIN publicar): `/productos/historiador` y `/videos` (lista de
-  reproducción). Los 4 mp4 web (15–22 MB) están en `atilax_web/public/video/` (fuera de git):
-  se copian a `/var/proyectos/atilax_web/public/video/` del 144 ANTES del build (Next sólo sirve lo que había en
-  public/ al compilar).
-  Los vídeos traen el texto quemado: la pista .vtt va apagada por defecto.
+- **ATILAX Historiador** (22-10): `/productos/historiador` y `/videos` (lista de reproducción), en producción.
+  También en venecorr.com `/historiador` (sólo español).
+- **Carpeta de medios compartida**: `/var/proyectos/medios/` en el 144 (`web_hh/medios/` en la Mac, fuera de git).
+  atilax.io y venecorr.com la sirven en `/medios/...` con una ruta que lee del disco (Range; `src/lib/servir-archivo.ts`):
+  un archivo nuevo se ve sin recompilar. La misma URL sirve a las apps de TV y tablet. Hoy sólo tiene `historiador/`
+  (mp4 + póster + .vtt); los vídeos viejos de TankOS/WellOS siguen en `venecorr_web/public/video` y los de TV en
+  `public/uploads/tv` (migrarlos es pendiente).
 
 ## Qué sigue
 1. (hecho) TankOS publicado.
