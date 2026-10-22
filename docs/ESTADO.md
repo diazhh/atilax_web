@@ -27,8 +27,9 @@ Punto seguro: todo commiteado y en origin (atilax_web, venecorr_web, claude-mods
 - **guardia-envios 0.2.0** (claude-mods): en Cloudroom pide «ENVIAR <código>» escrito por la persona.
 
 - **ATILAX Historiador** (22-10, rama `dev`, SIN publicar): `/productos/historiador` y `/videos` (lista de
-  reproducción). Los 4 mp4 web (15–22 MB) están en `venecorr_web/public/video/historiador-*-web.mp4` (fuera de git):
-  al publicar hay que copiarlos a `/var/proyectos/venecorr_web/public/video/` del 144 ANTES de desplegar atilax.io.
+  reproducción). Los 4 mp4 web (15–22 MB) están en `atilax_web/public/video/` (fuera de git):
+  se copian a `/var/proyectos/atilax_web/public/video/` del 144 ANTES del build (Next sólo sirve lo que había en
+  public/ al compilar).
   Los vídeos traen el texto quemado: la pista .vtt va apagada por defecto.
 
 ## Qué sigue

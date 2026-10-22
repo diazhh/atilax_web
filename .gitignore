@@ -40,3 +40,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .deploy-anterior
+
+# mp4 pesados: se copian al servidor a mano (ver docs/ESTADO.md)
+/public/video/
