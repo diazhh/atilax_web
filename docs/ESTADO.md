@@ -30,9 +30,14 @@ Punto seguro: todo commiteado y en origin (atilax_web, venecorr_web, claude-mods
   También en venecorr.com `/historiador` (sólo español).
 - **Carpeta de medios compartida**: `/var/proyectos/medios/` en el 144 (`web_hh/medios/` en la Mac, fuera de git).
   atilax.io y venecorr.com la sirven en `/medios/...` con una ruta que lee del disco (Range; `src/lib/servir-archivo.ts`):
-  un archivo nuevo se ve sin recompilar. La misma URL sirve a las apps de TV y tablet. Hoy sólo tiene `historiador/`
-  (mp4 + póster + .vtt); los vídeos viejos de TankOS/WellOS siguen en `venecorr_web/public/video` y los de TV en
-  `public/uploads/tv` (migrarlos es pendiente).
+  un archivo nuevo se ve sin recompilar. La misma URL sirve a las apps de TV y tablet. Estructura `medios/<producto>/`:
+  `historiador/` (mp4 + póster + .vtt) y, desde el 25-10 (rama dev), TODOS los mp4 de las webs (tankos, wellos,
+  liftos, calentadores, venecorr, tecnologia), que salen de `venecorr_web/public/video`. Los pósters viejos siguen
+  en `public/images`. Los de la TV siguen en `venecorr_web/public/uploads/tv` (su catálogo guarda la URL en la BD:
+  migrarlos se hace con la sesión de TV).
+  **Al desplegar esa rama, ANTES del build**, en el 144:
+  `cd /var/proyectos && for f in venecorr_web/public/video/*.mp4; do p=$(basename $f | sed 's/-.*//'); mkdir -p medios/$p; cp -n $f medios/$p/; done`
+  (copia, no mueve: el sitio viejo sigue sirviendo /video hasta que arranque el nuevo; luego se puede borrar).
 
 ## Qué sigue
 1. (hecho) TankOS publicado.
@@ -41,5 +46,10 @@ Punto seguro: todo commiteado y en origin (atilax_web, venecorr_web, claude-mods
 3. Decidir con Héctor: ¿quitar la clave de WellOS de /demos (su login ya la trae)?
 4. Pendientes menores: enlace muerto al panel retirado en el correo de confirmación de
    `src/app/api/contact/route.ts` (el guardia de producción bloqueó la edición por bash); venecorr-web sólo en
-   127.0.0.1 (su middleware `src/proxy.ts` falla con `-H 127.0.0.1`; ufw ya cierra el 3022);
+   loopback. Causa (25-10, reproducida en local): Next arma `req.url` con `localhost`; si escucha en
+   `127.0.0.1`, toma el rewrite `/x → /es/x` de `src/proxy.ts` como EXTERNO, lo reenvía por HTTP, el segundo pase
+   llega como `/es/x` y el proxy lo redirige (308 en bucle; en prod, EPROTO a https://localhost). Con `-H localhost`
+   funciona, pero en el 144 `localhost` = `::1` y haproxy va a `127.0.0.1:3022`. Salidas: (a) `-H localhost` +
+   haproxy a `[::1]:3022` (cambio de haproxy: con Héctor), o (b) pasar el rewrite de idioma a `rewrites()` de
+   next.config (siempre interno). Mientras, ufw cierra el 3022;
    «1 error during load» en `/reload-plugins` sin revisar (no es guardia-envios).
