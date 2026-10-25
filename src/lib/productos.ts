@@ -51,8 +51,8 @@ export interface Producto {
   ficha?: string;
 }
 
-// Los vídeos los sirve venecorr.com: no se duplican 300 MB de mp4 en este repo.
-const VC = "https://www.venecorr.com/video";
+// Los mp4 viven en la carpeta compartida /medios (la misma en disco para venecorr.com y las apps de TV y tablet).
+const M = "/medios";
 const IMG = "/images/productos";
 
 export const productos: Producto[] = [
@@ -147,10 +147,10 @@ export const productos: Producto[] = [
       },
     ],
     videos: [
-      { titulo: "Qué es TankOS", duracion: "3:47", src: `${VC}/tankos-t00-web.mp4`, poster: `${IMG}/tankos/tankos-t00-poster.jpg` },
-      { titulo: "TankOS: inventario y entregas de un patio de tanques", duracion: "5:57", src: `${VC}/tankos-v3-web.mp4`, poster: `${IMG}/tankos/tankos-v3-poster.jpg` },
-      { titulo: "TankOS, en cuatro minutos", duracion: "4:42", src: `${VC}/tankos-v1-web.mp4`, poster: `${IMG}/tankos/tankos-v1-poster.jpg` },
-      { titulo: "TankOS, el recorrido completo", duracion: "5:53", src: `${VC}/tankos-v2-web.mp4`, poster: `${IMG}/tankos/tankos-v2-poster.jpg` },
+      { titulo: "Qué es TankOS", duracion: "3:47", src: `${M}/tankos/tankos-t00-web.mp4`, poster: `${IMG}/tankos/tankos-t00-poster.jpg` },
+      { titulo: "TankOS: inventario y entregas de un patio de tanques", duracion: "5:57", src: `${M}/tankos/tankos-v3-web.mp4`, poster: `${IMG}/tankos/tankos-v3-poster.jpg` },
+      { titulo: "TankOS, en cuatro minutos", duracion: "4:42", src: `${M}/tankos/tankos-v1-web.mp4`, poster: `${IMG}/tankos/tankos-v1-poster.jpg` },
+      { titulo: "TankOS, el recorrido completo", duracion: "5:53", src: `${M}/tankos/tankos-v2-web.mp4`, poster: `${IMG}/tankos/tankos-v2-poster.jpg` },
     ],
     demo: {
       url: "https://tankos.atilax.io",
@@ -182,7 +182,7 @@ export const productos: Producto[] = [
       },
     ],
     videos: [
-      { titulo: "ATILAX LiftOS: su campo, en sus manos", duracion: "0:55", src: `${VC}/liftos-v1-es-web.mp4`, poster: `${IMG}/liftos/liftos-v1-es-poster.jpg` },
+      { titulo: "ATILAX LiftOS: su campo, en sus manos", duracion: "0:55", src: `${M}/liftos/liftos-v1-es-web.mp4`, poster: `${IMG}/liftos/liftos-v1-es-poster.jpg` },
     ],
     demo: {
       url: "https://balancin.atilax.io",
