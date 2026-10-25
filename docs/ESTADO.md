@@ -44,8 +44,7 @@ Punto seguro: todo commiteado y en origin (atilax_web, venecorr_web, claude-mods
 2. Respuesta de María: cargar proyectos en la BD de venecorr (admin `/admin/proyectos`), fotos sin EXIF,
    recortadas; cambiar Geomembrana (stock) e Incendio si sus fotos no son nuestras.
 3. Decidir con Héctor: ¿quitar la clave de WellOS de /demos (su login ya la trae)?
-4. Pendientes menores: enlace muerto al panel retirado en el correo de confirmación de
-   `src/app/api/contact/route.ts` (el guardia de producción bloqueó la edición por bash); venecorr-web sólo en
+4. Pendientes menores: (hecho 25-10, en dev) el enlace muerto del correo de confirmación ahora lleva al Historiador y /videos; venecorr-web sólo en
    loopback. Causa (25-10, reproducida en local): Next arma `req.url` con `localhost`; si escucha en
    `127.0.0.1`, toma el rewrite `/x → /es/x` de `src/proxy.ts` como EXTERNO, lo reenvía por HTTP, el segundo pase
    llega como `/es/x` y el proxy lo redirige (308 en bucle; en prod, EPROTO a https://localhost). Con `-H localhost`

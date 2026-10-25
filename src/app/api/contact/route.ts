@@ -93,7 +93,7 @@ function autoReplyHTML(name: string) {
             <tr><td style="padding:16px 20px;">
               <p style="margin:0;color:#92400e;font-size:14px;font-weight:600;">Mientras tanto, puede:</p>
               <ul style="margin:8px 0 0;padding-left:20px;color:#92400e;font-size:14px;line-height:1.8;">
-                <li>Explorar nuestra <a href="https://panel.atilax.io" style="color:#d97706;font-weight:600;">plataforma demo</a></li>
+                <li>Ver el <a href="https://atilax.io/productos/historiador" style="color:#d97706;font-weight:600;">ATILAX Historiador</a> y su <a href="https://atilax.io/videos" style="color:#d97706;font-weight:600;">lista de vídeos</a></li>
                 <li>Probar nuestros <a href="https://atilax.io/demos" style="color:#1b6e3d;font-weight:600;">demos en vivo</a></li>
               </ul>
             </td></tr>
