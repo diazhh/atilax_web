@@ -1,4 +1,4 @@
-# Estado de web_hh (atilax.io + venecorr.com) — 2026-10-18
+# Estado de web_hh (atilax.io + venecorr.com) — 2026-10-25
 
 Punto seguro: todo commiteado y en origin (atilax_web, venecorr_web, claude-mods). Nada corre en la Mac.
 
@@ -52,3 +52,15 @@ Punto seguro: todo commiteado y en origin (atilax_web, venecorr_web, claude-mods
    haproxy a `[::1]:3022` (cambio de haproxy: con Héctor), o (b) pasar el rewrite de idioma a `rewrites()` de
    next.config (siempre interno). Mientras, ufw cierra el 3022;
    «1 error during load» en `/reload-plugins` sin revisar (no es guardia-envios).
+
+## Preguntas para Héctor (25-10)
+1. **¿Despliego atilax.io y venecorr.com desde `dev`?** (CI verde en los dos). Trae: venecorr `/historiador` (sólo
+   español) + menú + bloque 04 en Tecnología; `/medios` en las dos webs; todos los mp4 de las webs desde `/medios`;
+   correo de contacto sin el panel retirado. Antes del build hay que copiar los mp4 del 144 a `/var/proyectos/medios/`
+   (comando arriba). venecorr se cae unos segundos al reiniciar.
+2. **¿Muevo los vídeos de la TV/tablet (`public/uploads/tv`, 593 MB) a `/medios`?** Toca las URL guardadas en la BD
+   del catálogo de TV: lo haría coordinado con la sesión de TV.
+3. **Bind de venecorr-web a loopback**: ¿opción (a) haproxy a `[::1]:3022` + `-H localhost`, o (b) mover el rewrite de
+   idioma a `next.config`? (ver «Pendientes menores»).
+4. **Historiador en en/pt/it**: ¿se traduce la página ya, o se espera a los vídeos en inglés?
+5. (de antes) ¿Quitar la clave de WellOS de /demos?
