@@ -243,14 +243,16 @@ export const videos = productos.flatMap((p) => p.videos);
 
 /** Lista de reproducción del Historiador, en el orden en que se ven. */
 export const videosHistoriador: Video[] = [
+  { titulo: "Un día en la planta con ATILAX Historiador", duracion: "5:48", n: "planta", vtt: false },
   { titulo: "Un historiador por sitio: cada negocio ve lo suyo", duracion: "1:54", n: "ecosistema" },
   { titulo: "ATILAX Historiador en un campo de producción", duracion: "2:31", n: "campo" },
   { titulo: "ATILAX Historiador en una refinería", duracion: "3:03", n: "refineria" },
   { titulo: "El Historiador corporativo, por área", duracion: "2:09", n: "corporativo" },
-].map(({ n, ...v }) => ({
+].map(({ n, vtt = true, ...v }) => ({
   ...v,
   // Carpeta compartida /medios (la misma en disco para venecorr.com y las apps de TV y tablet).
   src: `/medios/historiador/historiador-${n}-es-web.mp4`,
   poster: `/medios/historiador/historiador-${n}-es-poster.jpg`,
-  subtitulos: `/medios/historiador/historiador-${n}-es.vtt`,
+  // «planta» lleva los subtítulos quemados en la imagen: sin pista .vtt.
+  subtitulos: vtt ? `/medios/historiador/historiador-${n}-es.vtt` : undefined,
 }));
