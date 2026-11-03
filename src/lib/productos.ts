@@ -147,6 +147,7 @@ export const productos: Producto[] = [
       },
     ],
     videos: [
+      { titulo: "Un día en el patio con ATILAX TankOS", duracion: "8:17", src: `${M}/tankos/tankos-patio-web.mp4`, poster: `${IMG}/tankos/tankos-patio-poster.jpg` },
       { titulo: "Qué es TankOS", duracion: "3:47", src: `${M}/tankos/tankos-t00-web.mp4`, poster: `${IMG}/tankos/tankos-t00-poster.jpg` },
       { titulo: "TankOS: inventario y entregas de un patio de tanques", duracion: "5:57", src: `${M}/tankos/tankos-v3-web.mp4`, poster: `${IMG}/tankos/tankos-v3-poster.jpg` },
       { titulo: "TankOS, en cuatro minutos", duracion: "4:42", src: `${M}/tankos/tankos-v1-web.mp4`, poster: `${IMG}/tankos/tankos-v1-poster.jpg` },
