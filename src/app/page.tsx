@@ -1,7 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
-import { productos, videos } from "@/lib/productos";
-import { DemoChip, Videos } from "@/components/shared/piezas";
+import { productoPorSlug, suitePorGrupo, videosHistoriador } from "@/lib/productos";
+import { Videos } from "@/components/shared/piezas";
+import { LogoProducto } from "@/components/shared/logo-producto";
+
+// Véalo funcionar: TankOS y Historiador con sus archivos reales. ponytail: falta el de WellOS (ver informe).
+const videos = [productoPorSlug("tankos")!.videos[0], videosHistoriador[0]];
 
 export default function Home() {
   return (
@@ -10,15 +14,15 @@ export default function Home() {
         <div>
           <p className="eyebrow">Suite Atilax · software industrial propio</p>
           <h1 className="mt-4 text-4xl font-bold leading-tight tracking-tight md:text-[52px] md:leading-[60px]">
-            El campo, el patio de tanques y la máquina, en un solo software
+            El campo, el patio de tanques y la planta, en un solo software
           </h1>
           <p className="mt-5 text-lg text-muted-foreground">
             Plataformas de operación para petróleo y gas que se instalan en el servidor de su empresa. Sus
             datos se quedan en casa.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/demos" className="btn btn-primary">Ver los demos en vivo</Link>
-            <Link href="/contacto" className="btn">Hablar con nosotros</Link>
+            <Link href="/demos" className="btn btn-primary">Probar demo</Link>
+            <Link href="#productos" className="btn">Ver productos</Link>
           </div>
         </div>
         <div className="border border-foreground">
@@ -39,55 +43,32 @@ export default function Home() {
       <section id="productos" className="scroll-mt-20 border-t bg-muted py-16 md:py-20">
         <div className="container-lg">
           <p className="eyebrow">Productos</p>
-          <h2 className="mt-2 text-3xl font-bold tracking-tight md:text-[34px]">Cuatro productos, una suite</h2>
-          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {productos.map((p) => (
-              <Link
-                key={p.slug}
-                href={`/productos/${p.slug}`}
-                className="group flex flex-col border bg-white hover:border-primary"
-              >
-                <Image
-                  src={p.imagen}
-                  alt={`Captura de ${p.nombre}`}
-                  width={600}
-                  height={360}
-                  className="h-40 w-full border-b object-cover object-top"
-                />
-                <div className="flex flex-1 flex-col gap-3 p-5">
-                  <DemoChip estado={p.demo.estado} />
-                  <h3 className="text-lg font-bold">{p.nombre}</h3>
-                  <p className="text-sm leading-relaxed text-muted-foreground">{p.linea}</p>
-                  <span className="mt-auto text-sm font-semibold text-primary">Ver producto →</span>
-                </div>
-              </Link>
+          <h2 className="mt-2 text-3xl font-bold tracking-tight md:text-[34px]">Cinco productos, una suite</h2>
+          <div className="mt-10 grid gap-8 lg:grid-cols-4">
+            {suitePorGrupo().map(({ grupo, items }) => (
+              <div key={grupo} className="flex flex-col gap-4">
+                <p className="eyebrow">{grupo}</p>
+                {items.map((p) => {
+                  const cuerpo = (
+                    <>
+                      <div className="flex flex-col items-start gap-2">
+                        <LogoProducto slug={p.slug} tono="color" />
+                        {p.etiqueta && <span className="chip">{p.etiqueta}</span>}
+                      </div>
+                      <p className="text-sm leading-relaxed text-muted-foreground">{p.linea}</p>
+                      {p.href && <span className="mt-auto text-sm font-semibold text-primary">Ver producto →</span>}
+                    </>
+                  );
+                  const cls = "flex flex-col gap-4 border bg-white p-5";
+                  return p.href ? (
+                    <Link key={p.slug} href={p.href} className={`${cls} hover:border-primary`}>{cuerpo}</Link>
+                  ) : (
+                    <div key={p.slug} className={cls}>{cuerpo}</div>
+                  );
+                })}
+              </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="py-16 md:py-20">
-        <div className="container-lg grid items-center gap-12 lg:grid-cols-[1fr_1.1fr]">
-          <div>
-            <span className="chip border-primary bg-primary/10 text-primary">Nuevo</span>
-            <h2 className="mt-4 text-3xl font-bold tracking-tight md:text-[34px]">ATILAX Historiador</h2>
-            <p className="mt-2 text-xl font-semibold">Donde toda la suite se junta para decidir</p>
-            <p className="mt-4 text-lg text-muted-foreground">
-              Un historiador por sitio, leído por OPC en una sola dirección, y un historiador corporativo donde cada
-              área ve lo suyo. TankOS y WellOS le tributan.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/productos/historiador" className="btn btn-primary">Conocer el Historiador</Link>
-              <Link href="/videos" className="btn">Ver la lista de reproducción</Link>
-            </div>
-          </div>
-          <Image
-            src="/images/productos/historiador/vp-produccion.webp"
-            alt="Tablero corporativo del Historiador: producción del día contra plan y proyección de cierre de mes."
-            width={1600}
-            height={1000}
-            className="h-auto w-full border border-foreground"
-          />
         </div>
       </section>
 
