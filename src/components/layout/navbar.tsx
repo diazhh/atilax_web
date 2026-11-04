@@ -20,12 +20,12 @@ export function Navbar() {
         </Link>
         <div className="flex-1" />
         <nav className="hidden items-center gap-8 md:flex">
-          <div className="group relative">
+          <div className="group flex h-[72px] items-center">
             <Link href="/#productos" className="text-[15px] font-medium hover:text-primary">
               Productos
             </Link>
-            <div className="invisible absolute left-1/2 top-full z-50 w-[960px] -translate-x-1/2 pt-5 opacity-0 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
-              <div className="grid grid-cols-4 gap-6 border bg-white p-6 shadow-lg">
+            <div className="invisible absolute left-0 right-0 top-full z-50 w-full opacity-0 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+              <div className="container-lg grid max-w-full grid-cols-4 gap-6 border bg-white p-6 shadow-lg">
                 {suitePorGrupo().map(({ grupo, items }) => (
                   <div key={grupo} className="space-y-4">
                     <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">{grupo}</p>
