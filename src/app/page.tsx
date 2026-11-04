@@ -4,8 +4,8 @@ import { productoPorSlug, suitePorGrupo, videosHistoriador } from "@/lib/product
 import { Videos } from "@/components/shared/piezas";
 import { LogoProducto } from "@/components/shared/logo-producto";
 
-// Véalo funcionar: TankOS y Historiador con sus archivos reales. ponytail: falta el de WellOS (ver informe).
-const videos = [productoPorSlug("tankos")!.videos[0], videosHistoriador[0]];
+// Véalo funcionar: sin WellOS (sus vídeos son del WellOS viejo). Cuando exista «Un día en el campo», sustituye al de LiftOS.
+const videos = [productoPorSlug("tankos")!.videos[0], videosHistoriador[0], productoPorSlug("liftos")!.videos[0]];
 
 export default function Home() {
   return (
