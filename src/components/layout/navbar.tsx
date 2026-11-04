@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu } from "lucide-react";
@@ -21,6 +21,12 @@ export function Navbar() {
     (document.activeElement as HTMLElement | null)?.blur();
     setOculto(true);
   };
+  useEffect(() => {
+    // En document: con hover no hay foco dentro del panel.
+    const alEscape = (e: KeyboardEvent) => e.key === "Escape" && cerrar();
+    document.addEventListener("keydown", alEscape);
+    return () => document.removeEventListener("keydown", alEscape);
+  }, []);
   return (
     <header className="sticky top-0 z-50 border-b bg-white/95 backdrop-blur">
       <div className="container-lg flex h-[72px] items-center gap-8">
@@ -31,9 +37,9 @@ export function Navbar() {
         <nav className="hidden items-center gap-8 md:flex">
           <div
             className="group flex h-[72px] items-center"
+            onMouseEnter={() => setOculto(false)}
             onMouseLeave={() => setOculto(false)}
             onFocus={() => setOculto(false)}
-            onKeyDown={(e) => e.key === "Escape" && cerrar()}
           >
             <Link href="/#productos" className="text-[15px] font-medium hover:text-primary">
               Productos
