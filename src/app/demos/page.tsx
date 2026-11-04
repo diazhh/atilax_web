@@ -7,7 +7,7 @@ import { Copiar } from "./copiar";
 export const metadata: Metadata = {
   title: "Demos en vivo",
   description:
-    "Entre a los demos de ATILAX WellOS, TankOS, LiftOS y ATILAX ERP con un usuario de solo lectura: lo ve todo y no puede cambiar nada.",
+    "Entre a los demos de ATILAX WellOS, ATILAX TankOS, ATILAX LiftOS y ATILAX ERP con un usuario de solo lectura: lo ve todo y no puede cambiar nada.",
 };
 
 export default function DemosPage() {

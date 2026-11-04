@@ -59,9 +59,9 @@ const capacidades = [
 const negocios = ["Producción", "Mejoramiento", "Refinación", "Transporte y oleoductos", "Terminales", "Ventas", "Consumo interno"];
 
 const suite = [
-  { nombre: "TankOS", texto: "Patios de tanques y tickets de transferencia. Su ticket es el dato fiscal.", href: "/productos/tankos" },
+  { nombre: "ATILAX TankOS", texto: "Patios de tanques y tickets de transferencia. Su ticket es el dato fiscal.", href: "/productos/tankos" },
   { nombre: "ATILAX WellOS", texto: "Operación de pozos y estaciones, con su SCADA.", href: "/productos/wellos" },
-  { nombre: "ATILAX LiftOS / BH5", texto: "Control del balancín hidráulico en el pozo.", href: "/productos/liftos" },
+  { nombre: "ATILAX LiftOS", texto: "Control de equipos en campo: BCP, calentadores, bombas y más.", href: "/productos/liftos" },
   { nombre: "ATILAX Vision", texto: "Visión artificial y vigilancia en el campo." },
 ];
 

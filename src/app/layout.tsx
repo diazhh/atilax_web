@@ -16,10 +16,10 @@ export const metadata: Metadata = {
     template: "%s | ATILAX",
   },
   description:
-    "ATILAX WellOS, TankOS, LiftOS y ATILAX ERP: plataformas de operación para petróleo y gas que se instalan en el servidor de su empresa. Demos en vivo con usuario de solo lectura.",
+    "Cinco productos —ATILAX WellOS, ATILAX LiftOS, ATILAX TankOS, ATILAX Historiador y ATILAX ERP— de operación para petróleo y gas que se instalan en el servidor de su empresa. Demos en vivo con usuario de solo lectura.",
   openGraph: {
     title: "ATILAX | Software industrial para petróleo y gas",
-    description: "WellOS, TankOS, LiftOS y ERP. Pruebe los demos en vivo.",
+    description: "Los cinco productos de la suite ATILAX. Pruebe los demos en vivo.",
     url: "https://atilax.io",
     siteName: "ATILAX",
     locale: "es_VE",

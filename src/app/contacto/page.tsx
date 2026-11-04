@@ -6,6 +6,7 @@ import { PageHeader } from "@/components/shared/page-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { suite } from "@/lib/productos";
 import { motion, AnimatePresence } from "framer-motion";
 
 const contactInfo = [
@@ -33,13 +34,7 @@ const contactInfo = [
   },
 ];
 
-const solutions = [
-  "ATILAX WellOS",
-  "TankOS",
-  "ATILAX LiftOS",
-  "ATILAX ERP",
-  "Otro / no estoy seguro",
-];
+const solutions = [...suite.map((i) => i.nombre), "Otro / no estoy seguro"];
 
 export default function ContactoPage() {
   const [formData, setFormData] = useState({

@@ -178,7 +178,7 @@ export const productos: Producto[] = [
       {
         titulo: "Alarmas que informan sin bloquear",
         texto:
-          "Gestión de alarmas no modal según ISA-18.2: reconocer y silenciar sin detener la operación, con severidad crítica, alta, media y advertencia. Diagnóstico de rotura de cabilla, geometría fuera de tolerancia, sobre-temperatura de aceite, salud de bomba y SPM inalcanzable.",
+          "Gestión de alarmas no modal: reconocer y silenciar sin detener la operación, con severidad crítica, alta, media y advertencia. En el balancín hidráulico: diagnóstico de rotura de cabilla, geometría fuera de tolerancia, sobre-temperatura de aceite, salud de bomba y SPM inalcanzable.",
         imagen: `${IMG}/liftos/balancin-alarmas.png`,
       },
     ],
@@ -194,6 +194,7 @@ export const productos: Producto[] = [
       rol: "Rol «visor»: ve operación, pozo, salud, alarmas y auditoría; los mandos están bloqueados. Para entrar, pulse «Entrar como técnico / admin» y use este usuario y clave.",
       descripcion: "HMI del balancín hidráulico con un simulador conectado: carta dinamométrica en vivo, alarmas y auditoría.",
     },
+    ficha: "https://www.venecorr.com/liftos",
   },
   {
     slug: "erp",
@@ -239,8 +240,6 @@ export const productos: Producto[] = [
 ];
 
 export const productoPorSlug = (slug: string) => productos.find((p) => p.slug === slug);
-
-export const videos = productos.flatMap((p) => p.videos);
 
 /** Lista de reproducción del Historiador, en el orden en que se ven. */
 export const videosHistoriador: Video[] = [

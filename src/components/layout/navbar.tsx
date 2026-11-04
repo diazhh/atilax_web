@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Menu } from "lucide-react";
@@ -12,6 +15,12 @@ const links = [
 ];
 
 export function Navbar() {
+  // Panel de Productos: se abre por hover/focus (CSS); tras un enlace o Escape se oculta hasta salir del ratón.
+  const [oculto, setOculto] = useState(false);
+  const cerrar = () => {
+    (document.activeElement as HTMLElement | null)?.blur();
+    setOculto(true);
+  };
   return (
     <header className="sticky top-0 z-50 border-b bg-white/95 backdrop-blur">
       <div className="container-lg flex h-[72px] items-center gap-8">
@@ -20,11 +29,19 @@ export function Navbar() {
         </Link>
         <div className="flex-1" />
         <nav className="hidden items-center gap-8 md:flex">
-          <div className="group flex h-[72px] items-center">
+          <div
+            className="group flex h-[72px] items-center"
+            onMouseLeave={() => setOculto(false)}
+            onFocus={() => setOculto(false)}
+            onKeyDown={(e) => e.key === "Escape" && cerrar()}
+          >
             <Link href="/#productos" className="text-[15px] font-medium hover:text-primary">
               Productos
             </Link>
-            <div className="invisible absolute left-0 right-0 top-full z-50 w-full opacity-0 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+            <div
+              onClick={(e) => (e.target as HTMLElement).closest("a") && cerrar()}
+              className={`${oculto ? "hidden " : ""}invisible absolute left-0 right-0 top-full z-50 w-full opacity-0 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100`}
+            >
               <div className="container-lg grid max-w-full grid-cols-4 gap-6 border bg-white p-6 shadow-lg">
                 {suitePorGrupo().map(({ grupo, items }) => (
                   <div key={grupo} className="space-y-4">
@@ -59,12 +76,14 @@ export function Navbar() {
             Probar demo
           </Link>
         </nav>
-        {/* Móvil: <details> nativo, sin JS. */}
+        {/* Móvil: <details> nativo; un enlace lo cierra. */}
         <details className="relative md:hidden">
           <summary className="list-none cursor-pointer p-2" aria-label="Abrir menú">
             <Menu className="h-6 w-6" />
           </summary>
-          <nav className="absolute right-0 top-12 flex max-h-[80vh] w-64 flex-col overflow-y-auto border bg-white">
+          <nav
+            onClick={(e) => (e.target as HTMLElement).closest("a") && e.currentTarget.closest("details")?.removeAttribute("open")}
+            className="absolute right-0 top-12 flex max-h-[80vh] w-64 flex-col overflow-y-auto border bg-white">
             {suitePorGrupo().map(({ grupo, items }) => (
               <div key={grupo} className="border-b px-4 py-3">
                 <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-500">{grupo}</p>
