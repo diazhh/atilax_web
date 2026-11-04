@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { productos } from "@/lib/productos";
+import { suite } from "@/lib/productos";
 
 export function Footer() {
   return (
@@ -14,12 +14,15 @@ export function Footer() {
         </div>
         <div className="space-y-2">
           <p className="font-semibold text-white">Productos</p>
-          {productos.map((p) => (
-            <Link key={p.slug} href={`/productos/${p.slug}`} className="block hover:text-white">
-              {p.nombre}
-            </Link>
-          ))}
-          <Link href="/productos/historiador" className="block hover:text-white">ATILAX Historiador</Link>
+          {suite.map((p) =>
+            p.href ? (
+              <Link key={p.slug} href={p.href} className="block hover:text-white">
+                {p.nombre}
+              </Link>
+            ) : (
+              <p key={p.slug}>{p.nombre}{p.etiqueta ? ` · ${p.etiqueta}` : ""}</p>
+            ),
+          )}
         </div>
         <div className="space-y-2">
           <p className="font-semibold text-white">Contacto</p>
