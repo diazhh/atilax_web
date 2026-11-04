@@ -107,7 +107,7 @@ export const productos: Producto[] = [
   },
   {
     slug: "tankos",
-    nombre: "TankOS",
+    nombre: "ATILAX TankOS",
     linea: "Gestión de tanques grado transferencia y custodia. Una cifra fiscal no se teclea: se deriva.",
     eyebrow: "Gestión de tanques · Transferencia y custodia",
     titulo: "El sistema con el que un patio de tanques lleva su inventario y sus entregas",
@@ -257,3 +257,28 @@ export const videosHistoriador: Video[] = [
   // «planta» lleva los subtítulos quemados en la imagen: sin pista .vtt.
   subtitulos: vtt ? `/medios/historiador/historiador-${n}-es.vtt` : undefined,
 }));
+
+export type Grupo = "Campo" | "Almacenamiento" | "Planta y corporativo" | "Gestión";
+
+export const GRUPOS: Grupo[] = ["Campo", "Almacenamiento", "Planta y corporativo", "Gestión"];
+
+export interface ItemSuite {
+  slug: string;
+  nombre: string;
+  linea: string;
+  grupo: Grupo;
+  href?: string;
+  etiqueta?: string;
+}
+
+/** La suite, en orden de grupo. El ERP aún no tiene ficha: sin href y con etiqueta. */
+export const suite: ItemSuite[] = [
+  { slug: "wellos", nombre: "ATILAX WellOS", grupo: "Campo", href: "/productos/wellos", linea: "Pozos y producción del campo, con gemelo digital." },
+  { slug: "liftos", nombre: "ATILAX LiftOS", grupo: "Campo", href: "/productos/liftos", linea: "Control de equipos en campo: BCP, calentadores, bombas y más." },
+  { slug: "tankos", nombre: "ATILAX TankOS", grupo: "Almacenamiento", href: "/productos/tankos", linea: "Inventario y entregas de patios de tanques." },
+  { slug: "historiador", nombre: "ATILAX Historiador", grupo: "Planta y corporativo", href: "/productos/historiador", linea: "La memoria de la planta: cada señal con su hora y su calidad." },
+  { slug: "erp", nombre: "ATILAX ERP", grupo: "Gestión", etiqueta: "En activación", linea: "Gestión de la empresa." },
+];
+
+export const suitePorGrupo = () =>
+  GRUPOS.map((grupo) => ({ grupo, items: suite.filter((i) => i.grupo === grupo) }));
