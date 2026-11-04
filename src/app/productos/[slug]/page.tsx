@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { LogoProducto } from "@/components/shared/logo-producto";
 import { notFound } from "next/navigation";
 import { productoPorSlug, productos } from "@/lib/productos";
 import { DemoChip, Videos } from "@/components/shared/piezas";
@@ -26,6 +27,7 @@ export default async function ProductoPage({ params }: Params) {
         <div className="container-lg grid items-center gap-12 lg:grid-cols-2">
           <div>
             <p className="eyebrow">{p.eyebrow}</p>
+            <div className="mt-4"><LogoProducto slug={p.slug} tono="color" /></div>
             <h1 className="mt-3 text-4xl font-bold tracking-tight md:text-5xl">{p.nombre}</h1>
             <p className="mt-3 text-2xl font-semibold">{p.titulo}</p>
             <p className="mt-5 text-lg text-muted-foreground">{p.parrafo}</p>

@@ -168,11 +168,11 @@ export const productos: Producto[] = [
   {
     slug: "liftos",
     nombre: "ATILAX LiftOS",
-    linea: "Control de balancín hidráulico: carta dinamométrica en vivo, diagnóstico y alarmas ISA-18.2.",
-    eyebrow: "Control de balancín hidráulico",
-    titulo: "Carta dinamométrica y diagnóstico en vivo",
+    linea: "Control de equipos en campo: BCP, calentadores, bombas y más.",
+    eyebrow: "Control de equipos en campo",
+    titulo: "Cada equipo, controlado y a la vista",
     parrafo:
-      "El sistema que va dentro de los equipos de bombeo hidráulico: cicla solo, se ajusta carrera a carrera, dibuja la carta dinamométrica en vivo y registra quién cambió qué. Las alarmas informan sin bloquear al operador.",
+      "ATILAX LiftOS controla los equipos de campo —BCP, calentadores, bombas y más— con diagnóstico, alarmas y registro de quién cambió qué. En el balancín hidráulico cicla solo, se ajusta carrera a carrera y dibuja la carta dinamométrica en vivo.",
     imagen: `${IMG}/liftos/balancin-alarmas.png`,
     bloques: [
       {
