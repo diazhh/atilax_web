@@ -3,6 +3,10 @@
 Punto seguro: todo commiteado y en origin (atilax_web, venecorr_web, claude-mods). Nada corre en la Mac.
 
 ## Hecho
+- **Suite ATILAX (2026-11-04)**: las dos webs muestran la misma suite de cinco productos por grupos (Campo: WellOS,
+  LiftOS; Almacenamiento: TankOS; Planta y corporativo: Historiador; Gestión: ERP) con los logos del kit. IAV Quántico
+  retirado (`/iav` redirige a `/tecnologia`). venecorr.com estrena `/tecnologia` por bloques y `/liftos` en 4 idiomas.
+  Diseño y plan en `venecorr_web/docs/superpowers/`. Publicado por orden de Héctor antes del recorrido en navegador.
 - **atilax.io** rehecha (mock aprobado en `design/gui/`): home, `/productos/[slug]` (WellOS, TankOS,
   LiftOS, ERP) y `/demos`. Fuente única: `src/lib/productos.ts`. pm2 `atilax-web` en 127.0.0.1:3020 con
   topes de reinicio (`ecosystem.config.cjs`). Webhook viejo de autodespliegue DESACTIVADO (ver `CICD.md`).
